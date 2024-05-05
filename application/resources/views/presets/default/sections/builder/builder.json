@@ -3,8 +3,20 @@
         "builder": true,
         "name": "Banner Section",
         "content": {
-            "heading": "text",
-            "subheading": "text"
+            "heading_1": "text",
+            "heading_2": "text",
+            "subheading_1": "text",
+            "subheading_2": "text",
+            "paragraph_1": "text",
+            "paragraph_2": "text",
+            "images":{
+                "banner_image1":{
+                    "size":"1981x821"
+                },
+                "banner_image2":{
+                    "size":"1981x821"
+                }
+            }
         }
     },
     "feature": {
