@@ -564,7 +564,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Account</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="signin.html">Sign in</a></li>
+                                <li><a class="dropdown-item" href="{{route('user.login')}}">Sign in</a></li>
                                 <li><a class="dropdown-item" href="signup.html">Signup</a></li>
                                 <li><a class="dropdown-item" href="forgot-password.html">Forgot Password</a></li>
                                 <li class="dropdown-submenu dropend">

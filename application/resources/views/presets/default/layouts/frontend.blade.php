@@ -56,8 +56,6 @@
 <body>
 
 @stack('fbComment')
-@include($activeTemplate.'includes.topbar')
-@include($activeTemplate.'includes.navbar')
 @yield('content')
 
 @php

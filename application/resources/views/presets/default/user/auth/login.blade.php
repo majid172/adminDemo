@@ -1,60 +1,82 @@
 @extends($activeTemplate.'layouts.frontend')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8 col-lg-7 col-xl-5">
-            <div class="text-end">
-                <a href="{{ route('home') }}" class="fw-bold home-link"> <i class="las la-long-arrow-alt-left"></i>
-                    @lang('Go to Home')</a>
+    <div class="border-bottom shadow-sm">
+        <nav class="navbar navbar-light py-2">
+            <div class="container justify-content-center justify-content-lg-between">
+                <a class="navbar-brand" href="{{route('home')}}">
+                    <img src="../assets/images/logo/freshcart-logo.svg" alt="" class="d-inline-block align-text-top" />
+                </a>
+                <span class="navbar-text">
+                  Already have an account?
+                  <a href="signin.html">Sign in</a>
+               </span>
             </div>
-            <div class="card custom--card">
-                <div class="card-header">
-                    <h5 class="card-title">@lang('Login')</h5>
-                </div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('user.login') }}" class="verify-gcaptcha">
-                        @csrf
-
-                        <div class="form-group">
-                            <label for="email" class="form-label">@lang('Username or Email')</label>
-                            <input type="text" name="username" value="{{ old('username') }}"
-                                class="form-control form--control" required>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="d-flex flex-wrap justify-content-between mb-2">
-                                <label for="password" class="form-label mb-0">@lang('Password')</label>
-                                <a class="fw-bold forgot-pass"
-                                    href="{{ route('user.password.request') }}">
-                                    @lang('Forgot your password?')
-                                </a>
-                            </div>
-                            <input id="password" type="password" class="form-control form--control" name="password"
-                                required>
-                        </div>
-
-                        <x-captcha></x-captcha>
-                        <div class="form-group form-check">
-                            <input class="form-check-input" type="checkbox" name="remember" id="remember"
-                                {{ old('remember') ? 'checked' : '' }}>
-                            <label class="form-check-label" for="remember">
-                                @lang('Remember Me')
-                            </label>
-                        </div>
-
-                        <div class="form-group">
-                            <button type="submit" id="recaptcha" class="btn btn--base w-100">
-                                @lang('Login')
-                            </button>
-                        </div>
-                        <p class="mb-0">@lang('Don\'t have any account?') <a
-                                href="{{ route('user.register') }}">@lang('Register')</a></p>
-                    </form>
-                </div>
-            </div>
-        </div>
+        </nav>
     </div>
-</div>
+
+    <main>
+        <!-- section -->
+        <section class="my-lg-14 my-8">
+            <div class="container">
+                <!-- row -->
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-12 col-md-6 col-lg-4 order-lg-1 order-2">
+                        <!-- img -->
+                        <img src="../assets/images/svg-graphics/signin-g.svg" alt="" class="img-fluid" />
+                    </div>
+                    <!-- col -->
+                    <div class="col-12 col-md-6 offset-lg-1 col-lg-4 order-lg-2 order-1">
+                        <div class="mb-lg-9 mb-5">
+                            <h1 class="mb-1 h2 fw-bold">Sign in to FreshCart</h1>
+                            <p>Welcome back to FreshCart! Enter your email to get started.</p>
+                        </div>
+
+                        <form class="needs-validation" novalidate>
+                            <div class="row g-3">
+                                <!-- row -->
+
+                                <div class="col-12">
+                                    <!-- input -->
+                                    <label for="formSigninEmail" class="form-label visually-hidden">Email address</label>
+                                    <input type="email" class="form-control" id="formSigninEmail" placeholder="Email" required />
+                                    <div class="invalid-feedback">Please enter name.</div>
+                                </div>
+                                <div class="col-12">
+                                    <!-- input -->
+                                    <div class="password-field position-relative">
+                                        <label for="formSigninPassword" class="form-label visually-hidden">Password</label>
+                                        <div class="password-field position-relative">
+                                            <input type="password" class="form-control fakePassword" id="formSigninPassword" placeholder="*****" required />
+                                            <span><i class="bi bi-eye-slash passwordToggler"></i></span>
+                                            <div class="invalid-feedback">Please enter password.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <!-- form check -->
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                        <!-- label -->
+                                        <label class="form-check-label" for="flexCheckDefault">Remember me</label>
+                                    </div>
+                                    <div>
+                                        Forgot password?
+                                        <a href="{{ route('user.password.request') }}">Reset It</a>
+                                    </div>
+                                </div>
+                                <!-- btn -->
+                                <div class="col-12 d-grid"><button type="submit" class="btn btn-primary">Sign In</button></div>
+                                <!-- link -->
+                                <div>
+                                    Don’t have an account?
+                                    <a href="{{route('user.register')}}">Sign Up</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 @endsection

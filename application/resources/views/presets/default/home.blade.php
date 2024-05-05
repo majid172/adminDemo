@@ -1,6 +1,7 @@
 @extends($activeTemplate.'layouts.frontend')
 @section('content')
-
+    @include($activeTemplate.'includes.topbar')
+    @include($activeTemplate.'includes.navbar')
 
 
 @if($sections->secs != null)
