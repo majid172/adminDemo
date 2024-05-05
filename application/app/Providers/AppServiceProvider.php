@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Models\Withdrawal;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -96,7 +97,7 @@ class AppServiceProvider extends ServiceProvider
             \URL::forceScheme('https');
         }
 
-
+        Schema::defaultStringLength(191);
         Paginator::useBootstrapFour();
     }
 }

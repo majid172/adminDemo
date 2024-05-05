@@ -14,19 +14,18 @@ class CategoryController extends Controller
     public function list()
     {
         $pageTitle = 'Category List';
-        $lists = Category::with('course')->paginate();
+        $lists = Category::paginate();
         return view('admin.category.list',compact('pageTitle','lists'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
-           'name' => 'required|string|min:3',
+           'cat_name' => 'required|string|min:3',
             'image' => ['required','image',new FileTypeValidate(['jpg','jpeg','png'])]
         ]);
         $category = new Category();
-        $category->name = $request->name;
-        $category->description = $request->description;
+        $category->cat_name = $request->cat_name;
         if($request->hasFile('image')){
             try {
                 $directory = date("Y")."/".date("m");
@@ -74,9 +73,10 @@ class CategoryController extends Controller
     }
     public function remove(Request $request)
     {
-        $course = Category::find($request->id);
-        $course->delete();
-        return redirect()->back();
+        $category = Category::find($request->id);
+        $category->delete();
+        $notify[] = ['success', $category->name . ' has been removed successfully'];
+        return redirect()->back()->withNotify($notify);
     }
 
     public function courseList($cat_id)
@@ -89,7 +89,7 @@ class CategoryController extends Controller
     {
         $data['pageTitle'] = 'Episode List';
         $data['episodes'] = Episode::where('course_id',$course_id)->with('course')->paginate(getPaginate());
-        return view('admin.episode.list',$data); 
+        return view('admin.episode.list',$data);
     }
     public function episodeStatus(Request $request)
     {

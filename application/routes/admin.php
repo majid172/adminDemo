@@ -52,7 +52,7 @@ Route::middleware('admin')->group(function () {
        Route::get('/','list')->name('category.list');
        Route::post('/store','store')->name('category.store');
        Route::post('/update','update')->name('category.update');
-       Route::get('/remove','remove')->name('course.remove');
+       Route::get('/remove','remove')->name('category.remove');
        Route::get('/course/list/{cat_id}','courseList')->name('category.course.list');
        Route::get('/course/episode/list/{course_id}','episodeList')->name('course.episode.list');
        Route::get('/course/episode/status','episodeStatus')->name('episode.status');

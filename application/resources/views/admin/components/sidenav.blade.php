@@ -15,8 +15,17 @@
                     </a>
                 </li>
 
+{{--                categories --}}
+                <li class="sidebar__menu-header">@lang('Category')</li>
+                <li class="sidebar-menu-item  {{menuActive('admin.subscriber.*')}}">
+                    <a href="{{route('admin.category.list')}}" class="nav-link"
+                       data-default-url="{{ route('admin.category.list') }}">
+                        <i class="menu-icon las la-list text-success"></i>
+                        <span class="menu-title">@lang('Category List') </span>
+                    </a>
+                </li>
 
-{{--                user management --}}
+{{--                user management  --}}
                 <li class="sidebar__menu-header">@lang('Users Panel')</li>
                 <li class="sidebar-menu-item sidebar-dropdown">
                     <a href="javascript:void(0)" class="{{menuActive('admin.users.*',3)}}">

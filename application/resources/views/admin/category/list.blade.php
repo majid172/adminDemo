@@ -6,7 +6,7 @@
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <h6 class="m-0 font-weight-bold text--primary">@lang('Category List')</h6>
                     <button type="button" class="btn btn-sm btn-outline--primary" data-bs-toggle="modal" data-bs-target="#addModal"><i class="las la-plus"></i>@lang('Add')</button>
-                    
+
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -15,8 +15,8 @@
                                 <tr>
                                     <th>@lang('Sl.')</th>
                                     <th>@lang('Categories Name')</th>
-                                    <th>@lang('No. of Course')</th>
-                                    <th>@lang('Description')</th>
+                                    <th>@lang('No. of Products')</th>
+                                    <th>@lang('Image')</th>
                                     <th>@lang('Created_at')</th>
                                     <th>@lang('Action')</th>
                                 </tr>
@@ -25,13 +25,15 @@
                                 @forelse($lists as $list)
                                     <tr>
                                         <td>{{++$loop->index}}</td>
-                                        <td>{{ucwords($list->name)}}</td>
-                                        <td>{{optional($list->course)->count()}}</td>
-                                        <td title="{{$list->description}}">{{Str::limit($list->description,40)}}</td>
+                                        <td>{{ucwords($list->cat_name)}}</td>
+                                        <td>0</td>
+                                        <td>
+                                            <img src="{{asset('assets/images/category/2024/05/6637474945fc21714898761.png')}}" alt="cat_img">
+                                        </td>
                                         <td>
                                             {{ showDateTime($list->created_at) }}
                                         </td>
-    
+
                                         <td>
                                             <div class="dropdown">
                                                 <button class="btn btn-outline--primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -39,22 +41,22 @@
                                                 </button>
                                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                     <li><a class="dropdown-item edit" data-bs-toggle="modal" data-bs-target="#editModal" data-id="{{$list->id}}" data-name="{{__($list->name)}}" data-description="{{__($list->description)}}" href="javascript:void(0)"><i class="las la-edit text-info"></i> @lang('Edit')</a></li>
-    
+
                                                     <li><a class="dropdown-item" href="{{route('admin.category.course.list',$list->id)}}"><i class="las la-book-open text-warning"></i> @lang('Course Lists')</a></li>
-    
+
                                                     <li><a class="dropdown-item remove" href="javascript:void(0)" data-bs-toggle="modal" data-name="{{__($list->name)}}" data-id="{{$list->id}}" data-bs-target="#removeModal"><i class="las la-trash text-danger" ></i> @lang('Remove')</a></li>
                                                 </ul>
                                             </div>
-    
+
                                         </td>
-    
+
                                     </tr>
                                 @empty
                                     <tr>
                                         <td class="text-muted text-center" colspan="100%">{{ __($emptyMessage) }}</td>
                                     </tr>
                                 @endforelse
-    
+
                                 </tbody>
                         </table>
                     </div>
@@ -77,11 +79,7 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="name">@lang('Category Name')</label>
-                            <input type="text" name="name" class="form-control" id="name">
-                        </div>
-                        <div class="form-group">
-                            <label for="description">@lang('Description')</label>
-                            <textarea name="description" class="form-control" id="description"></textarea>
+                            <input type="text" name="cat_name" class="form-control" id="name">
                         </div>
                         <div class="form-group">
                             <label for="img">@lang('Category Image')</label>
@@ -139,7 +137,7 @@
                     <h5 class="modal-title title text-danger"  id="removeModalLabel"></h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{route('admin.course.remove')}}" method="get" class="removeAction">
+                <form action="{{route('admin.category.remove')}}" method="get" class="removeAction">
                     @csrf
                     <div class="modal-body">
                         <input type="hidden" name="id"></input>

@@ -1,5 +1,5 @@
 :root {
-    --primary: #00adad;
+    --primary: #61c561;
 }
 
 /* default margin css start */
@@ -2188,7 +2188,7 @@ a {
 
 .bg--gradi-13,
 .overlay--gradi-13[class*="overlay"]::before {
-    background: #4ECDC4 !important;
+    background: #CEEFCE !important;
     background: -webkit-linear-gradient(to bottom, #556270, #4ECDC4) !important;
     background: linear-gradient(to bottom, #556270, #4ECDC4) !important;
 }

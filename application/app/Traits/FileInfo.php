@@ -58,6 +58,10 @@ trait FileInfo
             'path'      =>'assets/admin/images/profile',
             'size'      =>'400x400',
         ];
+        $data['category'] = [
+            'path'      =>'assets/images/category',
+            'size'      =>'112x112',
+        ];
         return $data;
 	}
 

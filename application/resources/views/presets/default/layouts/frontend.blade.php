@@ -12,30 +12,19 @@
     <link rel="stylesheet" href="{{asset('assets/common/css/line-awesome.min.css')}}"/>
     <link rel="stylesheet" href="{{asset($activeTemplateTrue.'css/custom.css')}}">
 
-{{--    template --}}
-    <link href="{{asset('assets/libs/tiny-slider/dist/tiny-slider.css')}}" rel="stylesheet" />
-    <link href="{{asset('assets/libs/slick-carousel/slick/slick.css')}}" rel="stylesheet" />
-    <link href="{{asset('assets/libs/slick-carousel/slick/slick-theme.css')}}" rel="stylesheet" />
-    <!-- Favicon icon-->
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/images/favicon/favicon.ico')}}" />
+    <link href="{{asset($activeTemplateTrue.'libs/slick-carousel/slick/slick.css')}}" rel="stylesheet" />
+    <link href="{{asset($activeTemplateTrue.'libs/slick-carousel/slick/slick-theme.css')}}" rel="stylesheet" />
+    <link href="{{asset($activeTemplateTrue.'libs/tiny-slider/dist/tiny-slider.css')}}" rel="stylesheet" />
 
     <!-- Libs CSS -->
-    <link href="{{asset('assets/libs/bootstrap-icons/font/bootstrap-icons.min.css')}}" rel="stylesheet" />
-    <link href="{{asset('assets/libs/feather-webfont/dist/feather-icons.css')}}" rel="stylesheet" />
-    <link href="{{asset('assets/libs/simplebar/dist/simplebar.min.css')}}" rel="stylesheet" />
+    <link href="{{asset($activeTemplateTrue.'libs/bootstrap-icons/font/bootstrap-icons.min.css')}}" rel="stylesheet" />
+    <link href="{{asset($activeTemplateTrue.'libs/feather-webfont/dist/feather-icons.css')}}" rel="stylesheet" />
+    <link href="{{asset($activeTemplateTrue.'libs/simplebar/dist/simplebar.min.css')}}" rel="stylesheet" />
 
     <!-- Theme CSS -->
-    <link rel="stylesheet" href="{{asset('assets/css/theme.min.css')}}" />
+    <link rel="stylesheet" href="{{asset($activeTemplateTrue.'css/theme.min.css')}}" />
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-M8S4MT3EYG"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag("js", new Date());
 
-        gtag("config", "G-M8S4MT3EYG");
-    </script>
     @stack('style-lib')
 
     @stack('style')
@@ -51,7 +40,7 @@
             right: 16px;
             z-index: 99;
             border: 2px solid #108ce6;
-            }
+        }
         .dark-mode .cookies-card {
             background: #2d3748;
             border: 1px solid #404040;
@@ -77,41 +66,23 @@
 @if(($cookie->data_values->status == 1) && !\Cookie::get('gdpr_cookie'))
     <!-- cookies dark version start -->
     <div class="cookies-card text-center hide">
-      <div class="cookies-card__icon bg--base">
-        <i class="las la-cookie-bite"></i>
-      </div>
-      <p class="mt-4 cookies-card__content">{{ $cookie->data_values->short_desc }} <a href="{{ route('cookie.policy') }}" target="_blank">@lang('learn more')</a></p>
-      <div class="cookies-card__btn mt-4">
-        <a href="javascript:void(0)" class="btn btn--base w-100 policy">@lang('Allow')</a>
-      </div>
+        <div class="cookies-card__icon bg--base">
+            <i class="las la-cookie-bite"></i>
+        </div>
+        <p class="mt-4 cookies-card__content">{{ $cookie->data_values->short_desc }} <a href="{{ route('cookie.policy') }}" target="_blank">@lang('learn more')</a></p>
+        <div class="cookies-card__btn mt-4">
+            <a href="javascript:void(0)" class="btn btn--base w-100 policy">@lang('Allow')</a>
+        </div>
     </div>
-  <!-- cookies dark version end -->
-  @endif
+    <!-- cookies dark version end -->
+@endif
 
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="{{asset('assets/common/js/jquery-3.6.0.min.js')}}"></script>
-  <script src="{{asset('assets/common/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('assets/common/js/bootstrap.bundle.min.js')}}"></script>
 
-
-{{--template--}}
-<script src="{{asset('assets/libs/simplebar/dist/simplebar.min.js')}}"></script>
-
-<!-- Theme JS -->
-<script src="{{asset('assets/js/theme.min.js')}}"></script>
-
-<script src="{{asset('assets/js/vendors/jquery.min.js')}}"></script>
-<script src="{{asset('assets/libs/slick-carousel/slick/slick.min.js')}}"></script>
-<script src="{{asset('assets/js/vendors/slick-slider.js')}}"></script>
-<script src="{{asset('assets/libs/tiny-slider/dist/min/tiny-slider.js')}}"></script>
-<script src="{{asset('assets/js/vendors/tns-slider.js')}}"></script>
-<script src="{{asset('assets/js/vendors/zoom.js')}}"></script>
-
-<script src="{{asset('assets/js/vendors/countdown.js')}}"></script>
-<script src="{{asset('assets/libs/sticky-sidebar/dist/sticky-sidebar.min.js')}}"></script>
-<script src="{{asset('assets/js/vendors/sticky.js')}}"></script>
-<script src="{{asset('assets/js/vendors/modal.js')}}"></script>
 @stack('script-lib')
 
 @stack('script')
@@ -119,6 +90,7 @@
 @include('includes.plugins')
 
 @include('includes.notify')
+
 
 <script>
     (function ($) {
@@ -181,6 +153,18 @@
 
     })(jQuery);
 </script>
+<script src="{{asset($activeTemplateTrue.'libs/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset($activeTemplateTrue.'libs/simplebar/dist/simplebar.min.js')}}"></script>
 
+<!-- Theme JS -->
+<script src="{{asset($activeTemplateTrue.'js/theme.min.js')}}"></script>
+
+<script src="{{asset($activeTemplateTrue.'js/vendors/jquery.min.js')}}"></script>
+<script src="{{asset($activeTemplateTrue.'js/vendors/countdown.js')}}"></script>
+<script src="{{asset($activeTemplateTrue.'libs/slick-carousel/slick/slick.min.js')}}"></script>
+<script src="{{asset($activeTemplateTrue.'js/vendors/slick-slider.js')}}"></script>
+<script src="{{asset($activeTemplateTrue.'libs/tiny-slider/dist/min/tiny-slider.js')}}"></script>
+<script src="{{asset($activeTemplateTrue.'js/vendors/tns-slider.js')}}"></script>
+<script src="{{asset($activeTemplateTrue.'js/vendors/zoom.js')}}"></script>
 </body>
 </html>
