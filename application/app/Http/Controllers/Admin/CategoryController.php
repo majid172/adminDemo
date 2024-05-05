@@ -47,13 +47,11 @@ class CategoryController extends Controller
     public function update(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|min:3',
+            'cat_name' => 'required|string|min:3',
             'image' =>  ['nullable','image',new FileTypeValidate(['jpg','jpeg','png'])],
         ]);
         $category =  Category::find($request->id);
-        $category->name = $request->name;
-        $category->description = $request->description;
-
+        $category->cat_name = $request->cat_name;
         if($request->hasFile('image')){
             try {
                 $directory = date("Y")."/".date("m");

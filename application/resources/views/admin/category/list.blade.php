@@ -28,7 +28,7 @@
                                         <td>{{ucwords($list->cat_name)}}</td>
                                         <td>0</td>
                                         <td>
-                                            <img src="{{asset('assets/images/category/2024/05/6637474945fc21714898761.png')}}" alt="cat_img">
+                                            <img src="{{getImage(getFilePath('category').'/'.$list->path.'/'.$list->image)}}" alt="cat_img">
                                         </td>
                                         <td>
                                             {{ showDateTime($list->created_at) }}
@@ -40,7 +40,10 @@
                                                     <i class="las la-ellipsis-v"></i> @lang('More')
                                                 </button>
                                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                    <li><a class="dropdown-item edit" data-bs-toggle="modal" data-bs-target="#editModal" data-id="{{$list->id}}" data-name="{{__($list->name)}}" data-description="{{__($list->description)}}" href="javascript:void(0)"><i class="las la-edit text-info"></i> @lang('Edit')</a></li>
+                                                    <li><a class="dropdown-item edit" data-bs-toggle="modal"
+                                                           data-bs-target="#editModal" data-id="{{$list->id}}"
+                                                           data-cat_name="{{__($list->cat_name)}}" href="javascript:void
+                                                           (0)"><i class="las la-edit text-info"></i> @lang('Edit')</a></li>
 
                                                     <li><a class="dropdown-item" href="{{route('admin.category.course.list',$list->id)}}"><i class="las la-book-open text-warning"></i> @lang('Course Lists')</a></li>
 
@@ -109,11 +112,7 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="name">@lang('Category Name')</label>
-                            <input type="text" name="name" class="form-control" id="name">
-                        </div>
-                        <div class="form-group">
-                            <label for="description">@lang('Description')</label>
-                            <textarea name="description" class="form-control" id="description"></textarea>
+                            <input type="text" name="cat_name" class="form-control" id="name">
                         </div>
                         <div class="form-group">
                             <label for="img">@lang('Category Image')</label>
@@ -168,8 +167,7 @@
     <script>
         $('.edit').on('click',function(){
             $('#editModal').find('input[name="id"]').val($(this).data('id'));
-            $('#editModal').find('input[name="name"]').val($(this).data('name'));
-            $('#editModal').find('textarea[name="description"]').val($(this).data('description'));
+            $('#editModal').find('input[name="cat_name"]').val($(this).data('cat_name'));
         })
         $('.remove').on('click',function (){
             var id = $(this).data('id');

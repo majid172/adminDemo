@@ -471,17 +471,8 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Home</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="../index.html">Home 1</a></li>
-                                <li><a class="dropdown-item" href="index-2.html">Home 2</a></li>
-                                <li><a class="dropdown-item" href="index-3.html">Home 3</a></li>
-                                <li><a class="dropdown-item" href="index-4.html">Home 4</a></li>
-                                <li>
-                                    <a class="dropdown-item" href="index-5.html">Home 5</a>
-                                </li>
-                            </ul>
+                        <li class="nav-item ">
+                            <a class="nav-link " href="{{route('home')}}">Home</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>

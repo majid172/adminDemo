@@ -60,7 +60,7 @@ trait FileInfo
         ];
         $data['category'] = [
             'path'      =>'assets/images/category',
-            'size'      =>'112x112',
+            'size'      =>'120x120',
         ];
         return $data;
 	}
