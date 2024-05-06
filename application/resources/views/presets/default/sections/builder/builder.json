@@ -25,7 +25,11 @@
         "element": {
             "title": "text",
             "description": "textarea",
-            "feature_icon": "icon",
+            "images":{
+                "icon":{
+                    "size":"40x40"
+                }
+            },
             "modal": true
         }
     },
