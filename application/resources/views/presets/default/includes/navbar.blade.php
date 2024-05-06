@@ -558,7 +558,7 @@
                                 <li><a class="dropdown-item" href="blog-category.html">Blog Category</a></li>
                                 <li><a class="dropdown-item" href="about.html">About us</a></li>
                                 <li><a class="dropdown-item" href="404error.html">404 Error</a></li>
-                                <li><a class="dropdown-item" href="contact.html">Contact</a></li>
+                                <li><a class="dropdown-item" href="{{route('contact')}}">Contact</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">

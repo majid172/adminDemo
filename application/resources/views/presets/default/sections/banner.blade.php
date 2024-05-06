@@ -5,7 +5,7 @@
     <div class="container">
         <div class="hero-slider">
 
-            <div style="background: url({{asset('assets/images/frontend/banner/663773f8ea0e91714910200.jpg')}}) no-repeat; background-size: cover; border-radius: 0.5rem; background-position: center">
+            <div style="background: url({{getImage(getFilePath('frontend').'/banner/'.$content->data_values->banner_image1)}}) no-repeat; background-size: cover; border-radius: 0.5rem; background-position: center">
                 <div class="ps-lg-12 py-lg-16 col-xxl-5 col-md-7 py-14 px-8 text-xs-center">
                     <span class="badge text-bg-warning">{{__($content->data_values->subheading_1)}}</span>
 
@@ -17,7 +17,7 @@
                     </a>
                 </div>
             </div>
-            <div style="background: url({{asset('assets/images/frontend/banner/663773f8ea0e91714910200.jpg')}}) no-repeat; background-size: cover; border-radius: 0.5rem; background-position: center">
+            <div style="background: url({{getImage(getFilePath('frontend').'/banner/'.$content->data_values->banner_image2)}}) no-repeat; background-size: cover; border-radius: 0.5rem; background-position: center">
                 <div class="ps-lg-12 py-lg-16 col-xxl-5 col-md-7 py-14 px-8 text-xs-center">
                     <span class="badge text-bg-warning">{{__($content->data_values->subheading_2)}}</span>
                     <h2 class="text-dark display-5 fw-bold mt-4">
