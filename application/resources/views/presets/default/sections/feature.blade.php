@@ -1,10 +1,20 @@
 @php
-   /*
-    *   singleQuery True / false
-    * By default singleQuery is false , If you want only one row you have to set `True`
-    *
-    * limit to fetch record of data
-    */
-
-    #getContent('data_key','singleQuery true/false','limit');
+    $element = getContent('feature.element',false,4);
 @endphp
+<section class="my-lg-14 my-8">
+    <div class="container">
+        <div class="row">
+            @foreach($element as $data)
+                <div class="col-md-6 col-lg-3">
+                    <div class="mb-8 mb-xl-0">
+                        <div class="mb-6"><img src="assets/images/icons/clock.svg" alt="" /></div>
+                        <h3 class="h5 mb-3">{{$data->data_values->title}}</h3>
+                        <p>{{$data->data_values->description}}</p>
+                    </div>
+                </div>
+            @endforeach
+
+
+        </div>
+    </div>
+</section>

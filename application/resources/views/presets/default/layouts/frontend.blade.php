@@ -56,7 +56,11 @@
 <body>
 
 @stack('fbComment')
-@yield('content')
+<main>
+    @yield('content')
+</main>
+
+
 @include($activeTemplate.'includes.footer')
 @php
     $cookie = App\Models\Frontend::where('data_keys','cookie.data')->first();
