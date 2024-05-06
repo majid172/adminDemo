@@ -33,6 +33,20 @@
             "modal": true
         }
     },
+    "team": {
+        "builder": true,
+        "name": "Our Team",
+        "element": {
+            "title": "text",
+            "designation": "text",
+            "images":{
+                "team_img":{
+                    "size":"330x330"
+                }
+            },
+            "modal": true
+        }
+    },
     "category": {
         "builder": true,
         "name": "Category",
@@ -52,19 +66,13 @@
         "name": "About Us",
         "content": {
             "images":{
-                "background_image":{
-                    "size":"500x500",
-                    "thumb":"100x100"
-                },
                 "about_image":{
-                    "size":"500x500",
+                    "size":"540x420",
                     "thumb":"100x100"
                 }
             },
             "heading": "text",
-            "subheading": "text",
-            "description": "textarea",
-            "about_icon": "icon"
+            "description": "textarea"
         }
     },
     "about_dark": {
