@@ -26,7 +26,7 @@
                                     <tr>
                                         <td>{{++$loop->index}}</td>
                                         <td>{{ucwords($list->cat_name)}}</td>
-                                        <td>0</td>
+                                        <td>{{$list->products_count}}</td>
                                         <td>
                                             <img src="{{getImage(getFilePath('category').'/'.$list->path.'/'.$list->image)}}" alt="cat_img">
                                         </td>
@@ -45,7 +45,8 @@
                                                            data-cat_name="{{__($list->cat_name)}}" href="javascript:void
                                                            (0)"><i class="las la-edit text-info"></i> @lang('Edit')</a></li>
 
-                                                    <li><a class="dropdown-item" href="{{route('admin.category.course.list',$list->id)}}"><i class="las la-book-open text-warning"></i> @lang('Course Lists')</a></li>
+                                                    <li><a class="dropdown-item" href="{{route('admin.category.product.list',$list->id)}}"><i class="las la-list-alt
+                                                    text-primary"></i> @lang('Product Lists')</a></li>
 
                                                     <li><a class="dropdown-item remove" href="javascript:void(0)" data-bs-toggle="modal" data-name="{{__($list->name)}}" data-id="{{$list->id}}" data-bs-target="#removeModal"><i class="las la-trash text-danger" ></i> @lang('Remove')</a></li>
                                                 </ul>

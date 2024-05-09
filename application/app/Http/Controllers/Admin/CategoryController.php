@@ -6,15 +6,17 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Course;
 use App\Models\Episode;
+use App\Models\Product;
 use App\Rules\FileTypeValidate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
     public function list()
     {
         $pageTitle = 'Category List';
-        $lists = Category::paginate();
+        $lists = Category::withCount('products')->paginate();
         return view('admin.category.list',compact('pageTitle','lists'));
     }
 
@@ -77,11 +79,11 @@ class CategoryController extends Controller
         return redirect()->back()->withNotify($notify);
     }
 
-    public function courseList($cat_id)
+    public function productList($cat_id)
     {
-        $courses = Course::where('category_id',$cat_id)->with('category','creator','episodes')->paginate(getPaginate());
-        $pageTitle = "Course List";
-        return view('admin.category.courses',compact('pageTitle','courses'));
+        $products = Product::where('cat_id',$cat_id)->with('category')->paginate(getPaginate());
+        $pageTitle = "Product Lists";
+        return view('admin.category.products',compact('pageTitle','products'));
     }
     public function episodeList($course_id)
     {

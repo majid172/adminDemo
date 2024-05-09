@@ -16,12 +16,19 @@
                 </li>
 
 {{--                categories --}}
-                <li class="sidebar__menu-header">@lang('Category')</li>
-                <li class="sidebar-menu-item  {{menuActive('admin.subscriber.*')}}">
+                <li class="sidebar__menu-header">@lang('Category & Products')</li>
+                <li class="sidebar-menu-item  {{menuActive('admin.category.list')}}">
                     <a href="{{route('admin.category.list')}}" class="nav-link"
                        data-default-url="{{ route('admin.category.list') }}">
                         <i class="menu-icon las la-list text-success"></i>
                         <span class="menu-title">@lang('Category List') </span>
+                    </a>
+                </li>
+                <li class="sidebar-menu-item  {{menuActive('admin.product.list')}}">
+                    <a href="{{route('admin.product.list')}}" class="nav-link"
+                       data-default-url="{{ route('admin.product.list') }}">
+                        <i class="menu-icon las la-list text-info"></i>
+                        <span class="menu-title">@lang('Product List') </span>
                     </a>
                 </li>
 

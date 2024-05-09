@@ -6,7 +6,7 @@
         <div class="card mb-4 card-primary shadow">
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                 <h6 class="m-0 font-weight-bold text--primary">@lang('All Courses List')</h6>
-               
+
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -14,27 +14,27 @@
                         <thead class="thead-light">
                             <tr>
                                 <th>@lang('Sl.')</th>
-                                <th>@lang('Course Title')</th>
-                                <th>@lang('No. of Episode')</th>
+                                <th>@lang('Product')</th>
                                 <th>@lang('Category')</th>
-                                <th>@lang('Instructor')</th>
+                                <th>@lang('Quantity')</th>
                                 <th>@lang('Price')</th>
                                 <th>@lang('Created_at')</th>
                                 <th>@lang('Action')</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse($courses as $list)
+                            @forelse($products as $list)
                             <tr>
                                 <td>{{++$loop->index}}</td>
-                                <td>{{ucwords($list->title)}}</td>
-                                <td>{{optional($list->episodes)->count()}}</td>
+                                <td>{{ucwords($list->name)}}</td>
                                 <td>
-                                    <span class="badge  badge--warning">{{ucwords(optional($list->category)->name)}}</span>
+                                    <span class="badge  badge--warning">{{ucwords(optional($list->category)->cat_name)
+                                    }}</span>
                                 </td>
-                                <td>{{optional($list->creator)->fullname}}</td>
+                                <td>{{__($list->quantity)}}</td>
                                 <td>
-                                    <span class="text--success">{{$general->cur_sym}}{{$list->price}} </span>
+                                    <span class="text--success">{{$general->cur_sym}}{{showAmount($list->price)}}
+                                    </span>
                                 </td>
                                 <td>
                                     {{ showDateTime($list->created_at) }}
@@ -45,10 +45,10 @@
                                             <i class="las la-ellipsis-v"></i> @lang('View')
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                           
+
                                             <li><a class="dropdown-item" href="{{route('admin.course.episode.list',$list->id)}}"><i class="las la-book-open text-warning"></i> @lang('Episode Lists')</a></li>
 
-                                        
+
                                         </ul>
                                     </div>
                                 </td>
@@ -63,7 +63,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="card-footer">{{ $courses->links() }}</div>
+                <div class="card-footer">{{ $products->links() }}</div>
             </div>
         </div>
     </div>
@@ -145,7 +145,7 @@
                     <h5 class="modal-title title text-danger"  id="removeModalLabel"></h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{route('admin.course.remove')}}" method="get" class="removeAction">
+                <form action="" method="get" class="removeAction">
                     @csrf
                     <div class="modal-body">
                         <input type="hidden" name="id"></input>

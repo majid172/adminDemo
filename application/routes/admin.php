@@ -53,10 +53,14 @@ Route::middleware('admin')->group(function () {
        Route::post('/store','store')->name('category.store');
        Route::post('/update','update')->name('category.update');
        Route::get('/remove','remove')->name('category.remove');
-       Route::get('/course/list/{cat_id}','courseList')->name('category.course.list');
+       Route::get('/product/list/{cat_id}','productList')->name('category.product.list');
        Route::get('/course/episode/list/{course_id}','episodeList')->name('course.episode.list');
        Route::get('/course/episode/status','episodeStatus')->name('episode.status');
     });
+    Route::controller('ProductController')->prefix('product')->group(function (){
+        Route::get('/','list')->name('product.list');
+    });
+
 
     Route::controller('EpisodeController')->prefix('episode')->group(function(){
         Route::get('/create/{category_id}','create')->name('episode.create');
