@@ -48,9 +48,13 @@
                                         </button>
 
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <li><a class="dropdown-item text--green edit" href="javascript:void(0)"
+                                                   data-bs-toggle="modal" data-bs-target="#edit" data-product="{{$list}}"><i
+                                                        class="las la-edit"></i> @lang('Edit')
+                                                </a></li>
                                             <li><a class="dropdown-item text--green" href="javascript:void(0)"
                                                    data-bs-toggle="modal" data-bs-target="#edit"><i class="las
-                                                   la-edit"></i> @lang('Edit')
+                                                   la-edit"></i> @lang('Remove')
                                                 </a></li>
                                         </ul>
                                     </div>
@@ -144,47 +148,75 @@
     </div>
 
 {{--    edit --}}
-<div class="modal fade" id="edit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="editLabel">@lang('Edit Product')</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form action="{{route('admin.product.update')}}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <input type="text" name="id">
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="name">@lang('Product Name')</label>
-                            <input type="text" name="name" class="form-control" id="name">
-                        </div>
-                        <div class="form-group">
-                            <label for="name">@lang('Category')</label>
-                            <select name="category" id="category">
-                                <option value="">@lang('Choose Category')</option>
-                                <option value=""></option>
-
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="description">@lang('Description')</label>
-                            <textarea name="description" class="form-control" id="description"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="img">@lang('Category Image')</label>
-                            <input type="file" name="image" id="img" class="form-control dropify">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">@lang('Close')</button>
-                        <button type="submit" class="btn btn--primary">@lang('Create')</button>
-                    </div>
-                </form>
+<div class="modal fade" id="edit" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">@lang('Update Product')</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            <form action="{{route('admin.product.update')}}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-body">
+                    <input type="hidden" name="id" >
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="name">@lang('Product Name') </label>
+                                <input type="text" name="product_name" class="form-control" id="name"
+                                       placeholder="@lang('Enter product name')" required>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="description">@lang('Category') </label>
+                                <select name="cat_id" id="category" class="form-control" required>
+                                    <option value="">@lang('Choose category')</option>
+                                    @foreach($categories as $category)
+                                        <option value="{{$category->id}}">{{$category->cat_name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="price">@lang('Price') </label>
+                                <input type="text" name="price" id="price" class="form-control"
+                                       placeholder="@lang('Enter product price')"  required>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <label for="quantity">@lang('Quantity')</label>
+                                    <input type="number" name="quantity" id="quantity" class="form-control"
+                                           placeholder="Enter product quantity" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">@lang('Description') <span class="text-danger">*</span></label>
+                        <textarea name="description" id="description" class="form-control"
+                                  placeholder="@lang('Write product description ...')"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="img">@lang('Product Image')</label>
+                        <input type="file" name="image" id="img" class="form-control dropify" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">@lang('Close')</button>
+                    <button type="submit" class="btn btn--primary">@lang('Update')</button>
+                </div>
+            </form>
         </div>
     </div>
+</div>
+
 
 {{--  remove course  --}}
     <div class="modal fade" id="removeModal" tabindex="-1" aria-labelledby="removeModalLabel" aria-hidden="true">
@@ -194,15 +226,62 @@
                     <h5 class="modal-title title text-danger"  id="removeModalLabel"></h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="" method="get" class="removeAction">
+                <form action="{{route('admin.product.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
-                        <input type="hidden" name="id"></input>
-                        @lang('Are you want to remove this course?')
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="name">@lang('Product Name') </label>
+                                    <input type="text" name="product_name" class="form-control" id="name"
+                                           placeholder="@lang('Enter product name')" required>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="description">@lang('Category') </label>
+                                    <select name="cat_id" id="category" class="form-control" required>
+                                        <option value="">@lang('Choose category')</option>
+                                        @foreach($categories as $category)
+                                            <option value="{{$category->id}}">{{$category->cat_name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="price">@lang('Price') </label>
+                                    <input type="text" name="price" id="price" class="form-control"
+                                           placeholder="@lang('Enter product price')"  required>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        <label for="quantity">@lang('Quantity')</label>
+                                        <input type="number" name="quantity" id="quantity" class="form-control"
+                                               placeholder="Enter product quantity" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">@lang('Description') <span class="text-danger">*</span></label>
+                            <textarea name="description" id="description" class="form-control"
+                                      placeholder="@lang('Write product description ...')"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="img">@lang('Product Image')</label>
+                            <input type="file" name="image" id="img" class="form-control dropify" required>
+                        </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-secondary" data data-bs-dismiss="modal">@lang('No')</button>
-                        <button type="submit" class="btn btn-outline-primary" >@lang('Yes')</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">@lang('Close')</button>
+                        <button type="submit" class="btn btn--primary">@lang('Update')</button>
                     </div>
                 </form>
             </div>
@@ -231,9 +310,14 @@
         </script>
     <script>
         $('.edit').on('click',function(){
-            $('#editModal').find('input[name="id"]').val($(this).data('id'));
-            $('#editModal').find('input[name="name"]').val($(this).data('name'));
-            $('#editModal').find('textarea[name="description"]').val($(this).data('description'));
+            var product = $(this).data('product');
+
+            $('#edit').find('input[name="id"]').val(product.id);
+            $('#edit').find('input[name="product_name"]').val(product.name);
+            $('#edit').find('input[name="cat_id"]').val(product.cat_id);
+            $('#edit').find('input[name="price"]').val(product.price);
+            $('#edit').find('input[name="quantity"]').val(product.quantity);
+            $('#edit').find('textarea[name="description"]').val(product.description);
         })
         $('.remove').on('click',function (){
             var id = $(this).data('id');
