@@ -1,12 +1,14 @@
+@php
+    $categories = \App\Models\Category::get();
+@endphp
 @extends('admin.layouts.app')
 @section('panel')
-
 <div class="row">
     <div class="col-lg-12">
         <div class="card mb-4 card-primary shadow">
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text--primary">@lang('All Courses List')</h6>
-
+                <h6 class="m-0 font-weight-bold text--primary">@lang('All Product List')</h6>
+                <button type="button" class="btn btn-sm btn-outline--primary" data-bs-toggle="modal" data-bs-target="#addModal"><i class="las la-plus"></i>@lang('Add')</button>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -31,7 +33,7 @@
                                     <span class="badge  badge--warning">{{ucwords(optional($list->category)->cat_name)
                                     }}</span>
                                 </td>
-                                <td>{{__($list->quantity)}}</td>
+                                <td><span class="badge bg--danger">{{__($list->quantity)}}</span></td>
                                 <td>
                                     <span class="text--success">{{$general->cur_sym}}{{showAmount($list->price)}}
                                     </span>
@@ -44,11 +46,12 @@
                                         <button class="btn btn-outline--primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                             <i class="las la-ellipsis-v"></i> @lang('View')
                                         </button>
+
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-
-                                            <li><a class="dropdown-item" href="{{route('admin.course.episode.list',$list->id)}}"><i class="las la-book-open text-warning"></i> @lang('Episode Lists')</a></li>
-
-
+                                            <li><a class="dropdown-item text--green" href="javascript:void(0)"
+                                                   data-bs-toggle="modal" data-bs-target="#edit"><i class="las
+                                                   la-edit"></i> @lang('Edit')
+                                                </a></li>
                                         </ul>
                                     </div>
                                 </td>
@@ -72,26 +75,63 @@
 
     <!-- Modal -->
     <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="addModalLabel">@lang('Add Category')</h5>
+                    <h5 class="modal-title" id="addModalLabel">@lang('Add New Product')</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{route('admin.category.store')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{route('admin.product.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
-                        <div class="form-group">
-                            <label for="name">@lang('Category Name')</label>
-                            <input type="text" name="name" class="form-control" id="name">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="name">@lang('Product Name') </label>
+                                    <input type="text" name="product_name" class="form-control" id="name"
+                                           placeholder="@lang('Enter product name')" required>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="description">@lang('Category') </label>
+                                    <select name="cat_id" id="category" class="form-control" required>
+                                        <option value="">@lang('Choose category')</option>
+                                        @foreach($categories as $category)
+                                            <option value="{{$category->id}}">{{$category->cat_name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="price">@lang('Price') </label>
+                                    <input type="text" name="price" id="price" class="form-control"
+                                           placeholder="@lang('Enter product price')"  required>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        <label for="quantity">@lang('Quantity')</label>
+                                        <input type="number" name="quantity" id="quantity" class="form-control"
+                                               placeholder="Enter product quantity" required>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label for="description">@lang('Description')</label>
-                            <textarea name="description" class="form-control" id="description"></textarea>
+                            <label for="description">@lang('Description') <span class="text-danger">*</span></label>
+                            <textarea name="description" id="description" class="form-control"
+                                      placeholder="@lang('Write product description ...')"></textarea>
                         </div>
                         <div class="form-group">
-                            <label for="img">@lang('Category Image')</label>
-                            <input type="file" name="image" id="img" class="form-control">
+                            <label for="img">@lang('Product Image')</label>
+                            <input type="file" name="image" id="img" class="form-control dropify" required>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -104,20 +144,29 @@
     </div>
 
 {{--    edit --}}
-    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+<div class="modal fade" id="edit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editLabel" aria-hidden="true">
+    <div class="modal-dialog">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editModalLabel">@lang('Edit Category')</h5>
+                    <h5 class="modal-title" id="editLabel">@lang('Edit Product')</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{route('admin.category.update')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{route('admin.product.update')}}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" name="id">
+                    <input type="text" name="id">
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="name">@lang('Category Name')</label>
+                            <label for="name">@lang('Product Name')</label>
                             <input type="text" name="name" class="form-control" id="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="name">@lang('Category')</label>
+                            <select name="category" id="category">
+                                <option value="">@lang('Choose Category')</option>
+                                <option value=""></option>
+
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="description">@lang('Description')</label>
@@ -125,7 +174,7 @@
                         </div>
                         <div class="form-group">
                             <label for="img">@lang('Category Image')</label>
-                            <input type="file" name="image" id="img" class="form-control">
+                            <input type="file" name="image" id="img" class="form-control dropify">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -172,7 +221,14 @@
         </form>
     </div>
 @endpush
+    @push('style')
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css" integrity="sha512-EZSUkJWTjzDlspOoPSpUFR0o0Xy7jdzW//6qhUkoZ9c4StFkVsp9fbbd0O06p9ELS3H486m4wmrCELjza4JEog==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    @endpush
 @push('script')
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js" integrity="sha512-8QFTrG0oeOiyWo/VM9Y8kgxdlCryqhIxVeRpWSezdRRAvarxVtwLnGroJgnVW9/XBRduxO/z1GblzPrMQoeuew==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script>
+            $('.dropify').dropify();
+        </script>
     <script>
         $('.edit').on('click',function(){
             $('#editModal').find('input[name="id"]').val($(this).data('id'));

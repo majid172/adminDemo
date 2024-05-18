@@ -3,32 +3,43 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreProductRequest;
+use App\Models\Product;
+use App\Services\ProductService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function list()
     {
-        dd('ok');
+        $pageTitle = "All Products";
+        $products = Product::with('category')->paginate();
+        return view('admin.category.products',compact('pageTitle','products'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function store(StoreProductRequest $request,ProductService $productService)
     {
-        //
-    }
+        $validated = $request->validated();
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
+        if ($request->hasFile('image')) {
+            try {
+                $directory = date("Y") . "/" . date("m");
+                $path = getFilePath('product') . '/' . $directory;
+                $size = getFileSize('product');
+                $image = fileUploader($request->image, $path, $size);
+                $validated['image'] = $image;
+                $validated['path'] = $directory;
+            } catch (\Exception $exp) {
+                $notify[] = ['error', 'Couldn\'t upload your image'];
+                return back()->withNotify($notify);
+            }
+        }
+
+        $product = $productService->store($validated);
+
+        return redirect()->route('admin.product.list')->with('success', 'Product created successfully.');
     }
 
     /**
@@ -42,9 +53,11 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $p_id)
     {
-        //
+        $pageTitle = "Edit Product";
+        $product = Product::find($p_id);
+        dd($product);
     }
 
     /**
