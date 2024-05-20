@@ -553,12 +553,17 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="blog.html">Blog</a></li>
-                                <li><a class="dropdown-item" href="blog-single.html">Blog Single</a></li>
-                                <li><a class="dropdown-item" href="blog-category.html">Blog Category</a></li>
-                                <li><a class="dropdown-item" href="about.html">About us</a></li>
-                                <li><a class="dropdown-item" href="404error.html">404 Error</a></li>
-                                <li><a class="dropdown-item" href="{{route('contact')}}">Contact</a></li>
+                                @php
+                                    $pages = \App\Models\Page::all();
+                                @endphp
+                                @foreach($pages as $page)
+                                    @unless ($page->slug === '/')
+                                        <li>
+                                            <a class="dropdown-item" href="{{ url($page->slug) }}">{{ $page->name }}</a>
+                                        </li>
+                                    @endunless
+
+                                @endforeach
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
