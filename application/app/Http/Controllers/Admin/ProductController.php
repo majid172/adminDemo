@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProductRequest;
+use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
 use App\Services\ProductService;
 use Illuminate\Http\Request;
@@ -39,15 +40,8 @@ class ProductController extends Controller
 
         $product = $productService->store($validated);
 
-        return redirect()->route('admin.product.list')->with('success', 'Product created successfully.');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
+        $notify[] = ['success', 'Profile has been updated successfully'];
+        return to_route('admin.product.list')->withNotify($notify);
     }
 
     /**
@@ -63,10 +57,29 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateProductRequest $request, ProductService $productService)
     {
-        //
+        $validated = $request->validated();
+        if ($request->hasFile('image')) {
+            try {
+                $directory = date("Y") . "/" . date("m");
+                $path = getFilePath('product') . '/' . $directory;
+                $size = getFileSize('product');
+                $image = fileUploader($request->image, $path, $size);
+                $validated['image'] = $image;
+                $validated['path'] = $directory;
+            } catch (\Exception $exp) {
+                $notify[] = ['error', 'Couldn\'t upload your image'];
+                return back()->withNotify($notify);
+            }
+        }
+
+        $productId = $request->input('id');
+        $product = $productService->update($validated, $productId);
+        $notify[] = ['success', 'Profile has been updated successfully'];
+        return redirect()->route('admin.product.list')->withNotify($notify);
     }
+
 
     /**
      * Remove the specified resource from storage.
