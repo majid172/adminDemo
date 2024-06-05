@@ -571,7 +571,8 @@
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="{{route('user.login')}}">Sign in</a></li>
                                 <li><a class="dropdown-item" href="signup.html">Signup</a></li>
-                                <li><a class="dropdown-item" href="forgot-password.html">Forgot Password</a></li>
+                                <li><a class="dropdown-item" href="{{route('user.password.request')}}">Forgot
+                                        Password</a></li>
                                 <li class="dropdown-submenu dropend">
                                     <a class="dropdown-item dropdown-list-group-item dropdown-toggle" href="#">My Account</a>
                                     <ul class="dropdown-menu">

@@ -24,21 +24,24 @@
             </div>
 
             <div class="col-xl-9 col-lg-4 col-5 d-md-flex align-items-center justify-content-end">
-                <a href="#" class="text-reset">Support</a>
-                <a href="#" class="mx-md-8 ms-4 text-reset">Delivery</a>
-                <a href="#" class="text-reset d-none d-md-block">Warranty</a>
+                <a href="#" class="text-reset">@lang('Support')</a>
+                <a href="#" class="mx-md-8 ms-4 text-reset">@lang('Delivery')</a>
+                <a href="#" class="text-reset d-none d-md-block">@lang('Warranty')</a>
                 <!-- Button -->
             </div>
         </div>
 
         <div class="d-flex flex-wrap justify-content-between mb-2 align-items-center pt-6 pb-4 mt-4 mt-lg-0">
-            <div class="logo"><a href="{{ route('home') }}"><img src="{{ getImage('assets/images/general/logo.png') }}"
-                                                                 alt=""></a></div>
+            <div class="logo">
+                <a href="{{ route('home') }}">
+                    <img src="{{ getImage('assets/images/general/logo.png') }}"alt="">
+                </a>
+            </div>
             <div>
                 <form action="#">
                     <div class="input-group">
                         <input class="form-control" type="search" placeholder="Search for products" aria-label="Recipient's username" aria-describedby="button-addon2" />
-                        <button class="btn btn-primary" type="button" id="button-addon2">Search</button>
+                        <button class="btn btn-primary" type="button" id="button-addon2">@lang('Search')</button>
                     </div>
                 </form>
             </div>
@@ -51,10 +54,10 @@
                                     <i class="bi bi-bell fs-4"></i>
                                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                        1
-                                       <span class="visually-hidden">unread messages</span>
+                                       <span class="visually-hidden">@lang('unread messages')</span>
                                     </span>
                                 </div>
-                                <p class="mb-0 d-none d-xl-block small">Notification</p>
+                                <p class="mb-0 d-none d-xl-block small">@lang('Notification')</p>
                             </div>
                         </a>
 
@@ -71,23 +74,26 @@
                         </div>
                     </div>
                 </div>
+                @guest
                 <div class="ms-6 text-center">
                     <a href="#" class="text-reset" data-bs-toggle="modal" data-bs-target="#userModal">
                         <div class="lh-1">
                             <div class="mb-2">
                                 <i class="bi bi-person-circle fs-4"></i>
                             </div>
-                            <p class="mb-0 d-none d-xl-block small">Sign up</p>
+                            <p class="mb-0 d-none d-xl-block small">@lang('Sign In')</p>
                         </div>
                     </a>
                 </div>
+                @endguest
+                @auth
                 <div class="ms-6 text-center">
                     <a href="account-orders.html" class="text-reset">
                         <div class="lh-1">
                             <div class="mb-2">
                                 <i class="bi bi-archive fs-4"></i>
                             </div>
-                            <p class="mb-0 d-none d-xl-block small">My Orders</p>
+                            <p class="mb-0 d-none d-xl-block small">@lang('My Orders')</p>
                         </div>
                     </a>
                 </div>
@@ -101,6 +107,53 @@
                         </div>
                     </a>
                 </div>
+
+                    <div class="ms-6 text-center">
+                        <a href="#" class="text-reset" data-bs-toggle="modal" data-bs-target="#userModal">
+                            <div class="lh-1">
+                                <div class="mb-2">
+                                    <i class="bi bi-person-circle fs-4"></i>
+                                </div>
+                                <p class="mb-0 d-none d-xl-block small">Sign Out</p>
+                            </div>
+                        </a>
+                    </div>
+                @endauth
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content p-4">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title fs-3 fw-bold" id="userModalLabel">@lang('Sign In')</h5>
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+
+                        <div class="mb-3">
+                            <label for="username" class="form-label">@lang('Username')</label>
+                            <input type="text" class="form-control" id="username" placeholder="@lang('Enter Username
+                            address')" required />
+                        </div>
+
+                        <div class="mb-5">
+                            <label for="password" class="form-label">@lang('Password')</label>
+                            <input type="password" class="form-control" id="password" placeholder="@lang('Enter
+                            Password')" required="" />
+                            <small class="form-text">
+                               @lang('Don’t have an account?')
+                                <a href="{{route('user.register')}}">@lang('Sign Up')</a>
+                            </small>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">@lang('Sign In')</button>
+                    </form>
+                </div>
+
             </div>
         </div>
     </div>
