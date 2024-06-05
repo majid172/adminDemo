@@ -33,8 +33,7 @@
                             </div>
                             <div class="text-small mb-1">
                                 <a href="#!" class="text-decoration-none text-muted"><small>{{__
-                                (@$product->category->cat_name)
-                                }}</small></a>
+                                (@$product->category->cat_name)}}</small></a>
                             </div>
                             <h2 class="fs-6"><a href="pages/shop-single.html" class="text-inherit
                             text-decoration-none">{{__($product->name)}}</a></h2>

@@ -61,6 +61,18 @@
             "heading": "text"
         }
     },
+    "best_sells": {
+        "builder": true,
+        "name" : "Best Sells",
+        "content": {
+            "heading": "text",
+            "images": {
+                "sell_image": {
+                    "size": "376x526"
+                }
+            }
+        }
+    },
     "about": {
         "builder": true,
         "name": "About Us",
