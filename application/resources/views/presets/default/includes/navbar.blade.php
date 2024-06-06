@@ -1,3 +1,7 @@
+@php
+    $pages = \App\Models\Page::all();
+    $skipURL = ['about','contact','blog'];
+@endphp
 <nav class="navbar navbar-expand-lg navbar-light navbar-default p-0 p-sm-0 navbar-offcanvas-color" aria-label="Offcanvas navbar large">
     <div class="container">
         <div class="offcanvas offcanvas-start" tabindex="-1" id="navbar-default" aria-labelledby="navbar-defaultLabel">
@@ -477,16 +481,13 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="shop-grid.html">Shop Grid - Filter</a></li>
-                                <li><a class="dropdown-item" href="shop-grid-3-column.html">Shop Grid - 3 column</a></li>
-                                <li><a class="dropdown-item" href="shop-list.html">Shop List - Filter</a></li>
-                                <li><a class="dropdown-item" href="shop-filter.html">Shop - Filter</a></li>
-                                <li><a class="dropdown-item" href="shop-fullwidth.html">Shop Wide</a></li>
-                                <li><a class="dropdown-item" href="shop-single.html">Shop Single</a></li>
-                                <li><a class="dropdown-item" href="shop-single-2.html">Shop Single v2</a></li>
-                                <li><a class="dropdown-item" href="shop-wishlist.html">Shop Wishlist</a></li>
-                                <li><a class="dropdown-item" href="shop-cart.html">Shop Cart</a></li>
-                                <li><a class="dropdown-item" href="shop-checkout.html">Shop Checkout</a></li>
+                                @foreach($pages as $page)
+                                    @if (in_array($page->slug, $skipURL))
+                                        @continue
+                                    @endif
+                                    <li><a class="dropdown-item" href="{{ url($page->slug) }}">{{ $page->name }}</a></li>
+                                @endforeach
+
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -553,9 +554,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
                             <ul class="dropdown-menu">
-                                @php
-                                    $pages = \App\Models\Page::all();
-                                @endphp
+
                                 @foreach($pages as $page)
                                     @unless ($page->slug === '/')
                                         <li>
