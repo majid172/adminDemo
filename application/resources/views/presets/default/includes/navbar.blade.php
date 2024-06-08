@@ -1,6 +1,6 @@
 @php
     $pages = \App\Models\Page::all();
-    $skipURL = ['about','contact','blog'];
+
 @endphp
 <nav class="navbar navbar-expand-lg navbar-light navbar-default p-0 p-sm-0 navbar-offcanvas-color" aria-label="Offcanvas navbar large">
     <div class="container">
@@ -481,13 +481,13 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
                             <ul class="dropdown-menu">
-                                @foreach($pages as $page)
-                                    @if (in_array($page->slug, $skipURL))
-                                        @continue
-                                    @endif
-                                    <li><a class="dropdown-item" href="{{ url($page->slug) }}">{{ $page->name }}</a></li>
-                                @endforeach
+                                <li><a class="dropdown-item" href="pages/shop-list.html">Shop List - Filter</a></li>
 
+                                <li><a class="dropdown-item" href="{{route('user.shop.wishlist')}}">@lang('Shop
+                                        Wishlist')</a></li>
+                                <li><a class="dropdown-item" href="pages/shop-cart.html">@lang('Shop Cart')</a></li>
+                                <li><a class="dropdown-item" href="pages/shop-checkout.html">@lang('Shop Checkout')
+                                    </a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">

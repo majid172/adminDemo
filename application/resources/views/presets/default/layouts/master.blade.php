@@ -9,20 +9,22 @@
 
     @include('includes.seo')
 
-
-
     <link href="{{ asset('assets/common/css/bootstrap.min.css') }}" rel="stylesheet">
-
     <link href="{{asset('assets/common/css/all.min.css')}}" rel="stylesheet">
-
     <link rel="stylesheet" href="{{asset('assets/common/css/line-awesome.min.css')}}" />
-
     <link rel="stylesheet" href="{{ asset($activeTemplateTrue.'css/custom.css') }}">
+    <link rel="stylesheet" href="{{asset($activeTemplateTrue.'css/theme.min.css')}}" />
+
+    <!-- Libs CSS -->
+    <link href="{{asset($activeTemplateTrue.'libs/bootstrap-icons/font/bootstrap-icons.min.css')}}" rel="stylesheet" />
+    <link href="{{asset($activeTemplateTrue.'libs/feather-webfont/dist/feather-icons.css')}}" rel="stylesheet" />
+    <link href="{{asset($activeTemplateTrue.'libs/simplebar/dist/simplebar.min.css')}}" rel="stylesheet" />
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="{{asset($activeTemplateTrue.'css/theme.min.css')}}" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-M8S4MT3EYG"></script>
     @stack('style-lib')
-
     @stack('style')
-
-
     <style>
 
 <style>
@@ -42,6 +44,9 @@
                 background: #2d3748;
                 border: 1px solid #404040;
             }
+            .logo img{
+                max-width: 220px;
+            }
             @media (max-width:576px) {
                 .cookies-card {
                     width: 90%;
@@ -55,133 +60,14 @@
 <body>
 
 
-    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-        <div class="container">
-            <a class="navbar-brand" href="{{ route('home') }}">
-                <img src="{{ getImage('assets/images/general/logo.png') }}" alt="">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="@lang('Toggle navigation')">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Right Side Of Navbar -->
-                <ul class="navbar-nav ms-auto">
-
-                    <select class="langSel form-control">
-                        @foreach($language as $item)
-                            <option value="{{ $item->code }}" @if(session('lang')==$item->code) selected @endif>{{ __($item->name) }}</option>
-                        @endforeach
-                    </select>
-
-
-
-                    @guest
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('contact') }}">@lang('contact')</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('user.login') }}">@lang('login')</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link"
-                                href="{{ route('user.register') }}">@lang('register')</a>
-                        </li>
-                        @endguest
-                        @auth
-                        <li class="nav-item">
-                            <a class="nav-link"
-                            href="{{ route('user.home') }}">@lang('Dashboard')</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            @lang('Support Ticket')
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item"
-                            href="{{ route('ticket.open') }}">@lang('Create New')</a>
-                            <a class="dropdown-item" href="{{ route('ticket') }}">@lang('My
-                                    Ticket')</a>
-                            </div>
-                        </li>
-
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            @lang('Deposit')
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item"
-                            href="{{ route('user.deposit') }}">@lang('Deposit Money')</a>
-                            <a class="dropdown-item"
-                            href="{{ route('user.deposit.history') }}">@lang('Deposit
-                                    Log')</a>
-                            </div>
-                        </li>
-
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                @lang('Withdraw')
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item"
-                                    href="{{ route('user.withdraw') }}">@lang('Withdraw Money')</a>
-                                <a class="dropdown-item"
-                                    href="{{ route('user.withdraw.history') }}">@lang('Withdraw
-                                    Log')</a>
-                            </div>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('user.transactions') }}">@lang('Transactions')</a>
-                        </li>
-
-
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {{ auth()->user()->fullname }} <span class="caret"></span>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('user.change.password') }}">
-                                    @lang('Change Password')
-                                </a>
-                                <a class="dropdown-item" href="{{ route('user.profile.setting') }}">
-                                    @lang('Profile Setting')
-                                </a>
-                                <a class="dropdown-item" href="{{ route('user.twofactor') }}">
-                                    @lang('2FA Security')
-                                </a>
-
-
-                                <a class="dropdown-item" href="{{ route('user.logout') }}">
-                                    @lang('Logout')
-                                </a>
-
-                            </div>
-                        </li>
-                    @endauth
-
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <div class="page-wrapper">
+    <main>
         @yield('content')
-    </div>
-
+    </main>
+    @include($activeTemplate.'includes.footer')
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="{{asset('assets/common/js/jquery-3.6.0.min.js')}}"></script>
     <script src="{{asset('assets/common/js/bootstrap.bundle.min.js')}}"></script>
-
-
     <script src="{{ asset($activeTemplateTrue.'js/jquery.validate.js') }}"></script>
 
     @stack('script-lib')
@@ -195,13 +81,13 @@
 
 
     <script>
-        (function ($) {
-            "use strict";
-            $(".langSel").on("change", function () {
-                window.location.href = "{{ route('home') }}/change/" + $(this).val();
-            });
+        {{--(function ($) {--}}
+        {{--    "use strict";--}}
+        {{--    $(".langSel").on("change", function () {--}}
+        {{--        window.location.href = "{{ route('home') }}/change/" + $(this).val();--}}
+        {{--    });--}}
 
-        })(jQuery);
+        {{--})(jQuery);--}}
 
     </script>
 
@@ -255,6 +141,19 @@
         })(jQuery);
 
     </script>
+
+    <script src="{{asset($activeTemplateTrue.'libs/simplebar/dist/simplebar.min.js')}}"></script>
+
+    <!-- Theme JS -->
+    <script src="{{asset($activeTemplateTrue.'js/theme.min.js')}}"></script>
+
+    <script src="{{asset($activeTemplateTrue.'js/vendors/jquery.min.js')}}"></script>
+    <script src="{{asset($activeTemplateTrue.'js/vendors/countdown.js')}}"></script>
+    <script src="{{asset($activeTemplateTrue.'libs/slick-carousel/slick/slick.min.js')}}"></script>
+    <script src="{{asset($activeTemplateTrue.'js/vendors/slick-slider.js')}}"></script>
+    <script src="{{asset($activeTemplateTrue.'libs/tiny-slider/dist/min/tiny-slider.js')}}"></script>
+    <script src="{{asset($activeTemplateTrue.'js/vendors/tns-slider.js')}}"></script>
+    <script src="{{asset($activeTemplateTrue.'js/vendors/zoom.js')}}"></script>
 
 </body>
 

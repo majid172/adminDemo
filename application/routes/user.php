@@ -67,6 +67,8 @@ Route::middleware('auth')->name('user.')->group(function () {
                 Route::post('change-password', 'submitPassword');
             });
 
+//            shop
+            Route::get('/wishlist',[\App\Http\Controllers\Shop\WishListController::class,'list'])->name('shop.wishlist');
 
             // Withdraw
             Route::controller('WithdrawController')->prefix('withdraw')->name('withdraw')->group(function(){

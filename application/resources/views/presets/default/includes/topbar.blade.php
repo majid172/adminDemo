@@ -34,7 +34,7 @@
         <div class="d-flex flex-wrap justify-content-between mb-2 align-items-center pt-6 pb-4 mt-4 mt-lg-0">
             <div class="logo">
                 <a href="{{ route('home') }}">
-                    <img src="{{ getImage('assets/images/general/logo.png') }}"alt="">
+                    <img src="{{ getImage('assets/images/general/logo.png') }}"alt="logo">
                 </a>
             </div>
             <div>

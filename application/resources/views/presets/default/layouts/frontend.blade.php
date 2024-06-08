@@ -1,12 +1,10 @@
 <!doctype html>
 <html lang="{{ config('app.locale') }}" itemscope itemtype="http://schema.org/WebPage">
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title> {{ $general->siteName(__($pageTitle)) }}</title>
     @include('includes.seo')
-    <!-- Bootstrap CSS -->
     <link href="{{ asset('assets/common/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/common/css/all.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('assets/common/css/line-awesome.min.css')}}"/>
@@ -16,12 +14,10 @@
     <link href="{{asset($activeTemplateTrue.'libs/slick-carousel/slick/slick-theme.css')}}" rel="stylesheet" />
     <link href="{{asset($activeTemplateTrue.'libs/tiny-slider/dist/tiny-slider.css')}}" rel="stylesheet" />
 
-    <!-- Libs CSS -->
     <link href="{{asset($activeTemplateTrue.'libs/bootstrap-icons/font/bootstrap-icons.min.css')}}" rel="stylesheet" />
     <link href="{{asset($activeTemplateTrue.'libs/feather-webfont/dist/feather-icons.css')}}" rel="stylesheet" />
     <link href="{{asset($activeTemplateTrue.'libs/simplebar/dist/simplebar.min.css')}}" rel="stylesheet" />
 
-    <!-- Theme CSS -->
     <link rel="stylesheet" href="{{asset($activeTemplateTrue.'css/theme.min.css')}}" />
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-M8S4MT3EYG"></script>
 
@@ -59,7 +55,6 @@
 <main>
     @yield('content')
 </main>
-
 
 @include($activeTemplate.'includes.footer')
 @php
