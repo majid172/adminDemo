@@ -481,13 +481,14 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="pages/shop-list.html">Shop List - Filter</a></li>
+                                <li><a class="dropdown-item" href="{{route('user.shop.list')}}">Shop List </a></li>
 
                                 <li><a class="dropdown-item" href="{{route('user.shop.wishlist')}}">@lang('Shop
                                         Wishlist')</a></li>
                                 <li><a class="dropdown-item" href="{{route('user.shop.cart')}}">@lang('Shop Cart')
                                     </a></li>
-                                <li><a class="dropdown-item" href="pages/shop-checkout.html">@lang('Shop Checkout')
+                                <li><a class="dropdown-item" href="{{route('user.shop.checkout')}}">@lang('Shop
+                                Checkout')
                                     </a></li>
                             </ul>
                         </li>

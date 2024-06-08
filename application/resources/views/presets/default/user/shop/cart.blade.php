@@ -32,7 +32,7 @@
                                 <div class="row align-items-center">
                                     <div class="col-6 col-md-6 col-lg-7">
                                         <div class="d-flex">
-                                            <img src="../assets/images/products/product-img-1.jpg" alt="Ecommerce" class="icon-shape icon-xxl" />
+                                            <img src="../assets/images/products/product-img-1.jpg" alt="Ecommerce" class="icon-shape icon-xxl">
                                             <div class="ms-3">
                                                 <!-- title -->
                                                 <a href="shop-single.html" class="text-inherit">
@@ -43,17 +43,7 @@
                                                 <div class="mt-2 small lh-1">
                                                     <a href="#!" class="text-decoration-none text-inherit">
                                                 <span class="me-1 align-text-bottom">
-                                                   <svg
-                                                       xmlns="http://www.w3.org/2000/svg"
-                                                       width="14"
-                                                       height="14"
-                                                       viewBox="0 0 24 24"
-                                                       fill="none"
-                                                       stroke="currentColor"
-                                                       stroke-width="2"
-                                                       stroke-linecap="round"
-                                                       stroke-linejoin="round"
-                                                       class="feather feather-trash-2 text-success">
+                                                   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2 text-success">
                                                       <polyline points="3 6 5 6 21 6"></polyline>
                                                       <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
                                                       <line x1="10" y1="11" x2="10" y2="17"></line>
@@ -71,9 +61,9 @@
                                         <!-- input -->
                                         <!-- input -->
                                         <div class="input-group input-spinner">
-                                            <input type="button" value="-" class="button-minus btn btn-sm" data-field="quantity" />
-                                            <input type="number" step="1" max="10" value="1" name="quantity" class="quantity-field form-control-sm form-input" />
-                                            <input type="button" value="+" class="button-plus btn btn-sm" data-field="quantity" />
+                                            <input type="button" value="-" class="button-minus btn btn-sm" data-field="quantity">
+                                            <input type="number" step="1" max="10" value="1" name="quantity" class="quantity-field form-control-sm form-input">
+                                            <input type="button" value="+" class="button-plus btn btn-sm" data-field="quantity">
                                         </div>
                                     </div>
                                     <!-- price -->
@@ -88,7 +78,7 @@
                                 <div class="row align-items-center">
                                     <div class="col-6 col-md-6 col-lg-7">
                                         <div class="d-flex">
-                                            <img src="../assets/images/products/product-img-2.jpg" alt="Ecommerce" class="icon-shape icon-xxl" />
+                                            <img src="../assets/images/products/product-img-2.jpg" alt="Ecommerce" class="icon-shape icon-xxl">
                                             <div class="ms-3">
                                                 <a href="shop-single.html" class="text-inherit">
                                                     <h6 class="mb-0">NutriChoice Digestive</h6>
@@ -98,17 +88,7 @@
                                                 <div class="mt-2 small lh-1">
                                                     <a href="#!" class="text-decoration-none text-inherit">
                                                 <span class="me-1 align-text-bottom">
-                                                   <svg
-                                                       xmlns="http://www.w3.org/2000/svg"
-                                                       width="14"
-                                                       height="14"
-                                                       viewBox="0 0 24 24"
-                                                       fill="none"
-                                                       stroke="currentColor"
-                                                       stroke-width="2"
-                                                       stroke-linecap="round"
-                                                       stroke-linejoin="round"
-                                                       class="feather feather-trash-2 text-success">
+                                                   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2 text-success">
                                                       <polyline points="3 6 5 6 21 6"></polyline>
                                                       <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
                                                       <line x1="10" y1="11" x2="10" y2="17"></line>
@@ -127,9 +107,9 @@
                                         <!-- input -->
                                         <!-- input -->
                                         <div class="input-group input-spinner">
-                                            <input type="button" value="-" class="button-minus btn btn-sm" data-field="quantity" />
-                                            <input type="number" step="1" max="10" value="1" name="quantity" class="quantity-field form-control-sm form-input" />
-                                            <input type="button" value="+" class="button-plus btn btn-sm" data-field="quantity" />
+                                            <input type="button" value="-" class="button-minus btn btn-sm" data-field="quantity">
+                                            <input type="number" step="1" max="10" value="1" name="quantity" class="quantity-field form-control-sm form-input">
+                                            <input type="button" value="+" class="button-plus btn btn-sm" data-field="quantity">
                                         </div>
                                     </div>
                                     <!-- price -->
@@ -145,7 +125,7 @@
                                 <div class="row align-items-center">
                                     <div class="col-6 col-md-6 col-lg-7">
                                         <div class="d-flex">
-                                            <img src="../assets/images/products/product-img-3.jpg" alt="Ecommerce" class="icon-shape icon-xxl" />
+                                            <img src="../assets/images/products/product-img-3.jpg" alt="Ecommerce" class="icon-shape icon-xxl">
                                             <div class="ms-3">
                                                 <!-- title -->
                                                 <a href="shop-single.html" class="text-inherit">
@@ -156,17 +136,7 @@
                                                 <div class="mt-2 small lh-1">
                                                     <a href="#!" class="text-decoration-none text-inherit">
                                                 <span class="me-1 align-text-bottom">
-                                                   <svg
-                                                       xmlns="http://www.w3.org/2000/svg"
-                                                       width="14"
-                                                       height="14"
-                                                       viewBox="0 0 24 24"
-                                                       fill="none"
-                                                       stroke="currentColor"
-                                                       stroke-width="2"
-                                                       stroke-linecap="round"
-                                                       stroke-linejoin="round"
-                                                       class="feather feather-trash-2 text-success">
+                                                   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2 text-success">
                                                       <polyline points="3 6 5 6 21 6"></polyline>
                                                       <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
                                                       <line x1="10" y1="11" x2="10" y2="17"></line>
@@ -185,9 +155,9 @@
                                         <!-- input -->
                                         <!-- input -->
                                         <div class="input-group input-spinner">
-                                            <input type="button" value="-" class="button-minus btn btn-sm" data-field="quantity" />
-                                            <input type="number" step="1" max="10" value="1" name="quantity" class="quantity-field form-control-sm form-input" />
-                                            <input type="button" value="+" class="button-plus btn btn-sm" data-field="quantity" />
+                                            <input type="button" value="-" class="button-minus btn btn-sm" data-field="quantity">
+                                            <input type="number" step="1" max="10" value="1" name="quantity" class="quantity-field form-control-sm form-input">
+                                            <input type="button" value="+" class="button-plus btn btn-sm" data-field="quantity">
                                         </div>
                                     </div>
                                     <!-- price -->
@@ -203,7 +173,7 @@
                                 <div class="row align-items-center">
                                     <div class="col-6 col-md-6 col-lg-7">
                                         <div class="d-flex">
-                                            <img src="../assets/images/products/product-img-4.jpg" alt="Ecommerce" class="icon-shape icon-xxl" />
+                                            <img src="../assets/images/products/product-img-4.jpg" alt="Ecommerce" class="icon-shape icon-xxl">
                                             <div class="ms-3">
                                                 <!-- title -->
                                                 <!-- title -->
@@ -215,17 +185,7 @@
                                                 <div class="mt-2 small lh-1">
                                                     <a href="#!" class="text-decoration-none text-inherit">
                                                 <span class="me-1 align-text-bottom">
-                                                   <svg
-                                                       xmlns="http://www.w3.org/2000/svg"
-                                                       width="14"
-                                                       height="14"
-                                                       viewBox="0 0 24 24"
-                                                       fill="none"
-                                                       stroke="currentColor"
-                                                       stroke-width="2"
-                                                       stroke-linecap="round"
-                                                       stroke-linejoin="round"
-                                                       class="feather feather-trash-2 text-success">
+                                                   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2 text-success">
                                                       <polyline points="3 6 5 6 21 6"></polyline>
                                                       <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
                                                       <line x1="10" y1="11" x2="10" y2="17"></line>
@@ -244,9 +204,9 @@
                                         <!-- input -->
                                         <!-- input -->
                                         <div class="input-group input-spinner">
-                                            <input type="button" value="-" class="button-minus btn btn-sm" data-field="quantity" />
-                                            <input type="number" step="1" max="10" value="1" name="quantity" class="quantity-field form-control-sm form-input" />
-                                            <input type="button" value="+" class="button-plus btn btn-sm" data-field="quantity" />
+                                            <input type="button" value="-" class="button-minus btn btn-sm" data-field="quantity">
+                                            <input type="number" step="1" max="10" value="1" name="quantity" class="quantity-field form-control-sm form-input">
+                                            <input type="button" value="+" class="button-plus btn btn-sm" data-field="quantity">
                                         </div>
                                     </div>
                                     <!-- price -->
@@ -262,7 +222,7 @@
                                 <div class="row align-items-center">
                                     <div class="col-6 col-md-6 col-lg-7">
                                         <div class="d-flex">
-                                            <img src="../assets/images/products/product-img-5.jpg" alt="Ecommerce" class="icon-shape icon-xxl" />
+                                            <img src="../assets/images/products/product-img-5.jpg" alt="Ecommerce" class="icon-shape icon-xxl">
                                             <div class="ms-3">
                                                 <!-- title -->
                                                 <a href="shop-single.html" class="text-inherit">
@@ -273,17 +233,7 @@
                                                 <div class="mt-2 small lh-1">
                                                     <a href="#!" class="text-decoration-none text-inherit">
                                                 <span class="me-1 align-text-bottom">
-                                                   <svg
-                                                       xmlns="http://www.w3.org/2000/svg"
-                                                       width="14"
-                                                       height="14"
-                                                       viewBox="0 0 24 24"
-                                                       fill="none"
-                                                       stroke="currentColor"
-                                                       stroke-width="2"
-                                                       stroke-linecap="round"
-                                                       stroke-linejoin="round"
-                                                       class="feather feather-trash-2 text-success">
+                                                   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2 text-success">
                                                       <polyline points="3 6 5 6 21 6"></polyline>
                                                       <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
                                                       <line x1="10" y1="11" x2="10" y2="17"></line>
@@ -302,9 +252,9 @@
                                         <!-- input -->
                                         <!-- input -->
                                         <div class="input-group input-spinner">
-                                            <input type="button" value="-" class="button-minus btn btn-sm" data-field="quantity" />
-                                            <input type="number" step="1" max="10" value="1" name="quantity" class="quantity-field form-control-sm form-input" />
-                                            <input type="button" value="+" class="button-plus btn btn-sm" data-field="quantity" />
+                                            <input type="button" value="-" class="button-minus btn btn-sm" data-field="quantity">
+                                            <input type="number" step="1" max="10" value="1" name="quantity" class="quantity-field form-control-sm form-input">
+                                            <input type="button" value="+" class="button-plus btn btn-sm" data-field="quantity">
                                         </div>
                                     </div>
                                     <!-- price -->
@@ -381,11 +331,11 @@
                                     <div class="mb-2">
                                         <!-- input -->
                                         <label for="giftcard" class="form-label sr-only">Email address</label>
-                                        <input type="text" class="form-control" id="giftcard" placeholder="Promo or Gift Card" />
+                                        <input type="text" class="form-control" id="giftcard" placeholder="Promo or Gift Card">
                                     </div>
                                     <!-- btn -->
                                     <div class="d-grid"><button type="submit" class="btn btn-outline-dark mb-1">Redeem</button></div>
-                                    <p class="text-muted mb-0"><small>Terms & Conditions apply</small></p>
+                                    <p class="text-muted mb-0"><small>Terms &amp; Conditions apply</small></p>
                                 </form>
                             </div>
                         </div>

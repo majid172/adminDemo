@@ -68,9 +68,11 @@ Route::middleware('auth')->name('user.')->group(function () {
             });
 
 //            shop
+            Route::get('/shop-list',[\App\Http\Controllers\Shop\ShopListController::class,'list'])->name('shop.list');
             Route::get('/wishlist',[\App\Http\Controllers\Shop\WishListController::class,'list'])->name('shop.wishlist');
 
             Route::get('/cart',[\App\Http\Controllers\Shop\CartController::class,'index'])->name('shop.cart');
+            Route::get('/checkout',[\App\Http\Controllers\Shop\CheckoutController::class,'index'])->name('shop.checkout');
 
             // Withdraw
             Route::controller('WithdrawController')->prefix('withdraw')->name('withdraw')->group(function(){
