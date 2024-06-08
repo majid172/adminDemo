@@ -70,6 +70,8 @@ Route::middleware('auth')->name('user.')->group(function () {
 //            shop
             Route::get('/wishlist',[\App\Http\Controllers\Shop\WishListController::class,'list'])->name('shop.wishlist');
 
+            Route::get('/cart',[\App\Http\Controllers\Shop\CartController::class,'index'])->name('shop.cart');
+
             // Withdraw
             Route::controller('WithdrawController')->prefix('withdraw')->name('withdraw')->group(function(){
                 Route::get('/', 'withdrawMoney');

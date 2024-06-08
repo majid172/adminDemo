@@ -58,36 +58,30 @@
 </head>
 
 <body>
-
-
+@include($activeTemplate.'includes.topbar')
+@include($activeTemplate.'includes.navbar')
     <main>
         @yield('content')
     </main>
     @include($activeTemplate.'includes.footer')
 
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="{{asset('assets/common/js/jquery-3.6.0.min.js')}}"></script>
     <script src="{{asset('assets/common/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{ asset($activeTemplateTrue.'js/jquery.validate.js') }}"></script>
 
     @stack('script-lib')
-
     @include('includes.notify')
-
     @include('includes.plugins')
-
-
     @stack('script')
 
-
     <script>
-        {{--(function ($) {--}}
-        {{--    "use strict";--}}
-        {{--    $(".langSel").on("change", function () {--}}
-        {{--        window.location.href = "{{ route('home') }}/change/" + $(this).val();--}}
-        {{--    });--}}
+        (function ($) {
+            "use strict";
+            $(".langSel").on("change", function () {
+                window.location.href = "{{ route('home') }}/change/" + $(this).val();
+            });
 
-        {{--})(jQuery);--}}
+        })(jQuery);
 
     </script>
 

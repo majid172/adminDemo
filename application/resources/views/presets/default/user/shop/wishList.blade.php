@@ -1,8 +1,7 @@
 @extends($activeTemplate.'layouts.master')
-@include($activeTemplate.'includes.topbar')
-@include($activeTemplate.'includes.navbar')
-@include($activeTemplate.'includes.breadcumb')
+
 @section('content')
+    @include($activeTemplate.'includes.breadcumb')
     <section class="mt-8 mb-14">
         <div class="container">
             <div class="row">

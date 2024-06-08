@@ -105,6 +105,7 @@
                             </div>
                             <p class="mb-0 d-none d-xl-block small">Shopping Cart</p>
                         </div>
+
                     </a>
                 </div>
 

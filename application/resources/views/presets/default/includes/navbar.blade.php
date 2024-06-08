@@ -485,7 +485,8 @@
 
                                 <li><a class="dropdown-item" href="{{route('user.shop.wishlist')}}">@lang('Shop
                                         Wishlist')</a></li>
-                                <li><a class="dropdown-item" href="pages/shop-cart.html">@lang('Shop Cart')</a></li>
+                                <li><a class="dropdown-item" href="{{route('user.shop.cart')}}">@lang('Shop Cart')
+                                    </a></li>
                                 <li><a class="dropdown-item" href="pages/shop-checkout.html">@lang('Shop Checkout')
                                     </a></li>
                             </ul>
