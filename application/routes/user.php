@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\Shop\ShopListController;
 
 Route::namespace('User\Auth')->name('user.')->group(function () {
 
@@ -69,6 +69,7 @@ Route::middleware('auth')->name('user.')->group(function () {
 
 //            shop
             Route::get('/shop-list',[\App\Http\Controllers\Shop\ShopListController::class,'list'])->name('shop.list');
+            Route::get('/snigle/{id}',[\App\Http\Controllers\Shop\ShopListController::class,'singleShop'])->name('shop.single');
             Route::get('/wishlist',[\App\Http\Controllers\Shop\WishListController::class,'list'])->name('shop.wishlist');
 
             Route::get('/cart',[\App\Http\Controllers\Shop\CartController::class,'index'])->name('shop.cart');

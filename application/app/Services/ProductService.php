@@ -12,6 +12,7 @@ class ProductService
             'cat_id' => $data['cat_id'],
             'price' => $data['price'],
             'quantity' => $data['quantity'],
+            'code' => $data['code'],
             'description' => $data['description'],
             'image' => $data['image'] ?? null,
             'path' => $data['path'] ?? null, // Assign the 'path' correctly

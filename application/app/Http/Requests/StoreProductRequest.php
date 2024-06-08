@@ -26,6 +26,7 @@ class StoreProductRequest extends FormRequest
             'cat_id' => 'required|integer|exists:categories,id',
             'price' => 'required|numeric|min:1',
             'quantity' => 'required|integer|min:1',
+            'code' => 'required|string|min:6',
             'description' => 'required|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ];
@@ -40,6 +41,7 @@ class StoreProductRequest extends FormRequest
             'price.required' => 'The price is required.',
             'price.numeric' => 'The price must be a number.',
             'price.min' => 'The price must be at least :min.',
+            'code.required' => 'The code is required',
             'quantity.required' => 'The quantity is required.',
             'quantity.integer' => 'The quantity must be an integer.',
             'quantity.min' => 'The quantity must be at least :min.',
