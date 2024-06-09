@@ -3,21 +3,42 @@
     @php
         $policyPages = getContent('policy_pages.element',false,null,true);
     @endphp
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8 col-lg-7 col-xl-6">
-                <div class="text-end">
-                    <a href="{{ route('home') }}" class="fw-bold home-link"> <i class="las la-long-arrow-alt-left"></i> @lang('Go to Home')</a>
-                </div>
-                <div class="card custom--card">
-                    <div class="card-header">
-                        <h5 class="card-title">@lang('Register')</h5>
-                    </div>
+    <div class="border-bottom shadow-sm">
+        <nav class="navbar navbar-light py-2">
+            <div class="container justify-content-center justify-content-lg-between">
+                <a class="navbar-brand" href="{{route('home')}}">
+                    <img src="{{ getImage('assets/images/general/logo.png') }}" alt="" class="d-inline-block align-text-top" />
+                </a>
+                <span class="navbar-text">
+                  @lang('Already have an account?')
+                  <a href="{{route('user.login')}}">@lang('Sign in')</a>
+               </span>
+            </div>
+        </nav>
+    </div>
 
-                    <div class="card-body">
-                        <form action="{{ route('user.register') }}" method="POST" class="verify-gcaptcha">
+    <main>
+        <!-- section -->
+        <section class="my-lg-14 my-8">
+            <!-- container -->
+            <div class="container">
+                <!-- row -->
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-12 col-md-6 col-lg-4 order-lg-1 order-2">
+                        <!-- img -->
+                        <img src="../assets/images/svg-graphics/signup-g.svg" alt="" class="img-fluid">
+                    </div>
+                    <!-- col -->
+                    <div class="col-12 col-md-6 offset-lg-1 col-lg-4 order-lg-2 order-1">
+                        <div class="mb-lg-9 mb-5">
+                            <h1 class="mb-1 h2 fw-bold">@lang('Get Start Shopping')</h1>
+                            <p>@lang('Welcome to FreshCart! Enter your email to get started.')</p>
+                        </div>
+                        <!-- form -->
+                        <form class="needs-validation" novalidate="" action="{{ route('user.register') }}" method="POST">
                             @csrf
-                            <div class="row">
+
+                            <div class="row g-2">
                                 @if(session()->get('reference') != null)
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -26,92 +47,100 @@
                                         </div>
                                     </div>
                                 @endif
-
                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label">@lang('Username')</label>
-                                        <input type="text" class="form-control form--control checkUser" name="username" value="{{ old('username') }}" required>
-                                        <small class="text-danger usernameExist"></small>
+                                    <label for="formSignupfname" class="form-label visually-hidden">@lang('First Name')
+                                    </label>
+                                    <input type="text" class="form-control" id="formSignupfname" placeholder="First Name" required="">
+                                    <div class="invalid-feedback">@lang('Please enter first name.')</div>
+                                </div>
+                                    <div class="col-md-6">
+                                        <!-- input -->
+                                        <label for="formSignuplname" class="form-label visually-hidden">@lang('Last Name')
+                                        </label>
+                                        <input type="text" class="form-control" id="formSignuplname" placeholder="First Name" required="">
+                                        <div class="invalid-feedback">@lang('Please enter last name.')</div>
                                     </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control form--control checkUser" name="username" value="{{ old('username') }}" required>
+                                            <small class="text-danger usernameExist"></small>
+                                        </div>
+                                    </div>
+
+                                <div class="col-12">
+                                    <!-- input -->
+                                    <label for="formSignupEmail" class="form-label visually-hidden">@lang('Email
+                                        address')</label>
+                                    <input type="email" class="form-control" id="formSignupEmail" placeholder="Email" value="{{ old('email') }}"
+                                           required="" >
+                                    <div class="invalid-feedback">@lang('Please enter email.')</div>
                                 </div>
 
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label">@lang('E-Mail Address')</label>
-                                        <input type="email" class="form-control form--control checkUser" name="email" value="{{ old('email') }}" required>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <select name="country" class="form-control form--control">
+                                                <option value="">@lang('Choose Country')</option>
+                                                @foreach($countries as $key => $country)
+                                                    <option data-mobile_code="{{ $country->dial_code }}" value="{{ $country->country }}" data-code="{{ $key }}">{{ __($country->country) }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label">@lang('Country')</label>
-                                        <select name="country" class="form-control form--control">
-                                            @foreach($countries as $key => $country)
-                                                <option data-mobile_code="{{ $country->dial_code }}" value="{{ $country->country }}" data-code="{{ $key }}">{{ __($country->country) }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label">@lang('Mobile')</label>
-                                        <div class="input-group ">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <div class="input-group ">
                                             <span class="input-group-text mobile-code">
 
                                             </span>
-                                            <input type="hidden" name="mobile_code">
-                                            <input type="hidden" name="country_code">
-                                            <input type="number" name="mobile" value="{{ old('mobile') }}" class="form-control form--control checkUser" required>
-                                        </div>
-                                        <small class="text-danger mobileExist"></small>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label">@lang('Password')</label>
-                                        <input type="password" class="form-control form--control" name="password" required>
-                                        @if($general->secure_password)
-                                            <div class="input-popup">
-                                                <p class="error lower">@lang('1 small letter minimum')</p>
-                                                <p class="error capital">@lang('1 capital letter minimum')</p>
-                                                <p class="error number">@lang('1 number minimum')</p>
-                                                <p class="error special">@lang('1 special character minimum')</p>
-                                                <p class="error minimum">@lang('6 character password')</p>
+                                                <input type="hidden" name="mobile_code">
+                                                <input type="hidden" name="country_code">
+                                                <input type="number" name="mobile" value="{{ old('mobile') }}" class="form-control form--control checkUser" required>
                                             </div>
-                                        @endif
+                                            <small class="text-danger mobileExist"></small>
+                                        </div>
                                     </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label">@lang('Confirm Password')</label>
-                                        <input type="password" class="form-control form--control" name="password_confirmation" required>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="password" class="form-control form--control"
+                                                   name="password" placeholder="Enter Secure Password" required>
+                                            @if($general->secure_password)
+                                                <div class="input-popup">
+                                                    <p class="error lower">@lang('1 small letter minimum')</p>
+                                                    <p class="error capital">@lang('1 capital letter minimum')</p>
+                                                    <p class="error number">@lang('1 number minimum')</p>
+                                                    <p class="error special">@lang('1 special character minimum')</p>
+                                                    <p class="error minimum">@lang('6 character password')</p>
+                                                </div>
+                                            @endif
+                                        </div>
                                     </div>
-                                </div>
 
-                                <x-captcha></x-captcha>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="password" class="form-control form--control"
+                                                   name="password_confirmation" placeholder="@lang('Confirm Password')"
+                                                   required>
+                                        </div>
+                                    </div>
 
+                                    <x-captcha></x-captcha>
+                                <div class="col-12 d-grid"><button type="submit" class="btn btn-primary">@lang('Register')</button></div>
+                                <p>
+                                    <small>
+                                        @lang('By continuing, you agree to our')
+                                        <a href="javascript:void(0)">@lang('Terms of Service')</a>
+                                        &amp;
+                                        <a href="javascript:void(0)">@lang('Privacy Policy')</a>
+                                    </small>
+                                </p>
                             </div>
-
-                            @if($general->agree)
-                                <div class="form-group">
-                                    <input type="checkbox" id="agree" @checked(old('agree')) name="agree" required>
-                                    <label for="agree">@lang('I agree with') @foreach($policyPages as $policy) <a href="{{ route('policy.pages',[slug($policy->data_values->title),$policy->id]) }}">{{ __($policy->data_values->title) }}</a> @if(!$loop->last), @endif @endforeach</label>
-                                </div>
-                            @endif
-                            <div class="form-group">
-                                <button type="submit" id="recaptcha" class="btn btn--base w-100"> @lang('Register')</button>
-                            </div>
-                            <p class="mb-0">@lang('Already have an account?') <a href="{{ route('user.login') }}">@lang('Login')</a></p>
                         </form>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-
+        </section>
+    </main>
 
     <div class="modal fade" id="existModalCenter" tabindex="-1" role="dialog" aria-labelledby="existModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -133,20 +162,8 @@
         </div>
     </div>
 @endsection
-@push('style')
-    <style>
-        .country-code .input-group-text{
-            background: #fff !important;
-        }
-        .country-code select{
-            border: none;
-        }
-        .country-code select:focus{
-            border: none;
-            outline: none;
-        }
-    </style>
-@endpush
+
+
 @push('script-lib')
     <script src="{{ asset('assets/common/js/secure_password.js') }}"></script>
 @endpush

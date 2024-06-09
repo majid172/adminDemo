@@ -9,7 +9,7 @@
                 </a>
                 <span class="navbar-text">
                   Already have an account?
-                  <a href="signin.html">Sign in</a>
+                  <a href="{{route('user.register')}}">@lang('Sign Up')</a>
                </span>
             </div>
         </nav>

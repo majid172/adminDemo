@@ -169,8 +169,5 @@
             padding-right: 25px;
         }
 
-        .logo img {
-            max-width: 220px;
-        }
     </style>
 @endpush

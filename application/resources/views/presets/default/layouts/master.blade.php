@@ -44,9 +44,7 @@
                 background: #2d3748;
                 border: 1px solid #404040;
             }
-            .logo img{
-                max-width: 220px;
-            }
+
             @media (max-width:576px) {
                 .cookies-card {
                     width: 90%;
