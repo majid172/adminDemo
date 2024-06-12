@@ -28,19 +28,16 @@
                     <!-- col -->
                     <div class="col-12 col-md-6 offset-lg-1 col-lg-4 order-lg-2 order-1">
                         <div class="mb-lg-9 mb-5">
-                            <h1 class="mb-1 h2 fw-bold">Sign in to FreshCart</h1>
-                            <p>Welcome back to FreshCart! Enter your email to get started.</p>
+                            <h1 class="mb-1 h2 fw-bold">@lang('Sign in to') {{$general->site_name}}</h1>
+                            <p>@lang('Welcome back to'.' '. $general->site_name.' '. 'Enter your email to get started.')</p>
                         </div>
 
                         <form class="needs-validation" novalidate>
                             <div class="row g-3">
-                                <!-- row -->
-
                                 <div class="col-12">
-                                    <!-- input -->
-                                    <label for="formSigninEmail" class="form-label visually-hidden">Email address</label>
-                                    <input type="email" class="form-control" id="formSigninEmail" placeholder="Email" required />
-                                    <div class="invalid-feedback">Please enter name.</div>
+                                    <label for="formSigninEmail" class="form-label visually-hidden">@lang('Username')</label>
+                                    <input type="text" class="form-control" name="username" id="formSigninEmail" placeholder="Enter Username" required />
+                                    <div class="invalid-feedback">@lang('Please enter username.')</div>
                                 </div>
                                 <div class="col-12">
                                     <!-- input -->
@@ -69,8 +66,8 @@
                                 <div class="col-12 d-grid"><button type="submit" class="btn btn-primary">Sign In</button></div>
                                 <!-- link -->
                                 <div>
-                                    Don’t have an account?
-                                    <a href="{{route('user.register')}}">Sign Up</a>
+                                    @lang('Don\’t have an account?')
+                                    <a href="{{route('user.register')}}">@lang('Sign Up')</a>
                                 </div>
                             </div>
                         </form>

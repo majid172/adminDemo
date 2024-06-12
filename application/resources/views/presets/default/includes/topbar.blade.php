@@ -76,7 +76,7 @@
                 </div>
                 @guest
                 <div class="ms-6 text-center">
-                    <a href="#" class="text-reset" data-bs-toggle="modal" data-bs-target="#userModal">
+                    <a href="#" class="text-reset" data-bs-toggle="modal" data-bs-target="#userModalSignIn">
                         <div class="lh-1">
                             <div class="mb-2">
                                 <i class="bi bi-person-circle fs-4"></i>
@@ -124,6 +124,39 @@
         </div>
     </div>
 
+    <div class="modal fade" id="userModalSignIn" tabindex="-1" aria-labelledby="userModalSignInLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content p-4">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title fs-3 fw-bold" id="userModalSignInLabel">@lang('Sign In')</h5>
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="{{ route('user.login') }}" class="verify-gcaptcha">
+                        @csrf
+                        <div class="mb-3">
+                            <label for="username" class="form-label">@lang('Username')</label>
+                            <input type="text" class="form-control" name="username" id="username" placeholder="@lang('Enter Username')" required />
+                        </div>
+
+                        <div class="mb-5">
+                            <label for="password" class="form-label">@lang('Password')</label>
+                            <input type="password" name="password" class="form-control" id="password" placeholder="@lang('Enter Password')" required="" />
+                            <small class="form-text">
+                               @lang('Don’t have an account?')
+                                <a href="{{route('user.register')}}">@lang('Sign Up')</a>
+                            </small>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">@lang('Sign In')</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
     <div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content p-4">
@@ -133,8 +166,10 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{route('user.logout')}}">
-                        <p>@lang('Are you sure to Sign Out?')</p>
+                    <form action="{{ route('user.logout') }}" >
+                        <div class="mb-3">
+                            <p>@lang('Are you want to Sign Out?')</p>
+                        </div>
 
                         <button type="submit" class="btn btn-primary">@lang('Sign Out')</button>
                     </form>
