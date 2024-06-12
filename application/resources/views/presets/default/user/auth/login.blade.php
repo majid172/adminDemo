@@ -5,10 +5,10 @@
         <nav class="navbar navbar-light py-2">
             <div class="container justify-content-center justify-content-lg-between">
                 <a class="navbar-brand" href="{{route('home')}}">
-                    <img src="../assets/images/logo/freshcart-logo.svg" alt="" class="d-inline-block align-text-top" />
+                    <img src="{{ getImage('assets/images/general/logo.png') }}" alt="" class="d-inline-block align-text-top" />
                 </a>
                 <span class="navbar-text">
-                  Already have an account?
+                  @lang('Don\'t have an account?')
                   <a href="{{route('user.register')}}">@lang('Sign Up')</a>
                </span>
             </div>

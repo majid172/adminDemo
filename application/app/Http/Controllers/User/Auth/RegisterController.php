@@ -28,11 +28,6 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('guest');
@@ -128,7 +123,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $general = gs();
-
+dd($data);
         $referBy = session()->get('reference');
         if ($referBy) {
             $referUser = User::where('username', $referBy)->first();
