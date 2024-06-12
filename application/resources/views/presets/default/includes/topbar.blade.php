@@ -115,7 +115,7 @@
                                 <div class="mb-2">
                                     <i class="bi bi-person-circle fs-4"></i>
                                 </div>
-                                <p class="mb-0 d-none d-xl-block small">Sign Out</p>
+                                <p class="mb-0 d-none d-xl-block small">@lang('Sign Out')</p>
                             </div>
                         </a>
                     </div>
@@ -128,30 +128,15 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content p-4">
                 <div class="modal-header border-0">
-                    <h5 class="modal-title fs-3 fw-bold" id="userModalLabel">@lang('Sign In')</h5>
+                    <h5 class="modal-title fs-3 fw-bold" id="userModalLabel">@lang('Sign Out')</h5>
 
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form action="{{route('user.logout')}}">
+                        <p>@lang('Are you sure to Sign Out?')</p>
 
-                        <div class="mb-3">
-                            <label for="username" class="form-label">@lang('Username')</label>
-                            <input type="text" class="form-control" id="username" placeholder="@lang('Enter Username
-                            address')" required />
-                        </div>
-
-                        <div class="mb-5">
-                            <label for="password" class="form-label">@lang('Password')</label>
-                            <input type="password" class="form-control" id="password" placeholder="@lang('Enter
-                            Password')" required="" />
-                            <small class="form-text">
-                               @lang('Don’t have an account?')
-                                <a href="{{route('user.register')}}">@lang('Sign Up')</a>
-                            </small>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary">@lang('Sign In')</button>
+                        <button type="submit" class="btn btn-primary">@lang('Sign Out')</button>
                     </form>
                 </div>
 
