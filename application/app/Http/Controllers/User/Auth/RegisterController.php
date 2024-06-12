@@ -39,6 +39,7 @@ class RegisterController extends Controller
     {
         $pageTitle = "Register";
         $info = json_decode(json_encode(getIpInfo()), true);
+
         $mobileCode = @implode(',', $info['code']);
         $countries = json_decode(file_get_contents(resource_path('views/includes/country.json')));
         return view($this->activeTemplate . 'user.auth.register', compact('pageTitle','mobileCode','countries'));
@@ -67,6 +68,7 @@ class RegisterController extends Controller
         $mobileCodes = implode(',',array_column($countryData, 'dial_code'));
         $countries = implode(',',array_column($countryData, 'country'));
         $validate = Validator::make($data, [
+            'fname' => 'required|string',
             'email' => 'required|string|email|unique:users',
             'mobile' => 'required|regex:/^([0-9]*)$/',
             'password' => ['required','confirmed',$passwordValidation],
@@ -123,7 +125,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $general = gs();
-dd($data);
+
         $referBy = session()->get('reference');
         if ($referBy) {
             $referUser = User::where('username', $referBy)->first();
@@ -132,6 +134,8 @@ dd($data);
         }
         //User Create
         $user = new User();
+        $user->firstname = $data['fname'];
+        $user->lastname = $data['lname'];
         $user->email = strtolower(trim($data['email']));
         $user->password = Hash::make($data['password']);
         $user->username = trim($data['username']);
@@ -146,6 +150,7 @@ dd($data);
             'city' => ''
         ];
         $user->status = 1;
+        $user->reg_step = 1;
         $user->kv = $general->kv ? 0 : 1;
         $user->ev = $general->ev ? 0 : 1;
         $user->sv = $general->sv ? 0 : 1;
@@ -159,7 +164,6 @@ dd($data);
         $adminNotification->title = 'New member registered';
         $adminNotification->click_url = urlPath('admin.users.detail',$user->id);
         $adminNotification->save();
-
 
         //Login Log Create
         $ip = getRealIP();

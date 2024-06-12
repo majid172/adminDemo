@@ -50,14 +50,14 @@
                                 <div class="col-md-6">
                                     <label for="formSignupfname" class="form-label visually-hidden">@lang('First Name')
                                     </label>
-                                    <input type="text" class="form-control" id="formSignupfname" placeholder="First Name" required="">
+                                    <input type="text" class="form-control" name="fname" id="formSignupfname" placeholder="First Name" required="">
                                     <div class="invalid-feedback">@lang('Please enter first name.')</div>
                                 </div>
                                     <div class="col-md-6">
                                         <!-- input -->
                                         <label for="formSignuplname" class="form-label visually-hidden">@lang('Last Name')
                                         </label>
-                                        <input type="text" class="form-control" id="formSignuplname" placeholder="First Name" required="">
+                                        <input type="text" class="form-control" id="formSignuplname" placeholder="Last Name" name="lname" required="">
                                         <div class="invalid-feedback">@lang('Please enter last name.')</div>
                                     </div>
                                     <div class="col-md-12">
@@ -71,7 +71,7 @@
                                     <!-- input -->
                                     <label for="formSignupEmail" class="form-label visually-hidden">@lang('Email
                                         address')</label>
-                                    <input type="email" class="form-control" id="formSignupEmail" placeholder="Email" value="{{ old('email') }}"
+                                    <input type="email" class="form-control" id="formSignupEmail" placeholder="Email" value="{{ old('email') }}" name="email"
                                            required="" >
                                     <div class="invalid-feedback">@lang('Please enter email.')</div>
                                 </div>
