@@ -23,14 +23,14 @@
                                     <!-- nav -->
 
                                     <ul class="nav nav-category" id="categoryCollapseMenu">
-                                        @foreach($categories as $category)
+                                        @foreach($categories as $key=>$category)
                                             <li class="nav-item border-bottom w-100">
-                                                <a href="#" class="nav-link collapsed" data-bs-toggle="collapse" data-bs-target="#categoryFlushOne" aria-expanded="false" aria-controls="categoryFlushOne">
+                                                <a href="#" class="nav-link collapsed" data-bs-toggle="collapse" data-bs-target="#categoryFlush{{$category->id}}" aria-expanded="false" aria-controls="categoryFlush{{$category->id}}">
                                                     {{$category->cat_name}}
                                                     <i class="feather-icon icon-chevron-right"></i>
                                                 </a>
                                                 <!-- accordion collapse -->
-                                                <div id="categoryFlushOne" class="accordion-collapse collapse" data-bs-parent="#categoryCollapseMenu">
+                                                <div id="categoryFlush{{$category->id}}" class="accordion-collapse collapse" data-bs-parent="#categoryCollapseMenu">
                                                     <div>
                                                         <!-- nav -->
 
