@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\Shop\ShopListController;
+use App\Http\Controllers\Order\OrderController;
 
 Route::namespace('User\Auth')->name('user.')->group(function () {
 
@@ -75,6 +76,8 @@ Route::middleware('auth')->name('user.')->group(function () {
             Route::get('/cart',[\App\Http\Controllers\Shop\CartController::class,'index'])->name('shop.cart');
             Route::get('/checkout',[\App\Http\Controllers\Shop\CheckoutController::class,'index'])->name('shop.checkout');
 
+//            order
+            Route::get('/my-orders',[OrderController::class,'orderList'])->name('orders.list');
             // Withdraw
             Route::controller('WithdrawController')->prefix('withdraw')->name('withdraw')->group(function(){
                 Route::get('/', 'withdrawMoney');

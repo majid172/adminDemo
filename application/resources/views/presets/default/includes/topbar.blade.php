@@ -88,7 +88,7 @@
                 @endguest
                 @auth
                 <div class="ms-6 text-center">
-                    <a href="account-orders.html" class="text-reset">
+                    <a href="{{route('user.orders.list')}}" class="text-reset">
                         <div class="lh-1">
                             <div class="mb-2">
                                 <i class="bi bi-archive fs-4"></i>

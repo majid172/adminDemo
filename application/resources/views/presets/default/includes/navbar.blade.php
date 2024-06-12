@@ -19,7 +19,7 @@
                                         fill-rule="evenodd"
                                         d="M2 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"></path>
                                 </svg>
-                                All Categories
+                                @lang('All Categories')
                             </a>
 
                             <ul class="dropdown-menu dropdown-menu-lg">
@@ -577,8 +577,8 @@
                                 <li class="dropdown-submenu dropend">
                                     <a class="dropdown-item dropdown-list-group-item dropdown-toggle" href="#">My Account</a>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="account-orders.html">Orders</a></li>
-                                        <li><a class="dropdown-item" href="account-settings.html">Settings</a></li>
+                                        <li><a class="dropdown-item" href="{{route('user.orders.list')}}">@lang('Orders')</a></li>
+                                        <li><a class="dropdown-item" href="{{route('user.profile.setting')}}">@lang('Settings')</a></li>
                                         <li><a class="dropdown-item" href="account-address.html">Address</a></li>
                                         <li><a class="dropdown-item" href="account-payment-method.html">Payment Method</a></li>
                                         <li><a class="dropdown-item" href="account-notification.html">Notification</a></li>
