@@ -22,7 +22,6 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-M8S4MT3EYG"></script>
 
     @stack('style-lib')
-
     @stack('style')
     <style>
         .cookies-card {
@@ -74,20 +73,13 @@
     <!-- cookies dark version end -->
 @endif
 
-
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="{{asset('assets/common/js/jquery-3.6.0.min.js')}}"></script>
 <script src="{{asset('assets/common/js/bootstrap.bundle.min.js')}}"></script>
 
 @stack('script-lib')
-
 @stack('script')
-
 @include('includes.plugins')
-
 @include('includes.notify')
-
 
 <script>
     (function ($) {

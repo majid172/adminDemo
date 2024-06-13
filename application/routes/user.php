@@ -74,6 +74,7 @@ Route::middleware('auth')->name('user.')->group(function () {
             Route::get('/wishlist',[\App\Http\Controllers\Shop\WishListController::class,'list'])->name('shop.wishlist');
 
             Route::get('/cart',[\App\Http\Controllers\Shop\CartController::class,'index'])->name('shop.cart');
+            Route::get('/cart/store',[\App\Http\Controllers\Shop\CartController::class,'store'])->name('shop.cart.store');
             Route::get('/checkout',[\App\Http\Controllers\Shop\CheckoutController::class,'index'])->name('shop.checkout');
 
 //            order

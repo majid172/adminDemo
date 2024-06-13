@@ -110,15 +110,15 @@
                             <!-- input -->
                             <div class="input-group input-spinner">
                                 <input type="button" value="-" class="button-minus btn btn-sm" data-field="quantity">
-                                <input type="number" step="1" max="10" value="1" name="quantity" class="quantity-field form-control-sm form-input">
+                                <input type="number" step="1" max="10" value="1" name="quantity"
+                                       class="quantity-field form-control-sm form-input" id="quantity">
                                 <input type="button" value="+" class="button-plus btn btn-sm" data-field="quantity">
                             </div>
                         </div>
                         <div class="mt-3 row justify-content-start g-2 align-items-center">
                             <div class="col-xxl-4 col-lg-4 col-md-5 col-5 d-grid">
-                                <!-- button -->
-                                <!-- btn -->
-                                <button type="button" class="btn btn-primary">
+                                <button type="button" class="btn btn-primary addCart" data-product="{{$product}}"
+                                        data-user_id="{{auth()->user()->id}}">
                                     <i class="feather-icon icon-shopping-bag me-2"></i>
                                     @lang('Add to cart')
                                 </button>
@@ -953,3 +953,35 @@
         </div>
     </section>
 @endsection
+
+@push('script')
+{{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>--}}
+{{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>--}}
+{{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>--}}
+
+    <script>
+        $('.addCart').on('click',function (){
+            let product = $(this).data('product');
+            let user_id = $(this).data('user_id');
+            let quantity = $('#quantity').val();
+
+            $.ajax({
+                url:"{{route('user.shop.cart.store')}}",
+                type:"get",
+                data:{
+                    {{--"_token": "{{ csrf_token() }}",--}}
+                    price: product.price,
+                    user_id: user_id,
+                    product_id: product.id,
+                    quantity: quantity
+                },
+                success(response){
+                    console.log(response)
+                },
+                error: function(xhr, status, error) {
+                    console.log(error);
+                }
+            })
+        })
+    </script>
+@endpush
