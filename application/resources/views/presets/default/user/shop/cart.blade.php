@@ -1,6 +1,5 @@
 @php
     $carts = \App\Models\Cart::where('user_id',auth()->user()->id)->with(['user','products'])->get();
-dd($carts);
 @endphp
 @extends($activeTemplate.'layouts.master')
 @section('content')
@@ -24,10 +23,10 @@ dd($carts);
                 <div class="col-lg-8 col-md-7">
                     <div class="py-3">
                         <!-- alert -->
-                        <div class="alert alert-danger p-2" role="alert">
-                            You’ve got FREE delivery. Start
-                            <a href="#!" class="alert-link">checkout now!</a>
-                        </div>
+{{--                        <div class="alert alert-danger p-2" role="alert">--}}
+{{--                            You’ve got FREE delivery. Start--}}
+{{--                            <a href="#!" class="alert-link">checkout now!</a>--}}
+{{--                        </div>--}}
                         <ul class="list-group list-group-flush">
                             @forelse($carts as $cart)
                                 <li class="list-group-item py-3 ps-0 border-top">
@@ -35,11 +34,12 @@ dd($carts);
                                     <div class="row align-items-center">
                                         <div class="col-6 col-md-6 col-lg-7">
                                             <div class="d-flex">
-                                                <img src="../assets/images/products/product-img-1.jpg" alt="Ecommerce" class="icon-shape icon-xxl">
+                                                <img src="{{getImage(getFilePath('product').'/'.$cart->products->path.'/'.$cart->products->image)}}" alt="Ecommerce" class="icon-shape
+                                                icon-xxl">
                                                 <div class="ms-3">
                                                     <!-- title -->
                                                     <a href="shop-single.html" class="text-inherit">
-                                                        <h6 class="mb-0">Haldiram's Sev Bhujia</h6>
+                                                        <h6 class="mb-0">{{optional($cart->products)->name}}</h6>
                                                     </a>
                                                     <span><small class="text-muted">.98 / lb</small></span>
                                                     <!-- text -->
@@ -71,7 +71,8 @@ dd($carts);
                                         </div>
                                         <!-- price -->
                                         <div class="col-2 text-lg-end text-start text-md-end col-md-2">
-                                            <span class="fw-bold">$5.00</span>
+                                            <span class="fw-bold">{{$general->cur_sym}}{{showAmount((optional
+                                            ($cart->products)->price))}}</span>
                                         </div>
                                     </div>
                                 </li>
@@ -95,29 +96,29 @@ dd($carts);
                     <div class="mb-5 card mt-6">
                         <div class="card-body p-6">
                             <!-- heading -->
-                            <h2 class="h5 mb-4">Summary</h2>
+                            <h2 class="h5 mb-4">@lang('Summary')</h2>
                             <div class="card mb-2">
                                 <!-- list group -->
                                 <ul class="list-group list-group-flush">
                                     <!-- list group item -->
                                     <li class="list-group-item d-flex justify-content-between align-items-start">
                                         <div class="me-auto">
-                                            <div>Item Subtotal</div>
+                                            <div>@lang('Item Subtotal')</div>
                                         </div>
-                                        <span>$70.00</span>
+                                        <span></span>
                                     </li>
 
                                     <!-- list group item -->
                                     <li class="list-group-item d-flex justify-content-between align-items-start">
                                         <div class="me-auto">
-                                            <div>Service Fee</div>
+                                            <div>@lang('Service Fee')</div>
                                         </div>
                                         <span>$3.00</span>
                                     </li>
                                     <!-- list group item -->
                                     <li class="list-group-item d-flex justify-content-between align-items-start">
                                         <div class="me-auto">
-                                            <div class="fw-bold">Subtotal</div>
+                                            <div class="fw-bold">@lang('Subtotal')</div>
                                         </div>
                                         <span class="fw-bold">$67.00</span>
                                     </li>
@@ -133,10 +134,10 @@ dd($carts);
                             <!-- text -->
                             <p>
                                 <small>
-                                    By placing your order, you agree to be bound by the Freshcart
-                                    <a href="#!">Terms of Service</a>
-                                    and
-                                    <a href="#!">Privacy Policy.</a>
+                                    @lang('By placing your order, you agree to be bound by the') {{$general->site_name}}
+                                    <a href="#!">@lang('Terms of Service')</a>
+                                    @lang('and')
+                                    <a href="#!">@lang('Privacy Policy').</a>
                                 </small>
                             </p>
 
