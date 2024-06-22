@@ -1,5 +1,12 @@
 @php
     $carts = \App\Models\Cart::where('user_id',auth()->user()->id)->with(['user','products'])->get();
+    $subTotal = \App\Models\Cart::where('user_id',auth()->user()->id)->with(['user','products'])
+                ->whereHas('user',function ($q){
+                    $q->where('id',auth()->user()->id);
+                })->get()->map(function ($query){
+                    return $query->quantity * $query->products->price;
+                })->sum();
+
 @endphp
 @extends($activeTemplate.'layouts.master')
 @section('content')
@@ -64,9 +71,16 @@
                                             <!-- input -->
                                             <!-- input -->
                                             <div class="input-group input-spinner">
-                                                <input type="button" value="-" class="button-minus btn btn-sm" data-field="quantity">
-                                                <input type="number" step="1" max="10" value="1" name="quantity" class="quantity-field form-control-sm form-input">
-                                                <input type="button" value="+" class="button-plus btn btn-sm" data-field="quantity">
+                                                <input type="button" value="-" class="button-minus btn btn-sm minus"
+                                                       id="minus_{{$cart->id}}"
+                                                       data-field="quantity" data-id="{{$cart->id}}">
+                                                <input type="number" step="1" max="10" value="{{$cart->quantity}}"
+                                                       id="quantity"
+                                                       name="quantity" data-id="{{$cart->id}}" class="quantity-field form-control-sm
+                                                       form-input">
+                                                <input type="button" value="+" id="plus_{{$cart->id}}"
+                                                       class="button-plus btn
+                                                btn-sm plus" data-field="quantity" data-id="{{$cart->id}}">
                                             </div>
                                         </div>
                                         <!-- price -->
@@ -84,8 +98,8 @@
                         </ul>
                         <!-- btn -->
                         <div class="d-flex justify-content-between mt-4">
-                            <a href="#!" class="btn btn-primary">Continue Shopping</a>
-                            <a href="#!" class="btn btn-dark">Update Cart</a>
+                            <a href="#!" class="btn btn-primary">@lang('Continue Shopping')</a>
+                            <a href="#!" class="btn btn-dark">@lang('Update Cart')</a>
                         </div>
                     </div>
                 </div>
@@ -105,7 +119,7 @@
                                         <div class="me-auto">
                                             <div>@lang('Item Subtotal')</div>
                                         </div>
-                                        <span></span>
+                                        <span>{{$general->cur_sym}}{{showAmount($subTotal)}}</span>
                                     </li>
 
                                     <!-- list group item -->
@@ -162,3 +176,20 @@
         </div>
     </section>
 @endsection
+@push('script')
+    <script>
+        $(document).ready(function(){
+            var minusBtn = '#minus_'+$('.minus').data('id')
+alert()
+            $(minusBtn).on('click', function(){
+                alert(minusBtn)
+            });
+
+            $('.button-plus').on('click', function(){
+                // alert($(this).data('id'));
+            });
+        });
+    </script>
+@endpush
+
+
