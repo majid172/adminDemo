@@ -35,4 +35,12 @@ class CartController extends Controller
         }
     }
 
+    public function remove(Request $request)
+    {
+        $cart = Cart::findOrFail($request->id);
+        $cart->delete();
+        $notify[] = ['success','Cart remove successfully'];
+        return back()->withNotify($notify);
+
+    }
 }

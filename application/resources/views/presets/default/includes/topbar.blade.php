@@ -207,9 +207,11 @@
                                             <h6 class="mb-0">{{optional($cart->products)->name}}</h6>
                                         </a>
                                         <!-- text -->
-                                        <div class="mt-2 small lh-1">
+                                        <div class="mt-2 small lh-1 remove" data-bs-toggle="modal"
+                                             data-bs-target="#exampleModal" data-product_name =
+                                                 "{{@$cart->products->name}}" data-id="{{$cart->id}}">
                                             <a href="#!" class="text-decoration-none text-inherit">
-                                       <span class="me-1 align-text-bottom">
+                                       <span class="me-1 align-text-bottom" >
                                           <svg
                                               xmlns="http://www.w3.org/2000/svg"
                                               width="14"
@@ -227,7 +229,7 @@
                                              <line x1="14" y1="11" x2="14" y2="17"></line>
                                           </svg>
                                        </span>
-                                                <span class="text-muted">@lang('Remove')</span>
+                                                <span class="text-muted ">@lang('Remove')</span>
                                             </a>
                                         </div>
                                     </div>
@@ -263,22 +265,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- input group -->
-                            <div class="col-4 col-md-3 col-lg-3">
-                                <!-- input -->
-                                <!-- input -->
-                                <div class="input-group input-spinner">
-                                    <input type="button" value="-" class="button-minus btn btn-sm" data-field="quantity" />
-                                    <input type="number" step="1" max="10" value="1" name="quantity" class="quantity-field form-control-sm form-input" />
-                                    <input type="button" value="+" class="button-plus btn btn-sm" data-field="quantity" />
-                                </div>
-                            </div>
-                            <!-- price -->
-                            <div class="col-2 text-lg-end text-start text-md-end col-md-2">
-                                <span class="fw-bold text-danger">$20.00</span>
-                                <div class="text-decoration-line-through text-muted small">$26.00</div>
-                            </div>
                         </div>
                     </li>
                 @endforelse
@@ -294,3 +280,37 @@
         </div>
     </div>
 </div>
+
+
+{{--remove modal--}}
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title product" id="exampleModalLabel"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="{{route('user.shop.cart.remove')}}" method="GET" >
+                @csrf
+                <div class="modal-body">
+                    <input type="hidden" value="" name="id" class="id">
+                    @lang('Are you confirm to remove this product?')
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-outline-danger btn-sm">@lang('Remove')</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+@push('script')
+    <script>
+        $('.remove').on('click',function (){
+            let product_name = $(this).data('product_name');
+            $('.product').text(product_name);
+            $('.id').val($(this).data('id'));
+        })
+    </script>
+@endpush
