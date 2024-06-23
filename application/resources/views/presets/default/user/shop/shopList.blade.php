@@ -4,7 +4,7 @@
 @section('content')
     @include($activeTemplate.'includes.breadcumb')
 
-        <div class="mt-8 mb-lg-14 mb-8">
+    <div class="mt-8 mb-lg-14 mb-8">
             <!-- container -->
             <div class="container">
                 <!-- row -->
@@ -290,8 +290,9 @@
                                                        data-curr_sym="{{$general->cur_sym}}">
                                                         <i class="bi bi-eye" data-bs-toggle="tooltip" data-bs-html="true" title="Quick View"></i>
                                                     </a>
-                                                    <a href="{{route('user.shop.wishlist')}}" class="btn-action"
-                                                       data-bs-toggle="tooltip"
+                                                    <a href="javascript:void(0)" class="btn-action wishlist"
+                                                        data-bs-toggle="modal" data-product="{{$product}}"
+                                                       data-bs-target="#wishlistModal"
                                                        data-bs-html="true" title="Wishlist"><i class="bi bi-heart"></i></a>
                                                     <a href="#!" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true" title="Compare"><i class="bi bi-arrow-left-right"></i></a>
                                                 </div>
@@ -594,8 +595,37 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="wishlistModal" tabindex="-1" aria-labelledby="wishlistModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title title" id="wishlistModalLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="{{route('user.shop.wishlist.store')}}" method="POST">
+                    @csrf
+                    <div class="modal-body">
+                        <input type="hidden" value="" class="id" name="product_id">
+                        <p>@lang('Confirm to wishlist')</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary ">@lang('Add Wishlist')</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 @endsection
 @push('script')
+    <script>
+        $('.wishlist').on('click',function(){
+           let product = $(this).data('product');
+           $('.title').text(product.name);
+           $('.id').val(product.id);
+        });
+    </script>
     <script>
         $('.quick_view').on('click',function (){
             let modal = $('#quickViewModal');
@@ -607,6 +637,5 @@
             modal.find('.discount').text(product.discount+'%'+'Off');
             modal.find('.code').text(product.code);
         });
-
     </script>
 @endpush

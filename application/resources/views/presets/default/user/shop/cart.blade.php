@@ -15,8 +15,7 @@
                     <!-- card -->
                     <div class="card py-1 border-0 mb-8">
                         <div>
-                            <h1 class="fw-bold">Shop Cart</h1>
-                            <p class="mb-0">Shopping in 382480</p>
+                            <h1 class="fw-bold">@lang('Shop Cart')</h1>
                         </div>
                     </div>
                 </div>
