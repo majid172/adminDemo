@@ -15,6 +15,12 @@ class CartController extends Controller
     }
     public function store(Request $request)
     {
+        $exists = Cart::where('user_id', auth()->user()->id)
+            ->where('product_id', $request->product_id)
+            ->exists();
+        if($exists){
+            return response()->json('Product exists');
+        }
         try {
             $cart = new Cart();
             $cart->user_id = $request->user_id;
@@ -25,7 +31,6 @@ class CartController extends Controller
 
             return response()->json('success', 200);
         } catch (\Exception $e) {
-
             return response()->json(['error' => $e->getMessage()], 500);
         }
     }

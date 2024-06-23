@@ -1,12 +1,8 @@
 @php
     $carts = \App\Models\Cart::where('user_id',auth()->user()->id)->with(['user','products'])->get();
-    $subTotal = \App\Models\Cart::where('user_id',auth()->user()->id)->with(['user','products'])
-                ->whereHas('user',function ($q){
-                    $q->where('id',auth()->user()->id);
-                })->get()->map(function ($query){
-                    return $query->quantity * $query->products->price;
-                })->sum();
-
+    $subTotal = $carts->map(function ($cart) {
+                    return $cart->quantity * $cart->products->price;
+                    })->sum();
 @endphp
 @extends($activeTemplate.'layouts.master')
 @section('content')
@@ -119,7 +115,7 @@
                                         <div class="me-auto">
                                             <div>@lang('Item Subtotal')</div>
                                         </div>
-                                        <span>{{$general->cur_sym}}{{showAmount($subTotal)}}</span>
+                                        {{$general->cur_sym}}<span class="subtotal">{{showAmount($subTotal)}}</span>
                                     </li>
 
                                     <!-- list group item -->
@@ -179,14 +175,24 @@
 @push('script')
     <script>
         $(document).ready(function(){
-            var minusBtn = '#minus_'+$('.minus').data('id')
-alert()
-            $(minusBtn).on('click', function(){
-                alert(minusBtn)
-            });
+            $('.button-minus, .button-plus').on('click', function() {
+                // var $input = $(this).closest('.input-group').find('.quantity-field');
+                var quantity = parseInt($input.val());
+                if ($(this).hasClass('button-minus')) {
+                    if (quantity > 1) quantity--;
+                } else {
+                    quantity++;
+                }
+                $input.val(quantity);
 
-            $('.button-plus').on('click', function(){
-                // alert($(this).data('id'));
+                // Recalculate subtotal
+                var subtotal = 0;
+                $('.quantity-field').each(function() {
+                    var qty = parseInt($(this).val());
+                    var prc = parseFloat($(this).data('price'));
+                    subtotal += qty * prc;
+                });
+                $('.subtotal').text(subtotal.toFixed(2));
             });
         });
     </script>
