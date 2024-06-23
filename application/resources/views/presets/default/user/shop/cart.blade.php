@@ -46,7 +46,9 @@
                                                     </a>
                                                     <span><small class="text-muted">.98 / lb</small></span>
                                                     <!-- text -->
-                                                    <div class="mt-2 small lh-1">
+                                                    <div class="mt-2 small lh-1 remove"  data-bs-toggle="modal"
+                                                         data-bs-target="#removeModal" data-product_name =
+                                                             "{{@$cart->products->name}}" data-id="{{$cart->id}}">
                                                         <a href="#!" class="text-decoration-none text-inherit">
                                                 <span class="me-1 align-text-bottom">
                                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2 text-success">
@@ -56,7 +58,7 @@
                                                       <line x1="14" y1="11" x2="14" y2="17"></line>
                                                    </svg>
                                                 </span>
-                                                            <span class="text-muted">Remove</span>
+                                                            <span class="text-muted">@lang('Remove')</span>
                                                         </a>
                                                     </div>
                                                 </div>
@@ -64,8 +66,6 @@
                                         </div>
                                         <!-- input group -->
                                         <div class="col-4 col-md-3 col-lg-3">
-                                            <!-- input -->
-                                            <!-- input -->
                                             <div class="input-group input-spinner">
                                                 <input type="button" value="-" class="button-minus btn btn-sm minus"
                                                        id="minus_{{$cart->id}}"
@@ -171,8 +171,38 @@
             </div>
         </div>
     </section>
+
+    <div class="modal fade" id="removeModal" tabindex="-1" aria-labelledby="removeModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title product" id="removeModalLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="{{route('user.shop.cart.remove')}}" method="GET" >
+                    @csrf
+                    <div class="modal-body">
+                        <input type="hidden" value="" name="id" class="id">
+                        @lang('Are you confirm to remove this product?')
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-outline-danger btn-sm">@lang('Remove')</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection
 @push('script')
+
+    <script>
+        $('.remove').on('click',function (){
+            let product_name = $(this).data('product_name');
+            $('.product').text(product_name);
+            $('.id').val($(this).data('id'));
+        })
+    </script>
+
     <script>
         $(document).ready(function(){
             $('.button-minus, .button-plus').on('click', function() {
