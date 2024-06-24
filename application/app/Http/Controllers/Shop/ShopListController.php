@@ -14,7 +14,7 @@ class ShopListController extends Controller
     {
         $pageTitle = "Shop List";
         $categories = Category::with('products')->get();
-        $products = Product::with('category')->get();
+        $products = Product::with('category')->paginate(getPaginate(12));
 
         return view($this->activeTemplate.'user.shop.shopList',compact('pageTitle','products','categories'));
     }

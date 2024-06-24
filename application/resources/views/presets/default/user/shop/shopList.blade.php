@@ -271,6 +271,7 @@
                         </div>
                         <!-- row -->
                         <div class="row g-4 row-cols-xl-4 row-cols-lg-3 row-cols-2 row-cols-md-2 mt-2">
+
                             @forelse($products as $product)
                                 <div class="col">
                                     <div class="card card-product">
@@ -279,7 +280,7 @@
                                                 <div class="position-absolute top-0 start-0">
                                                     <span class="badge bg-danger">@lang('Sale')</span>
                                                 </div>
-                                                <a href="shop-single.html">
+                                                <a href="{{route('user.shop.single',$product->id)}}">
                                                     <img src="{{getImage(getFilePath('product').'/'.$product->path.'/'.$product->image)}}" alt="Grocery Ecommerce Template" class="mb-3 img-fluid" />
                                                 </a>
                                                 <!-- action btn -->
@@ -300,7 +301,7 @@
                                             <!-- heading -->
                                             <div class="text-small mb-1">
                                                 <a href="#!" class="text-decoration-none
-                                                text-muted"><small>{{$product->category->cat_name}}</small></a>
+                                                text-muted"><small>{{@$product->category->cat_name}}</small></a>
                                             </div>
                                             <h2 class="fs-6"><a href="{{route('user.shop.single',$product->id)}}"
                                                                 class="text-inherit
@@ -325,7 +326,10 @@
                                                 </div>
                                                 <!-- btn -->
                                                 <div>
-                                                    <a href="#!" class="btn btn-primary btn-sm">
+                                                    <a href="javascript:void(0)" class="btn btn-primary btn-sm
+                                                    addCart" data-bs-toggle="modal" data-bs-target="#addCartModal"
+                                                       data-product = "{{$product}}"
+                                                       data-cur_sym="{{$general->cur_sym}}">
                                                         <svg
                                                             xmlns="http://www.w3.org/2000/svg"
                                                             width="16"
@@ -339,8 +343,7 @@
                                                             class="feather feather-plus">
                                                             <line x1="12" y1="5" x2="12" y2="19"></line>
                                                             <line x1="5" y1="12" x2="19" y2="12"></line>
-                                                        </svg>
-                                                        Add
+                                                        </svg>@lang('Add')
                                                     </a>
                                                 </div>
                                             </div>
@@ -356,7 +359,8 @@
                                                     <span class="badge bg-danger">Sale</span>
                                                 </div>
                                                 <a href="shop-single.html">
-                                                    <img src="../assets/images/products/product-img-1.jpg" alt="Grocery Ecommerce Template" class="mb-3 img-fluid" />
+                                                    <img src="{{asset('assets/images/features.png')}}" alt="
+                                                 Grocery Ecommerce Template" class="mb-3 img-fluid" />
                                                 </a>
                                                 <!-- action btn -->
                                                 <div class="card-product-action">
@@ -368,49 +372,10 @@
                                                 </div>
                                             </div>
                                             <!-- heading -->
-                                            <div class="text-small mb-1">
-                                                <a href="#!" class="text-decoration-none text-muted"><small>Snack & Munchies</small></a>
-                                            </div>
+
                                             <h2 class="fs-6"><a href="shop-single.html" class="text-inherit
                                             text-decoration-none">@lang('Empty Products')</a></h2>
-                                            <div>
-                                                <!-- rating -->
-                                                <small class="text-warning">
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-half"></i>
-                                                </small>
-                                                <span class="text-muted small">4.5(149)</span>
-                                            </div>
-                                            <!-- price -->
-                                            <div class="d-flex justify-content-between align-items-center mt-3">
-                                                <div>
-                                                    <span class="text-dark">$18</span>
-                                                    <span class="text-decoration-line-through text-muted">$24</span>
-                                                </div>
-                                                <!-- btn -->
-                                                <div>
-                                                    <a href="#!" class="btn btn-primary btn-sm">
-                                                        <svg
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            width="16"
-                                                            height="16"
-                                                            viewBox="0 0 24 24"
-                                                            fill="none"
-                                                            stroke="currentColor"
-                                                            stroke-width="2"
-                                                            stroke-linecap="round"
-                                                            stroke-linejoin="round"
-                                                            class="feather feather-plus">
-                                                            <line x1="12" y1="5" x2="12" y2="19"></line>
-                                                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                                                        </svg>
-                                                        Add
-                                                    </a>
-                                                </div>
-                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -420,24 +385,9 @@
                         </div>
                         <div class="row mt-8">
                             <div class="col">
-                                <!-- nav -->
                                 <nav>
                                     <ul class="pagination">
-                                        <li class="page-item disabled">
-                                            <a class="page-link mx-1" href="#" aria-label="Previous">
-                                                <i class="feather-icon icon-chevron-left"></i>
-                                            </a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link mx-1 active" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link mx-1" href="#">2</a></li>
-
-                                        <li class="page-item"><a class="page-link mx-1" href="#">...</a></li>
-                                        <li class="page-item"><a class="page-link mx-1" href="#">12</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link mx-1" href="#" aria-label="Next">
-                                                <i class="feather-icon icon-chevron-right"></i>
-                                            </a>
-                                        </li>
+                                        {{ $products->links() }}
                                     </ul>
                                 </nav>
                             </div>
@@ -617,13 +567,70 @@
         </div>
     </div>
 
+    <div class="modal fade" id="addCartModal" tabindex="-1" aria-labelledby="addCartModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title title" id="addCartModalLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="{{route('user.shop.add-cart')}}" method="POST">
+                    @csrf
+                    <input type="hidden" value="{{auth()->user()->id}}" name="user_id">
+                    <input type="hidden" value="" name="product_id">
+                    <div class="modal-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold">@lang('Price')</div>
+                                </div>
+                                <span class="badge bg-primary rounded-pill price"></span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-5">
+                                    <div class="fw-bold">@lang('Quantity')</div>
+                                </div>
+                                <span class="input-group input-spinner ms-auto text-end">
+                                    <input type="button" value="-" class="button-minus btn btn-sm" data-field="quantity">
+                                    <input type="number" step="1" max="10" value="1" name="quantity" class="quantity-field form-control-sm form-input" id="quantity">
+                                    <input type="button" value="+" class="button-plus btn btn-sm" data-field="quantity">
+                                </span>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">@lang('Add Cart')</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection
+
+@push('style')
+    <style>
+        .page-item.active .page-link{
+            background-color: #0aad0a !important;
+            border-color: #0aad0a !important;
+        }
+    </style>
+@endpush
 @push('script')
     <script>
         $('.wishlist').on('click',function(){
            let product = $(this).data('product');
            $('.title').text(product.name);
            $('.id').val(product.id);
+        });
+
+        $('.addCart').on('click',function (){
+            let product = $(this).data('product');
+            let cur_sym = $(this).data('cur_sym');
+            $('.title').text(product.name);
+            $('.price').text(cur_sym + parseFloat(product.price).toFixed(2));
+            $('#addCartModal').find("input[name='product_id']").val(product.id);
+
         });
     </script>
     <script>

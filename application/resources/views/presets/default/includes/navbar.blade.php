@@ -554,34 +554,35 @@
                             </div>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
+                            <a class="nav-link dropdown-toggle" href="javascript:void(0)" role="button"
+                               data-bs-toggle="dropdown"
+                               aria-expanded="false">@lang('Pages')</a>
                             <ul class="dropdown-menu">
-
                                 @foreach($pages as $page)
                                     @unless ($page->slug === '/')
                                         <li>
                                             <a class="dropdown-item" href="{{ url($page->slug) }}">{{ $page->name }}</a>
                                         </li>
                                     @endunless
-
                                 @endforeach
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Account</a>
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                               aria-expanded="false">@lang('Account')</a>
                             <ul class="dropdown-menu">
                                 <li class="dropdown-submenu dropend">
-                                    <a class="dropdown-item dropdown-list-group-item dropdown-toggle" href="#">My Account</a>
+                                    <a class="dropdown-item dropdown-list-group-item dropdown-toggle"
+                                       href="javascript:void(0)">@lang('My Account')</a>
                                     <ul class="dropdown-menu">
                                         <li><a class="dropdown-item" href="{{route('user.orders.list')}}">@lang('Orders')</a></li>
                                         <li><a class="dropdown-item" href="{{route('user.profile.setting')}}">@lang('Settings')</a></li>
 
-                                        <li><a class="dropdown-item" href="account-payment-method.html">Payment Method</a></li>
-                                        <li><a class="dropdown-item" href="account-notification.html">Notification</a></li>
+                                        <li><a class="dropdown-item" href="{{route('user.deposit')}}">@lang('Payment Method')</a></li>
+                                        <li><a class="dropdown-item" href="account-notification.html">@lang('Notification')</a></li>
                                     </ul>
                                 </li>
-                                <li><a class="dropdown-item" href="{{route('user.password.request')}}">Forgot
-                                        Password</a></li>
+                                <li><a class="dropdown-item" href="{{route('user.password.request')}}">@lang('Forgot Password')</a></li>
 
                             </ul>
                         </li>

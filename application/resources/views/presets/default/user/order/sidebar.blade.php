@@ -24,9 +24,10 @@
             </li>
             <!-- nav item -->
             <li class="nav-item">
-                <a class="nav-link" href="account-payment-method.html">
+                <a class="nav-link {{ request()->routeIs('user.deposit') ? 'active' : '' }}"
+                   href="{{route('user.deposit')}}">
                     <i class="feather-icon icon-credit-card me-2"></i>
-                    Payment Method
+                    @lang('Payment Method')
                 </a>
             </li>
             <!-- nav item -->

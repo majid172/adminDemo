@@ -65,6 +65,10 @@ trait FileInfo
             'path'      =>'assets/images/category',
             'size'      =>'120x120',
         ];
+        $data['gatewayImage'] = [
+            'path'      =>'assets/images/admin/gateway',
+            'size'      =>'60x50',
+        ];
         $data['product'] = [
             'path'      =>'assets/images/product',
             'size'      =>'220x220',

@@ -1,5 +1,71 @@
 @extends($activeTemplate.'layouts.master')
 @section('content')
+    <section>
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <!-- col -->
+                <div class="col-12">
+                    <div class="d-flex justify-content-between align-items-center d-md-none py-4">
+                        <!-- heading -->
+                        <h3 class="fs-5 mb-0">@lang('Account Setting')</h3>
+                        <!-- button -->
+                        <button class="btn btn-outline-gray-400 text-muted d-md-none btn-icon btn-sm ms-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasAccount" aria-controls="offcanvasAccount">
+                            <i class="bi bi-text-indent-left fs-3"></i>
+                        </button>
+                    </div>
+                </div>
+                @include($activeTemplate.'user.order.sidebar')
+                <div class="col-lg-9 col-md-8 col-12">
+                    <div class="py-6 p-md-6 p-lg-10">
+                        <!-- heading -->
+                        <div class="d-flex justify-content-between mb-6 align-items-center">
+                            <h2 class="mb-0">{{$pageTitle}}</h2>
+{{--                            <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal"--}}
+{{--                               data-bs-target="#paymentModal">@lang('Add Payment')</a>--}}
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            @forelse($gatewayCurrency as $data)
+                                <li class="list-group-item px-0 py-5 border-bottom">
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-flex">
+                                            <!-- img -->
+                                            <img src="{{getImage(getFilePath('gatewayImage').'/'.$data->img_path.'/'.$data->image)}}" alt="gateway_img" class="me-3">
+                                            <div>
+                                                <!-- text -->
+                                                <h5 class="mb-0 h6">{{__($data->name)}}</h5>
+                                                <p class="mb-0 small">Expires in 10/2021</p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <!-- btn -->
+                                            <a href="#" class="btn btn-outline-gray-400 text-muted btn-sm">Remove</a>
+                                        </div>
+                                    </div>
+                                </li>
+                            @empty
+                                <li class="list-group-item px-0 py-5 border-bottom">
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-flex">
+                                            <!-- img -->
+                                            <img src="{{asset('assets/images/credit-card.png')}}" alt="" class="me-3">
+                                            <div>
+                                                <h5 class="mb-0 h6 text-muted align-items-center mt-2">{{__
+                                                ($emptyMessage)}}</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            @endforelse
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-lg-6">

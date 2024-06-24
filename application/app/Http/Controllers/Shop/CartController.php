@@ -34,6 +34,30 @@ class CartController extends Controller
             return response()->json(['error' => $e->getMessage()], 500);
         }
     }
+    public function addCart(Request $request)
+    {
+        $exists = Cart::where('user_id', auth()->user()->id)
+            ->where('product_id', $request->product_id)
+            ->exists();
+        if($exists){
+            $notify[] = ['error','Product already exists'];
+            return back()->withNotify($notify);
+        }
+        try {
+            $cart = new Cart();
+            $cart->user_id = $request->user_id;
+            $cart->product_id = $request->product_id;
+            $cart->quantity = $request->quantity;
+            $cart->unit = $request->unit;
+            $cart->save();
+            $notify[] = ['success','Product add to cart'];
+            return back()->withNotify($notify);
+        } catch (\Exception $e) {
+            $notify[] = ['error',$e->getMessage()];
+            return back()->withNotify($notify);
+
+        }
+    }
 
     public function remove(Request $request)
     {

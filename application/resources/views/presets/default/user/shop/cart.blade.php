@@ -35,7 +35,8 @@
                                                 icon-xxl">
                                                 <div class="ms-3">
                                                     <!-- title -->
-                                                    <a href="shop-single.html" class="text-inherit">
+                                                    <a href="{{route('user.shop.single',$cart->product_id)}}"
+                                                       class="text-inherit">
                                                         <h6 class="mb-0">{{optional($cart->products)->name}}</h6>
                                                     </a>
                                                     <span><small class="text-muted">.98 / lb</small></span>
@@ -89,7 +90,7 @@
                             @endforelse
                         </ul>
                         <div class="d-flex justify-content-between mt-4">
-                            <a href="#!" class="btn btn-primary">@lang('Continue Shopping')</a>
+                            <a href="{{route('user.shop.list')}}" class="btn btn-primary">@lang('Continue Shopping')</a>
                             <a href="#!" class="btn btn-dark">@lang('Update Cart')</a>
                         </div>
                     </div>
