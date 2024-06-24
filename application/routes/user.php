@@ -67,6 +67,7 @@ Route::middleware('auth')->name('user.')->group(function () {
                 Route::post('profile/setting', 'submitProfile');
                 Route::get('change-password', 'changePassword')->name('change.password');
                 Route::post('change-password', 'submitPassword');
+                Route::get('remove-account','removeAccount')->name('remove.account');
             });
 
 //            shop

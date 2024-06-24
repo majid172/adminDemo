@@ -74,14 +74,9 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td class="align-middle">
-                                            <div>
-                                                <h5 class="fs-6 mb-0"><a href="#" class="text-inherit">@lang('Empty Wishtlist')</a></h5>
-
-                                            </div>
-                                        </td>
-
+                                        <td class="text-muted text-center" colspan="100%">{{ __($emptyMessage) }}</td>
                                     </tr>
+
                                 @endforelse
                                 </tbody>
                             </table>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
@@ -75,5 +76,13 @@ class ProfileController extends Controller
             $notify[] = ['error', 'The password doesn\'t match!'];
             return back()->withNotify($notify);
         }
+    }
+
+    public function removeAccount(Request $request)
+    {
+        $user = User::findOrFail($request->user_id);
+        $user->delete();
+        $notify[] = ['success', 'User account removed successfully'];
+        return to_route('home')->withNotify($notify);
     }
 }

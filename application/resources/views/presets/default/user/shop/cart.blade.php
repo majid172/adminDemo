@@ -9,10 +9,8 @@
     @include($activeTemplate.'includes.breadcumb')
     <section class="mb-lg-14 mb-8 mt-8">
         <div class="container">
-            <!-- row -->
             <div class="row">
                 <div class="col-12">
-                    <!-- card -->
                     <div class="card py-1 border-0 mb-8">
                         <div>
                             <h1 class="fw-bold">@lang('Shop Cart')</h1>
@@ -20,11 +18,9 @@
                     </div>
                 </div>
             </div>
-            <!-- row -->
             <div class="row">
                 <div class="col-lg-8 col-md-7">
                     <div class="py-3">
-                        <!-- alert -->
 {{--                        <div class="alert alert-danger p-2" role="alert">--}}
 {{--                            You’ve got FREE delivery. Start--}}
 {{--                            <a href="#!" class="alert-link">checkout now!</a>--}}
@@ -32,7 +28,6 @@
                         <ul class="list-group list-group-flush">
                             @forelse($carts as $cart)
                                 <li class="list-group-item py-3 ps-0 border-top">
-                                    <!-- row -->
                                     <div class="row align-items-center">
                                         <div class="col-6 col-md-6 col-lg-7">
                                             <div class="d-flex">
@@ -63,7 +58,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- input group -->
+
                                         <div class="col-4 col-md-3 col-lg-3">
                                             <div class="input-group input-spinner">
                                                 <input type="button" value="-" class="button-minus btn btn-sm minus"
@@ -78,20 +73,21 @@
                                                 btn-sm plus" data-field="quantity" data-id="{{$cart->id}}">
                                             </div>
                                         </div>
-                                        <!-- price -->
                                         <div class="col-2 text-lg-end text-start text-md-end col-md-2">
                                             <span class="fw-bold">{{$general->cur_sym}}{{showAmount((optional
                                             ($cart->products)->price))}}</span>
                                         </div>
                                     </div>
                                 </li>
+
                                 @empty
-
+                                <li class="list-group-item py-3 ps-0 border-top">
+                                    <div class="row align-items-center">
+                                        <p class="text-center text-muted">{{ __($emptyMessage) }}</p>
+                                    </div>
+                                </li>
                             @endforelse
-
-
                         </ul>
-                        <!-- btn -->
                         <div class="d-flex justify-content-between mt-4">
                             <a href="#!" class="btn btn-primary">@lang('Continue Shopping')</a>
                             <a href="#!" class="btn btn-dark">@lang('Update Cart')</a>
@@ -99,17 +95,12 @@
                     </div>
                 </div>
 
-                <!-- sidebar -->
                 <div class="col-12 col-lg-4 col-md-5">
-                    <!-- card -->
                     <div class="mb-5 card mt-6">
                         <div class="card-body p-6">
-                            <!-- heading -->
                             <h2 class="h5 mb-4">@lang('Summary')</h2>
                             <div class="card mb-2">
-                                <!-- list group -->
                                 <ul class="list-group list-group-flush">
-                                    <!-- list group item -->
                                     <li class="list-group-item d-flex justify-content-between align-items-start">
                                         <div class="me-auto">
                                             <div>@lang('Item Subtotal')</div>
@@ -117,14 +108,12 @@
                                         {{$general->cur_sym}}<span class="subtotal">{{showAmount($subTotal)}}</span>
                                     </li>
 
-                                    <!-- list group item -->
                                     <li class="list-group-item d-flex justify-content-between align-items-start">
                                         <div class="me-auto">
                                             <div>@lang('Service Fee')</div>
                                         </div>
                                         <span>$3.00</span>
                                     </li>
-                                    <!-- list group item -->
                                     <li class="list-group-item d-flex justify-content-between align-items-start">
                                         <div class="me-auto">
                                             <div class="fw-bold">@lang('Subtotal')</div>
@@ -134,13 +123,11 @@
                                 </ul>
                             </div>
                             <div class="d-grid mb-1 mt-4">
-                                <!-- btn -->
                                 <button class="btn btn-primary btn-lg d-flex justify-content-between align-items-center" type="submit">
                                     Go to Checkout
                                     <span class="fw-bold">$67.00</span>
                                 </button>
                             </div>
-                            <!-- text -->
                             <p>
                                 <small>
                                     @lang('By placing your order, you agree to be bound by the') {{$general->site_name}}

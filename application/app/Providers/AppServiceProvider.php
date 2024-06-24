@@ -38,7 +38,7 @@ class AppServiceProvider extends ServiceProvider
         $viewShare['activeTemplate'] = $activeTemplate;
         $viewShare['activeTemplateTrue'] = activeTemplate(true);
         $viewShare['language'] = Language::all();
-        $viewShare['emptyMessage'] = 'No data';
+        $viewShare['emptyMessage'] = 'No data found';
         view()->share($viewShare);
 
 

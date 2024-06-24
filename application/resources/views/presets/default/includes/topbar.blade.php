@@ -181,6 +181,7 @@
 </header>
 
 {{--modal--}}
+@auth
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header border-bottom">
         <div class="text-start">
@@ -281,7 +282,6 @@
     </div>
 </div>
 
-
 {{--remove modal--}}
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -304,7 +304,7 @@
         </div>
     </div>
 </div>
-
+@endauth
 @push('script')
     <script>
         $('.remove').on('click',function (){

@@ -39,8 +39,8 @@ class WishListController extends Controller
     public function remove(Request $request)
     {
         $remove = Wishlist::find($request->id);
-        dd($remove);
         $remove->delete();
-        return back()->withNotify('success','Product removes from wishlist');
+        $notify[] = ['success','Product removes from wishlist'];
+        return back()->withNotify($notify);
     }
 }
