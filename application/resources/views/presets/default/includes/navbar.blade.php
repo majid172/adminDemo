@@ -570,20 +570,19 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Account</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{{route('user.login')}}">Sign in</a></li>
-                                <li><a class="dropdown-item" href="signup.html">Signup</a></li>
-                                <li><a class="dropdown-item" href="{{route('user.password.request')}}">Forgot
-                                        Password</a></li>
                                 <li class="dropdown-submenu dropend">
                                     <a class="dropdown-item dropdown-list-group-item dropdown-toggle" href="#">My Account</a>
                                     <ul class="dropdown-menu">
                                         <li><a class="dropdown-item" href="{{route('user.orders.list')}}">@lang('Orders')</a></li>
                                         <li><a class="dropdown-item" href="{{route('user.profile.setting')}}">@lang('Settings')</a></li>
-                                        <li><a class="dropdown-item" href="account-address.html">Address</a></li>
+
                                         <li><a class="dropdown-item" href="account-payment-method.html">Payment Method</a></li>
                                         <li><a class="dropdown-item" href="account-notification.html">Notification</a></li>
                                     </ul>
                                 </li>
+                                <li><a class="dropdown-item" href="{{route('user.password.request')}}">Forgot
+                                        Password</a></li>
+
                             </ul>
                         </li>
 

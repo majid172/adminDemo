@@ -1,51 +1,80 @@
 @extends($activeTemplate.'layouts.master')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center mt-4">
-        <div class="col-md-8">
+    <section>
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <!-- col -->
+                @include($activeTemplate.'user.order.sidebar')
+                <div class="col-lg-9 col-md-8 col-12">
+                    <div class="py-6 p-md-6 p-lg-10">
+                        <div class="mb-6">
+                            <!-- heading -->
+                            <h2 class="mb-0">@lang($pageTitle)</h2>
+                        </div>
+                        <div class="pe-lg-14">
+                            <!-- heading -->
+                            <h5 class="mb-4">@lang('Password')</h5>
+                            <form class="row row-cols-1 row-cols-lg-2" action="" method="POST">
+                                @csrf
+                                <div class="mb-3 col">
+                                    <label class="form-label">@lang('Current Password')</label>
+                                    <input type="password" class="form-control" placeholder="**********"
+                                           name="current_password" required autocomplete="current-password">
+                                </div>
 
-            <div class="card custom--card">
-                <div class="card-header">
-                    <h5 class="card-title">@lang('Change Password')</h5>
-                </div>
-                <div class="card-body">
+                                <div class="mb-3 col">
+                                    <label class="form-label">@lang('New Password')</label>
+                                    <input type="password" class="form-control" placeholder="**********"
+                                           name="password" required autocomplete="current-password">
+                                </div>
 
-                    <form action="" method="post">
-                        @csrf
-                        <div class="form-group">
-                            <label class="form-label">@lang('Current Password')</label>
-                            <input type="password" class="form-control form--control" name="current_password" required
-                                autocomplete="current-password">
+                                @if($general->secure_password)
+                                    <div class="input-popup">
+                                        <p class="error lower">@lang('1 small letter minimum')</p>
+                                        <p class="error capital">@lang('1 capital letter minimum')</p>
+                                        <p class="error number">@lang('1 number minimum')</p>
+                                        <p class="error special">@lang('1 special character minimum')</p>
+                                        <p class="error minimum">@lang('6 character password')</p>
+                                    </div>
+                                @endif
+
+                                <div class="mb-3 col">
+                                    <label class="form-label">@lang('Confirm Password')</label>
+                                    <input type="password" class="form-control" placeholder="**********"
+                                           name="password_confirmation" required autocomplete="current-password">
+                                </div>
+
+                                <div class="mb-3 col">
+                                </div>
+                                <div class="mb-3 col">
+                                        <p class="mb-4">
+                                            @lang('Can’t remember your current password?')
+                                            <a href="{{route('user.password.request')}}">@lang('Reset your password.')</a>
+                                        </p>
+                                    </div>
+
+                                <div class="mb-3 col">
+                                </div>
+                                <div class="mb-3 col">
+                                    <button type="submit" class="btn btn-primary w-50">@lang('Save Password')</button>
+                                </div>
+
+                            </form>
                         </div>
-                        <div class="form-group">
-                            <label class="form-label">@lang('Password')</label>
-                            <input type="password" class="form-control form--control" name="password" required
-                                autocomplete="current-password">
-                            @if($general->secure_password)
-                            <div class="input-popup">
-                                <p class="error lower">@lang('1 small letter minimum')</p>
-                                <p class="error capital">@lang('1 capital letter minimum')</p>
-                                <p class="error number">@lang('1 number minimum')</p>
-                                <p class="error special">@lang('1 special character minimum')</p>
-                                <p class="error minimum">@lang('6 character password')</p>
-                            </div>
-                            @endif
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">@lang('Confirm Password')</label>
-                            <input type="password" class="form-control form--control" name="password_confirmation"
-                                required autocomplete="current-password">
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn--base w-100">@lang('Save')</button>
-                        </div>
-                    </form>
+
+                    </div>
                 </div>
+
             </div>
         </div>
-    </div>
-</div>
+    </section>
+
+
+
+
 @endsection
 @push('script-lib')
 <script src="{{ asset('assets/common/js/secure_password.js') }}"></script>

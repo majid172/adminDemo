@@ -18,9 +18,8 @@
             </li>
             <!-- nav item -->
             <li class="nav-item">
-                <a class="nav-link {{ request()->routeIs('user.orders.list') ? 'active' : '' }}" href="account-address.html">
-                    <i class="feather-icon icon-map-pin me-2"></i>
-                    Address
+                <a class="nav-link {{ request()->routeIs('user.change.password') ? 'active' : '' }}" href="{{route('user.change.password')}}">
+                    <i class="feather-icon icon-key me-2"></i> @lang('Change Password')
                 </a>
             </li>
             <!-- nav item -->
