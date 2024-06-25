@@ -32,6 +32,17 @@
                     </a>
                 </li>
 
+                {{--                charge --}}
+                <li class="sidebar__menu-header">@lang('Service Fee')</li>
+                <li class="sidebar-menu-item  {{menuActive('admin.service-fee')}}">
+                    <a href="{{route('admin.service-fee')}}" class="nav-link"
+                       data-default-url="{{ route('admin.service-fee') }}">
+                        <i class="menu-icon las la-coins text-success"></i>
+                        <span class="menu-title">@lang('Charge') </span>
+                    </a>
+                </li>
+
+
 {{--                user management  --}}
                 <li class="sidebar__menu-header">@lang('Users Panel')</li>
                 <li class="sidebar-menu-item sidebar-dropdown">

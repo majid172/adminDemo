@@ -4,17 +4,17 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Charge;
+use App\Models\ServiceFee;
 use Illuminate\Http\Request;
 
 class ChargeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function charge()
+
+    public function serviceFee()
     {
-        $pageTitle = 'Charge';
-        $charge = Charge::first();
+        $pageTitle = 'Service Fee';
+        $charge = ServiceFee::first();
+
         return view('admin.charge.index',compact('pageTitle','charge'));
     }
 
@@ -25,9 +25,10 @@ class ChargeController extends Controller
             'fixed_charge' => 'required|numeric',
             'percentage_charge' => 'required|integer'
         ]);
-        $charge = Charge::first();
-        $charge->fixed_charge = $request->fixed_charge;
-        $charge->percentage_charge = $request->percentage_charge;
+
+        $charge = ServiceFee::first();
+        $charge->fixed = $request->fixed_charge;
+        $charge->percent = $request->percentage_charge;
         $charge->save();
         $notify[] = ['success','Charge updated successfully.'];
         return back()->withNotify($notify);

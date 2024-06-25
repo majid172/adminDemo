@@ -43,9 +43,9 @@ Route::middleware('admin')->group(function () {
         Route::get('download/attachments/{file_hash}', 'downloadAttachment')->name('download.attachment');
     });
 
-    Route::controller('ChargeController')->prefix('charge')->group(function(){
-        Route::get('/','charge')->name('charge');
-        Route::post('/update','update')->name('charge.update');
+    Route::controller('ChargeController')->prefix('service-fee')->group(function(){
+        Route::get('/','serviceFee')->name('service-fee');
+        Route::post('/update','update')->name('service-fee.update');
     });
 
     Route::controller('CategoryController')->prefix('category')->group(function (){
