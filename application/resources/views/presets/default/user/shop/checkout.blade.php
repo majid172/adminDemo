@@ -11,12 +11,8 @@
                     <div>
                         <div class="mb-8">
                             <!-- text -->
-                            <h1 class="fw-bold mb-0">Checkout</h1>
-                            <p class="mb-0">
-                                Already have an account? Click here to
-                                <a href="#!">Sign in</a>
-                                .
-                            </p>
+                            <h1 class="fw-bold mb-0">{{$pageTitle}}</h1>
+
                         </div>
                     </div>
                 </div>
@@ -33,10 +29,11 @@
                                     <!-- heading one -->
                                     <a href="#" class="fs-5 text-inherit collapsed h4" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="true" aria-controls="flush-collapseOne">
                                         <i class="feather-icon icon-map-pin me-2 text-muted"></i>
-                                        Add delivery address
+                                        @lang('Add delivery address')
                                     </a>
                                     <!-- btn -->
-                                    <a href="#" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addAddressModal">Add a new address</a>
+                                    <a href="#" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal"
+                                       data-bs-target="#addAddressModal">@lang('Change Address')</a>
                                     <!-- collapse -->
                                 </div>
                                 <div id="flush-collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionFlushExample">
@@ -47,43 +44,23 @@
                                                 <div class="card card-body p-6">
                                                     <div class="form-check mb-4">
                                                         <input class="form-check-input" type="radio" name="flexRadioDefault" id="homeRadio" checked="">
-                                                        <label class="form-check-label text-dark" for="homeRadio">Home</label>
+                                                        <label class="form-check-label text-dark"
+                                                               for="homeRadio">@lang('Present Address')</label>
                                                     </div>
                                                     <!-- address -->
                                                     <address>
-                                                        <strong>Jitu Chauhan</strong>
+                                                        <strong>{{ucfirst(auth()->user()->firstname)}} {{ucfirst(auth()->user()->lastname)}}</strong>
+                                                        <br> {{auth()->user()->address->address}}
+                                                        <br>
+                                                        {{auth()->user()->address->state}}, {{auth()->user()
+                                                        ->address->country}}
                                                         <br>
 
-                                                        4450 North Avenue Oakland,
-                                                        <br>
-
-                                                        Nebraska, United States,
-                                                        <br>
-
-                                                        <abbr title="Phone">P: 402-776-1106</abbr>
-                                                    </address>
-                                                    <span class="text-danger">Default address</span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-12 mb-4">
-                                                <!-- input -->
-                                                <div class="card card-body p-6">
-                                                    <div class="form-check mb-4">
-                                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="officeRadio">
-                                                        <label class="form-check-label text-dark" for="officeRadio">Office</label>
-                                                    </div>
-                                                    <address>
-                                                        <strong>Nitu Chauhan</strong>
-                                                        <br>
-                                                        3853 Coal Road,
-                                                        <br>
-                                                        Tannersville, Pennsylvania, 18372, USA,
-                                                        <br>
-
-                                                        <abbr title="Phone">P: 402-776-1106</abbr>
+                                                        <abbr title="Phone">P: {{auth()->user()->mobile}}</abbr>
                                                     </address>
                                                 </div>
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>

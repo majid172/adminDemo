@@ -87,7 +87,7 @@ Route::middleware('auth')->name('user.')->group(function () {
             Route::get('/cart/store',[\App\Http\Controllers\Shop\CartController::class,'store'])->name('shop.cart.store');
             Route::post('/cart/add-cart',[\App\Http\Controllers\Shop\CartController::class,'addCart'])->name('shop.add-cart');
             Route::get('/cart/remove',[\App\Http\Controllers\Shop\CartController::class,'remove'])->name('shop.cart.remove');
-            Route::get('/checkout',[\App\Http\Controllers\Shop\CheckoutController::class,'index'])->name('shop.checkout');
+            Route::get('/checkout/{user_id}',[\App\Http\Controllers\Shop\CheckoutController::class,'index'])->name('shop.checkout');
 
 //            order
             Route::get('/my-orders',[OrderController::class,'orderList'])->name('orders.list');

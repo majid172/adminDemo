@@ -487,7 +487,9 @@
                                         Wishlist')</a></li>
                                 <li><a class="dropdown-item" href="{{route('user.shop.cart')}}">@lang('Shop Cart')
                                     </a></li>
-                                <li><a class="dropdown-item" href="{{route('user.shop.checkout')}}">@lang('Shop
+                                <li><a class="dropdown-item" href="{{route('user.shop.checkout',auth()->user()->id)
+                                }}">@lang
+                                ('Shop
                                 Checkout')
                                     </a></li>
                             </ul>

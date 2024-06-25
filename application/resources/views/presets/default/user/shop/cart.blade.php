@@ -123,12 +123,16 @@
                                     </li>
                                 </ul>
                             </div>
-                            <div class="d-grid mb-1 mt-4">
-                                <button class="btn btn-primary btn-lg d-flex justify-content-between align-items-center" type="submit">
-                                    Go to Checkout
-                                    <span class="fw-bold">{{$general->cur_sym}}{{showAmount($total)}}</span>
-                                </button>
-                            </div>
+                                <div class="d-grid mb-1 mt-4">
+                                    <a href="{{route('user.shop.checkout',auth()->user()->id)}}" class="btn btn-primary
+                                    btn-lg
+                                    d-flex
+                                    justify-content-between
+                                    align-items-center" type="submit">
+                                        @lang('Go to Checkout')
+                                        <span class="fw-bold">{{$general->cur_sym}}{{showAmount($total)}}</span>
+                                    </a>
+                                </div>
                             <p>
                                 <small>
                                     @lang('By placing your order, you agree to be bound by the') {{$general->site_name}}
