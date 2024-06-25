@@ -1,8 +1,5 @@
 @php
-    $carts = \App\Models\Cart::where('user_id',auth()->user()->id)->with(['user','products'])->get();
-    $subTotal = $carts->map(function ($cart) {
-                    return $cart->quantity * $cart->products->price;
-                    })->sum();
+
 @endphp
 @extends($activeTemplate.'layouts.master')
 @section('content')
@@ -113,20 +110,23 @@
                                         <div class="me-auto">
                                             <div>@lang('Service Fee')</div>
                                         </div>
-                                        <span>$3.00</span>
+                                        <span>{{$general->cur_sym}}{{showAmount($charge->fixed)}}</span>
                                     </li>
                                     <li class="list-group-item d-flex justify-content-between align-items-start">
                                         <div class="me-auto">
                                             <div class="fw-bold">@lang('Subtotal')</div>
                                         </div>
-                                        <span class="fw-bold">$67.00</span>
+                                        @php
+                                            $total = $subTotal+$charge->fixed;
+                                        @endphp
+                                        <span class="fw-bold">{{$general->cur_sym}}{{showAmount($total)}}</span>
                                     </li>
                                 </ul>
                             </div>
                             <div class="d-grid mb-1 mt-4">
                                 <button class="btn btn-primary btn-lg d-flex justify-content-between align-items-center" type="submit">
                                     Go to Checkout
-                                    <span class="fw-bold">$67.00</span>
+                                    <span class="fw-bold">{{$general->cur_sym}}{{showAmount($total)}}</span>
                                 </button>
                             </div>
                             <p>

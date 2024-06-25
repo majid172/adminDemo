@@ -14,7 +14,6 @@ class ChargeController extends Controller
     {
         $pageTitle = 'Service Fee';
         $charge = ServiceFee::first();
-
         return view('admin.charge.index',compact('pageTitle','charge'));
     }
 

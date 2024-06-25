@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Shop;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
+use App\Models\ServiceFee;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -11,7 +12,12 @@ class CartController extends Controller
     public function index()
     {
         $pageTitle = 'Shop Cart';
-        return view($this->activeTemplate.'user.shop.cart',compact('pageTitle'));
+        $carts = \App\Models\Cart::where('user_id',auth()->user()->id)->with(['user','products'])->get();
+        $subTotal = $carts->map(function ($cart) {
+            return $cart->quantity * $cart->products->price;
+        })->sum();
+        $charge = ServiceFee::first();
+        return view($this->activeTemplate.'user.shop.cart',compact('pageTitle','carts','subTotal','charge'));
     }
     public function store(Request $request)
     {
