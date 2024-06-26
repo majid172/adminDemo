@@ -476,22 +476,22 @@
                             </ul>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link " href="{{route('home')}}">Home</a>
+                            <a class="nav-link " href="{{route('home')}}">@lang('Home')</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                               aria-expanded="false">@lang('Shop')</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{{route('user.shop.list')}}">Shop List </a></li>
+                                <li><a class="dropdown-item" href="{{route('user.shop.list')}}">@lang('Shop List')
+                                    </a></li>
 
-                                <li><a class="dropdown-item" href="{{route('user.shop.wishlist')}}">@lang('Shop
-                                        Wishlist')</a></li>
+                                <li><a class="dropdown-item" href="{{route('user.shop.wishlist')}}">@lang('Shop Wishlist')</a></li>
                                 <li><a class="dropdown-item" href="{{route('user.shop.cart')}}">@lang('Shop Cart')
                                     </a></li>
-                                <li><a class="dropdown-item" href="{{route('user.shop.checkout',auth()->user()->id)
-                                }}">@lang
-                                ('Shop
-                                Checkout')
+                                @auth
+                                <li><a class="dropdown-item" href="{{route('user.shop.checkout',auth()->user()->id)}}">@lang('Shop Checkout')
                                     </a></li>
+                                @endauth
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
