@@ -3,13 +3,22 @@
 namespace App\Http\Controllers\Shop;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cart;
 use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
 {
-    public function index()
+    public function index($userId)
     {
         $pageTitle  = "Checkout";
-        return view($this->activeTemplate.'user.shop.checkout',compact('pageTitle'));
+        $carts = Cart::where('user_id',$userId)->with(['user','products'])
+                ->whereHas('user',function ($q){
+                    $q->where('user_id',auth()->user()->id);
+                })->get();
+        $subTotal = $carts->map(function ($cart) {
+            return $cart->quantity * $cart->products->price;
+        })->sum();
+
+        return view($this->activeTemplate.'user.shop.checkout',compact('pageTitle','carts','subTotal'));
     }
 }

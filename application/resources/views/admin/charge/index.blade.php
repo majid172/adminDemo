@@ -27,9 +27,23 @@
                                 <span class="input-group-text bg--primary" id="basic-addon2">%</span>
                               </div>
                         </div>
-
                     </div>
-
+                    <div class="row">
+                        <div class="form-group col-md-6 col-sm-6 mb-4">
+                            <label class="fw-bold">@lang('Active Fixed Charge')</label>
+                            <label class="switch m-0">
+                                <input type="checkbox" class="toggle-switch" name="is_fixed" {{ $charge->is_fixed ? 'checked' : null }}>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div class="form-group col-md-6 col-sm-6 mb-4">
+                            <label class="fw-bold">@lang('Active Percent Charge')</label>
+                            <label class="switch m-0">
+                                <input type="checkbox" class="toggle-switch" name="is_percent" {{ $charge->is_percent ?'checked' : null }}>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
                     <div class="card-footer">
                         <div class="row justify-content-center">
                             <div class="col">

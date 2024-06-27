@@ -110,14 +110,22 @@
                                         <div class="me-auto">
                                             <div>@lang('Service Fee')</div>
                                         </div>
-                                        <span>{{$general->cur_sym}}{{showAmount($charge->fixed)}}</span>
+                                        <span>
+                                            @if($charge->is_fixed ==1)
+                                                {{$general->cur_sym}}{{showAmount($charge->fixed)}}
+                                            @elseif($charge->is_percent == 1)
+                                                {{$charge->percent}}%
+                                            @endif
+
+                                        </span>
                                     </li>
                                     <li class="list-group-item d-flex justify-content-between align-items-start">
                                         <div class="me-auto">
                                             <div class="fw-bold">@lang('Subtotal')</div>
                                         </div>
                                         @php
-                                            $total = $subTotal+$charge->fixed;
+                                            $fee = $charge->is_fixed ? $charge->fixed:($charge->percent/100);
+                                            $total = $subTotal+$fee;
                                         @endphp
                                         <span class="fw-bold">{{$general->cur_sym}}{{showAmount($total)}}</span>
                                     </li>

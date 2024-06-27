@@ -1,11 +1,11 @@
 @extends($activeTemplate.'layouts.frontend')
-
 @section('content')
     <div class="border-bottom shadow-sm">
         <nav class="navbar navbar-light py-2">
             <div class="container justify-content-center justify-content-lg-between">
                 <a class="navbar-brand" href="{{route('home')}}">
-                    <img src="{{ getImage('assets/images/general/logo.png') }}" alt="" class="d-inline-block align-text-top" />
+                    <img src="{{ getImage('assets/images/general/logo.png') }}" alt="logo" class="d-inline-block
+                    align-text-top" />
                 </a>
                 <span class="navbar-text">
                   @lang('Don\'t have an account?')
@@ -32,8 +32,8 @@
                             <p>@lang('Welcome back to'.' '. $general->site_name.' '. 'Enter your email to get started.')</p>
                         </div>
 
-{{--                        <form class="needs-validation" novalidate>--}}
-                        <form method="POST" action="{{ route('user.login') }}" class="verify-gcaptcha">
+                        <form method="POST" action="{{ route('user.login') }}" class="verify-gcaptcha
+                        needs-validation" novalidate>
                             @csrf
                             <div class="row g-3">
                                 <div class="col-12">

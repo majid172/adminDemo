@@ -25,9 +25,12 @@ class ChargeController extends Controller
             'percentage_charge' => 'required|integer'
         ]);
 
+
         $charge = ServiceFee::first();
         $charge->fixed = $request->fixed_charge;
+        $charge->is_fixed = $request->is_fixed??0;
         $charge->percent = $request->percentage_charge;
+        $charge->is_percent = $request->is_percent??0;
         $charge->save();
         $notify[] = ['success','Charge updated successfully.'];
         return back()->withNotify($notify);
