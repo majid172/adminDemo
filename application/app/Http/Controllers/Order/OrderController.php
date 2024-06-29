@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Order;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cart;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -17,19 +19,47 @@ class OrderController extends Controller
     public function orderStore(Request $request)
     {
         $request->validate([
-            'amount' => 'required'
+            'amount' => 'required|numeric',
+//            'product_ids' => 'required|array',
+//            'product_ids.*' => 'exists:products,id'
         ]);
-        $user_id = auth()->user()->id;
+
+        $user = auth()->user();
         $order = new Order();
-        $order->user_id = $user_id;
+        $order->user_id = $user->id;
+        $order->total_amount = $request->amount;
+        $order->shipping_address = json_encode([
+            'address' => $user->address->address,
+            'zip' => $user->address->zip,
+            'city' => $user->address->city,
+            'state' => $user->address->state,
+            'country' => $user->address->country
+        ]);
         $order->status = 1;
+        $order->delivery_ins = $request->delivery_ins;
         $order->save();
 
-        $orderItem = new OrderItem();
-        $orderItem->order_id = $order->id;
-        $orderItem->product_id = json_encode($request->product_id);
-        $orderItem->amount = $request->amount;
-        $orderItem->save();
-        return back();
+        $this->orderItems($request->product_ids, $user->id, $order->id);
+
+        $notify[] = ['success', 'Order stored successfully.'];
+        return back()->withNotify($notify);
     }
+
+    public function orderItems($product_ids, $user_id, $order_id)
+    {
+
+        foreach ($product_ids as $product_id) {
+            $cart = Cart::where(['user_id' => $user_id, 'product_id' => $product_id])->with('products')->first();
+
+            if ($cart) {
+                $orderItem = new OrderItem();
+                $orderItem->order_id = $order_id;
+                $orderItem->product_id = $product_id;
+                $orderItem->quantity = $cart->quantity;
+                $orderItem->price = $cart->products->price;
+                $orderItem->save();
+            }
+        }
+    }
+
 }

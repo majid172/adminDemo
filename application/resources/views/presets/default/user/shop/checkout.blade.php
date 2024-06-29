@@ -76,8 +76,9 @@
                                 <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                                     <div class="mt-5">
                                         <label for="DeliveryInstructions" class="form-label sr-only">@lang('Delivery instructions')</label>
-                                        <textarea class="form-control" id="DeliveryInstructions" rows="3" placeholder="Write delivery instructions "></textarea>
-                                        <p class="form-text">Add instructions for how you want your order shopped and/or delivered</p>
+                                        <textarea class="form-control delivery_ins" id="DeliveryInstructions" name="delivery_ins"
+                                                  rows="3" placeholder="Write delivery instructions "></textarea>
+                                        <p class="form-text">@lang('Add instructions for how you want your order shopped and/or delivered')</p>
                                         <div class="mt-5 d-flex justify-content-end">
                                             <a href="#" class="btn btn-outline-gray-400 text-muted" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
                                                 @lang('Prev')
@@ -208,6 +209,7 @@
                                                 </a>
                                                 <a href="javascript:void(0)" class="btn btn-primary ms-2 order"
                                                    data-carts = "{{$carts}}" data-subTotal="{{$subTotal}}"
+                                                   data-charge="{{$fee->is_fixed?$fee->fixed:($fee->percent/100)}}"
                                                    data-bs-toggle="modal" data-bs-target="#orderModal">@lang('Place Order')</a>
                                             </div>
                                         </div>
@@ -240,6 +242,7 @@
                                                     <span class="fw-bold">{{$general->cur_sym}}{{showAmount
                                                     (optional($cart->products)->price)}}</span>
                                                 </div>
+
                                             </div>
                                         </li>
                                     @empty
@@ -263,6 +266,17 @@
                                             <div>{{$general->cur_sym}}{{showAmount($subTotal)}}</div>
                                         </div>
                                     </li>
+                                    <li class="list-group-item px-4 py-3">
+                                        <div class="d-flex align-items-center justify-content-between fw-bold">
+                                            <div>@lang('Delivery Charge')</div>
+                                            <div>
+                                                @if($fee->is_fixed)
+                                                    {{$general->cur_sym}}{{showAmount($fee->fixed)}}
+                                                @else  {{$fee->percent}}%
+                                                @endif</div>
+                                        </div>
+                                    </li>
+
                                 </ul>
                             </div>
                         </div>
@@ -284,7 +298,8 @@
                     @csrf
                     <div class="modal-body">
                         <div id="productInputs"></div>
-                        <input type="text" name="amount">
+                        <input type="hidden" name="amount">
+                        <textarea name="delivery_ins" cols="30" rows="10" hidden ></textarea>
                         @lang('Confirm your order')
                     </div>
                     <div class="modal-footer">
@@ -301,17 +316,21 @@
     <script>
         $('.order').on('click',function (){
             let carts = $(this).data('carts');
-            let subtotal = $(this).data('subtotal')
-var productInput ='';
-            $('#orderModal').find("input[name='amount']").val(subtotal);
+            let subtotal = $(this).data('subtotal');
+            let charge = $(this).data('charge');
+            let total = subtotal+charge;
+            let delivery_ins = $('.delivery_ins').val();
+            var productInput ='';
+            $('#orderModal').find("input[name='amount']").val(total);
             $.each(carts, function (index, value) {
                 productInput = `
                     <div class="product-input">
-                        <input type="text" name="product_id[]" value="${value.product_id}">
-                        <input type="text" name="quantity[]" value="${value.quantity}">
+                        <input type="hidden" name="product_ids[]" value="${value.product_id}">
+
                     </div>`;
                 $('#productInputs').append(productInput);
             });
+            $('#orderModal').find("textarea[name='delivery_ins']").val(delivery_ins)
 
         });
     </script>

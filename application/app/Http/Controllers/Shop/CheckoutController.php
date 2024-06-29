@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Shop;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
+use App\Models\ServiceFee;
 use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
@@ -18,7 +19,7 @@ class CheckoutController extends Controller
         $subTotal = $carts->map(function ($cart) {
             return $cart->quantity * $cart->products->price;
         })->sum();
-
-        return view($this->activeTemplate.'user.shop.checkout',compact('pageTitle','carts','subTotal'));
+        $fee = ServiceFee::first();
+        return view($this->activeTemplate.'user.shop.checkout',compact('pageTitle','carts','subTotal','fee'));
     }
 }
