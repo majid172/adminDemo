@@ -249,7 +249,8 @@
                                         <li class="list-group-item px-4 py-3">
                                             <div class="row align-items-center">
                                                 <div class="col-2 col-md-2">
-                                                    <img src="../assets/images/products/product-img-1.jpg" alt="Ecommerce" class="img-fluid">
+                                                    <img src="{{asset('assets/images/empty-cart.png')}}"
+                                                         alt="Ecommerce" class="img-fluid">
                                                 </div>
                                                 <div class="col-5 col-md-5">
                                                     <h6 class="mb-0">@lang('Empty Cart')</h6>
@@ -266,16 +267,19 @@
                                             <div>{{$general->cur_sym}}{{showAmount($subTotal)}}</div>
                                         </div>
                                     </li>
-                                    <li class="list-group-item px-4 py-3">
-                                        <div class="d-flex align-items-center justify-content-between fw-bold">
-                                            <div>@lang('Delivery Charge')</div>
-                                            <div>
-                                                @if($fee->is_fixed)
-                                                    {{$general->cur_sym}}{{showAmount($fee->fixed)}}
-                                                @else  {{$fee->percent}}%
-                                                @endif</div>
-                                        </div>
-                                    </li>
+                                        @if($carts->count() < 0)
+                                            <li class="list-group-item px-4 py-3">
+                                                <div class="d-flex align-items-center justify-content-between fw-bold">
+                                                    <div>@lang('Delivery Charge')</div>
+                                                    <div>
+                                                        @if($fee->is_fixed)
+                                                            {{$general->cur_sym}}{{showAmount($fee->fixed)}}
+                                                        @else  {{$fee->percent}}%
+                                                        @endif</div>
+                                                </div>
+                                            </li>
+                                        @endif
+
 
                                 </ul>
                             </div>

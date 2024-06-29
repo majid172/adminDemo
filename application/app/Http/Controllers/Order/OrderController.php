@@ -40,6 +40,7 @@ class OrderController extends Controller
         $order->save();
 
         $this->orderItems($request->product_ids, $user->id, $order->id);
+        $this->removeCart($request->product_ids,$user->id);
 
         $notify[] = ['success', 'Order stored successfully.'];
         return back()->withNotify($notify);
@@ -59,6 +60,14 @@ class OrderController extends Controller
                 $orderItem->price = $cart->products->price;
                 $orderItem->save();
             }
+        }
+    }
+
+    public function removeCart($product_ids,$user_id)
+    {
+        foreach ($product_ids as $product_id) {
+            $cart = Cart::where(['user_id' => $user_id, 'product_id' => $product_id])->with('products')->first();
+            $cart->delete();
         }
     }
 
