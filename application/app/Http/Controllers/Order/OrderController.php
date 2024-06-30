@@ -14,6 +14,8 @@ class OrderController extends Controller
     public function orderList()
     {
         $pageTitle = "My Orders";
+        $orders = Order::where('user_id',auth()->user()->id)->with('orderItems')->get();
+        dd($orders->toArray());
         return view($this->activeTemplate.'user.order.orderList',compact('pageTitle'));
     }
     public function orderStore(Request $request)
