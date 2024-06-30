@@ -14,9 +14,10 @@ class OrderController extends Controller
     public function orderList()
     {
         $pageTitle = "My Orders";
-        $orders = Order::where('user_id',auth()->user()->id)->with('orderItems')->get();
-        dd($orders->toArray());
-        return view($this->activeTemplate.'user.order.orderList',compact('pageTitle'));
+        $orders = Order::where('user_id', auth()->user()->id)
+                    ->with('orderItems.products')
+                    ->get();
+        return view($this->activeTemplate.'user.order.orderList',compact('pageTitle','orders'));
     }
     public function orderStore(Request $request)
     {
@@ -28,6 +29,7 @@ class OrderController extends Controller
 
         $user = auth()->user();
         $order = new Order();
+        $order->order_no = '#'.now()->format('y').now()->format('m').now()->format('d').auth()->user()->id.rand(11,99);
         $order->user_id = $user->id;
         $order->total_amount = $request->amount;
         $order->shipping_address = json_encode([

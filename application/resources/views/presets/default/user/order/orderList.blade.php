@@ -47,57 +47,71 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @forelse()
+                                @forelse($orders as $order)
+                                    @foreach(@$order->orderItems as $product)
+
+                                        <tr>
+                                            <td class="align-middle border-top-0 w-0">
+                                                <a href="#"><img src="{{getImage(getFilePath('product').'/'
+                                                .$product->products->path
+                                                .'/'.$product->products->image)}}"
+                                                                 alt="Ecommerce" class="icon-shape icon-xl" /></a>
+                                            </td>
+                                            <td class="align-middle border-top-0">
+                                                <a href="#" class="fw-semibold text-inherit">
+                                                    <h6 class="mb-0">{{$product->products->name}}</h6>
+                                                </a>
+                                            </td>
+                                            <td class="align-middle border-top-0">
+                                                <a href="#" class="text-inherit">{{$order->order_no}}</a>
+                                            </td>
+                                            <td class="align-middle border-top-0">{{$product->created_at}}</td>
+                                            <td class="align-middle border-top-0">{{$product->quantity}}</td>
+                                            <td class="align-middle border-top-0">
+
+                                                @if($order->status == 1)
+                                                    <span class="badge bg-warning">@lang('Processing')</span>
+                                                @elseif($order->status == 2)
+                                                    <span class="badge bg-primary">@lang('Approved')</span>
+                                                @else
+                                                    <span class="badge bg-success">@lang('Shipped')</span>
+                                                @endif
+
+                                            </td>
+                                            <td class="align-middle border-top-0">{{$general->cur_sym}}{{showAmount
+                                            ($product->price)}}</td>
+                                            <td class="text-muted align-middle border-top-0">
+                                                <a href="#" class="text-inherit" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="View"><i class="feather-icon icon-eye"></i></a>
+                                            </td>
+                                        </tr>
+
+                                    @endforeach
+
                                 @empty
-
+                                    <tr>
+                                        <td class="align-middle border-top-0 w-0">
+                                            <a href="#"><img src="../assets/images/products/product-img-6.jpg" alt="Ecommerce" class="icon-shape icon-xl" /></a>
+                                        </td>
+                                        <td class="align-middle border-top-0">
+                                            <a href="#" class="fw-semibold text-inherit">
+                                                <h6 class="mb-0">Blueberry Greek Yogurt</h6>
+                                            </a>
+                                            <span><small class="text-muted">500 g</small></span>
+                                        </td>
+                                        <td class="align-middle border-top-0">
+                                            <a href="#" class="text-inherit">#12094</a>
+                                        </td>
+                                        <td class="align-middle border-top-0">Oct 03, 2023</td>
+                                        <td class="align-middle border-top-0">4</td>
+                                        <td class="align-middle border-top-0">
+                                            <span class="badge bg-success">Completed</span>
+                                        </td>
+                                        <td class="align-middle border-top-0">$18.00</td>
+                                        <td class="text-muted align-middle border-top-0">
+                                            <a href="#" class="text-inherit" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="View"><i class="feather-icon icon-eye"></i></a>
+                                        </td>
+                                    </tr>
                                 @endforelse
-                                <tr>
-                                    <td class="align-middle border-top-0 w-0">
-                                        <a href="#"><img src="../assets/images/products/product-img-1.jpg" alt="Ecommerce" class="icon-shape icon-xl" /></a>
-                                    </td>
-                                    <td class="align-middle border-top-0">
-                                        <a href="#" class="fw-semibold text-inherit">
-                                            <h6 class="mb-0">Haldiram's Nagpur Aloo Bhujia</h6>
-                                        </a>
-                                        <span><small class="text-muted">400g</small></span>
-                                    </td>
-                                    <td class="align-middle border-top-0">
-                                        <a href="#" class="text-inherit">#14899</a>
-                                    </td>
-                                    <td class="align-middle border-top-0">March 5, 2023</td>
-                                    <td class="align-middle border-top-0">1</td>
-                                    <td class="align-middle border-top-0">
-                                        <span class="badge bg-warning">Processing</span>
-                                    </td>
-                                    <td class="align-middle border-top-0">$15.00</td>
-                                    <td class="text-muted align-middle border-top-0">
-                                        <a href="#" class="text-inherit" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="View"><i class="feather-icon icon-eye"></i></a>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td class="align-middle border-top-0 w-0">
-                                        <a href="#"><img src="../assets/images/products/product-img-6.jpg" alt="Ecommerce" class="icon-shape icon-xl" /></a>
-                                    </td>
-                                    <td class="align-middle border-top-0">
-                                        <a href="#" class="fw-semibold text-inherit">
-                                            <h6 class="mb-0">Blueberry Greek Yogurt</h6>
-                                        </a>
-                                        <span><small class="text-muted">500 g</small></span>
-                                    </td>
-                                    <td class="align-middle border-top-0">
-                                        <a href="#" class="text-inherit">#12094</a>
-                                    </td>
-                                    <td class="align-middle border-top-0">Oct 03, 2023</td>
-                                    <td class="align-middle border-top-0">4</td>
-                                    <td class="align-middle border-top-0">
-                                        <span class="badge bg-success">Completed</span>
-                                    </td>
-                                    <td class="align-middle border-top-0">$18.00</td>
-                                    <td class="text-muted align-middle border-top-0">
-                                        <a href="#" class="text-inherit" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="View"><i class="feather-icon icon-eye"></i></a>
-                                    </td>
-                                </tr>
                                 </tbody>
                             </table>
                         </div>
