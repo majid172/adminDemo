@@ -27,8 +27,18 @@
                 <li class="sidebar-menu-item  {{menuActive('admin.product.list')}}">
                     <a href="{{route('admin.product.list')}}" class="nav-link"
                        data-default-url="{{ route('admin.product.list') }}">
-                        <i class="menu-icon las la-list text-info"></i>
+                        <i class="menu-icon las la-shopping-cart text-warning"></i>
                         <span class="menu-title">@lang('Product List') </span>
+                    </a>
+                </li>
+
+{{--                order --}}
+                <li class="sidebar__menu-header">@lang('Orders')</li>
+                <li class="sidebar-menu-item  {{menuActive('admin.order.list')}}">
+                    <a href="{{route('admin.order.list')}}" class="nav-link"
+                       data-default-url="{{ route('admin.order.list') }}">
+                        <i class="menu-icon las la-shopping-bag text-success"></i>
+                        <span class="menu-title">@lang('List') </span>
                     </a>
                 </li>
 

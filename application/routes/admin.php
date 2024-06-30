@@ -64,6 +64,9 @@ Route::middleware('admin')->group(function () {
         Route::post('/update','update')->name('product.update');
     });
 
+    Route::controller('OrderController')->prefix('orders')->group(function(){
+       Route::get('/list','list')->name('order.list');
+    });
 
     Route::controller('EpisodeController')->prefix('episode')->group(function(){
         Route::get('/create/{category_id}','create')->name('episode.create');
