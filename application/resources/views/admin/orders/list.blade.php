@@ -58,17 +58,19 @@
                                             </a>
                                             <ul class="dropdown-menu" style="">
                                                 <li>
-                                                    <a class="dropdown-item" href="#">
-                                                        <i class="las la-trash me-3"></i>
-                                                        @lang('Delete')
+                                                    <a class="dropdown-item" href="{{route('admin.order.details',
+                                                    $product->id)}}">
+                                                        <i class="las la-eye me-1"></i>
+                                                        @lang('Details')
                                                     </a>
                                                 </li>
                                                 <li>
                                                     <a class="dropdown-item" href="#">
-                                                        <i class="bi bi-pencil-square me-3"></i>
-                                                        Edit
+                                                        <i class="las la-trash me-1"></i>
+                                                        @lang('Delete')
                                                     </a>
                                                 </li>
+
                                             </ul>
                                         </div>
                                     </td>
