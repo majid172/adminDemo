@@ -81,7 +81,7 @@
                                             <td class="align-middle border-top-0">{{$general->cur_sym}}{{showAmount
                                             ($product->price)}}</td>
                                             <td class="text-muted align-middle border-top-0">
-                                                <a href="#" class="text-inherit" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="View"><i class="feather-icon icon-eye"></i></a>
+                                                <a href="{{route('user.single.order')}}" class="text-inherit" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="View"><i class="feather-icon icon-eye"></i></a>
                                             </td>
                                         </tr>
 

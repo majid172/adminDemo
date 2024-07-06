@@ -77,7 +77,8 @@ class OrderController extends Controller
 
     public function singleOrder()
     {
-        return view($this->activeTemplate.'user.order.singleOrder');
+        $pageTitle = 'Single Order';
+        return view($this->activeTemplate.'user.order.singleOrder',compact('pageTitle'));
     }
 
 }
