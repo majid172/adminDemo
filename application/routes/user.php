@@ -92,6 +92,9 @@ Route::middleware('auth')->name('user.')->group(function () {
 //            order
             Route::get('/my-orders',[OrderController::class,'orderList'])->name('orders.list');
             Route::post('/order-store',[OrderController::class,'orderStore'])->name('orders.store');
+            Route::get('/single-order',[OrderController::class,'singleOrder'])->name('single.order');
+
+
             // Withdraw
             Route::controller('WithdrawController')->prefix('withdraw')->name('withdraw')->group(function(){
                 Route::get('/', 'withdrawMoney');

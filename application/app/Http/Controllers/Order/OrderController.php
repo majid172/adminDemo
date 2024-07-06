@@ -75,4 +75,9 @@ class OrderController extends Controller
         }
     }
 
+    public function singleOrder()
+    {
+        return view($this->activeTemplate.'user.order.singleOrder');
+    }
+
 }
