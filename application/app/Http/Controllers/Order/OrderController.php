@@ -75,10 +75,17 @@ class OrderController extends Controller
         }
     }
 
-    public function singleOrder()
+    public function singleOrder($orderId)
     {
         $pageTitle = 'Single Order';
-        return view($this->activeTemplate.'user.order.singleOrder',compact('pageTitle'));
+        $user = auth()->user();
+        $order = Order::where('id',$orderId)->with('orderItems.products','user')->whereHas('user',function ($query) use($user){
+            $query->where('id',$user->id);
+        })->first();
+//        dd($order->toArray());
+//        $user = auth()->user();
+
+        return view($this->activeTemplate.'user.order.singleOrder',compact('pageTitle','order'));
     }
 
 }
