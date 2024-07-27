@@ -72,6 +72,8 @@ Route::middleware('auth')->name('user.')->group(function () {
 
 //            shop
             Route::get('/shop-list',[\App\Http\Controllers\Shop\ShopListController::class,'list'])->name('shop.list');
+            Route::get('category/shop-list/{productId}',[\App\Http\Controllers\Shop\ShopListController::class,'filterList'])
+                ->name('shop.filter-list');
             Route::get('/snigle/{id}',[\App\Http\Controllers\Shop\ShopListController::class,'singleShop'])->name('shop.single');
 
             Route::get('wishlist',[\App\Http\Controllers\Shop\WishListController::class,'list'])->name('shop.wishlist');

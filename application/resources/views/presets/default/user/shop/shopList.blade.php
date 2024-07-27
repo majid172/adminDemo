@@ -3,7 +3,6 @@
 
 @section('content')
     @include($activeTemplate.'includes.breadcumb')
-
     <div class="mt-8 mb-lg-14 mb-8">
             <!-- container -->
             <div class="container">
@@ -36,7 +35,8 @@
 
                                                         <ul class="nav flex-column ms-3">
                                                             @forelse(@$category->products as $product)
-                                                                <li class="nav-item"><a href="#!" class="nav-link">{{$product->name}}</a></li>
+                                                                <li class="nav-item"><a href="{{route('user.shop.filter-list',$product->id)}}"
+                                                                                        class="nav-link">{{$product->name}}</a></li>
                                                             @empty
                                                                 <li class="nav-item"><a href="#!" class="nav-link">@lang('Empty Product')</a></li>
                                                             @endforelse
@@ -206,7 +206,7 @@
                         <div class="card mb-4 bg-light border-0">
                             <!-- card body -->
                             <div class="card-body p-9">
-                                <h2 class="mb-0 fs-1">Snacks & Munchies</h2>
+                                <h2 class="mb-0 fs-1">{{__($title->cat_name??'Shop List')}}</h2>
                             </div>
                         </div>
                         <!-- list icon -->
