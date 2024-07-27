@@ -108,15 +108,25 @@
                                     <input type="number" name="quantity" id="quantity" class="form-control" placeholder="@lang('Enter product quantity')" required>
                                 </div>
                             </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="img">@lang('Product Image')</label>
+                                    <input type="file" name="image" id="img" class="form-control dropify" required>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="code">@lang('Product Code')</label>
+                                    <input type="text" name="code" id="code" class="form-control"
+                                           placeholder="@lang('Enter product code')" required>
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="description">@lang('Description')</label>
                             <textarea name="description" id="description" class="form-control" placeholder="@lang('Write product description ...')" required></textarea>
                         </div>
-                        <div class="form-group">
-                            <label for="img">@lang('Product Image')</label>
-                            <input type="file" name="image" id="img" class="form-control dropify" required>
-                        </div>
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">@lang('Close')</button>
@@ -171,15 +181,25 @@
                                     <input type="number" name="quantity" id="quantity" class="form-control" placeholder="Enter product quantity" required>
                                 </div>
                             </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="img">@lang('Product Image')</label>
+                                    <input type="file" name="image" id="img" class="form-control dropify" required>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="code">@lang('Code')</label>
+                                    <input type="text" name="code" id="code" class="form-control"
+                                           placeholder="Enter product code" required>
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="description">@lang('Description')</label>
                             <textarea name="description" id="description" class="form-control" placeholder="@lang('Write product description ...')" required></textarea>
                         </div>
-                        <div class="form-group">
-                            <label for="img">@lang('Product Image')</label>
-                            <input type="file" name="image" id="img" class="form-control dropify" required>
-                        </div>
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">@lang('Close')</button>
@@ -252,6 +272,7 @@
                 $('#edit').find('select[name="cat_id"]').val(product.cat_id);
                 $('#edit').find('input[name="price"]').val(product.price);
                 $('#edit').find('input[name="quantity"]').val(product.quantity);
+                $('#edit').find('input[name="code"]').val(product.code);
                 $('#edit').find('textarea[name="description"]').val(product.description);
 
                 $('#edit').find('.dropify').dropify(); // Reinitialize Dropify for the edit modal
