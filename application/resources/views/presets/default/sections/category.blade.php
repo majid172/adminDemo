@@ -12,12 +12,11 @@
         <div class="category-slider">
             @foreach($categories as $category)
                 <div class="item">
-                    <a href="pages/shop-grid.html" class="text-decoration-none text-inherit">
+                    <a href="{{route('user.shop.list')}}" class="text-decoration-none text-inherit">
                         <div class="card card-product mb-lg-4">
                             <div class="card-body text-center py-8">
                                 <img src="{{getImage(getFilePath('category').'/'.$category->path.'/'.$category->image)}}"
-                                     alt="Grocery
-                                Ecommerce Template"
+                                     alt="Grocery Ecommerce"
                                      class="mb-3 img-fluid" />
                                 <div class="text-truncate">{{__($category->cat_name)}}</div>
                             </div>
@@ -25,8 +24,6 @@
                     </a>
                 </div>
             @endforeach
-
-
         </div>
     </div>
 </section>
