@@ -1,6 +1,6 @@
 @extends($activeTemplate.'layouts.master')
 @section('content')
-    <div class="container">
+    <div class="container" xmlns="http://www.w3.org/1999/html">
         <!-- row -->
         <div class="row mb-8">
             <div class="col-md-12">
@@ -21,7 +21,7 @@
             </div>
         </div>
         <!-- row -->
-        <div class="row">
+        <div class="row" id="invoice-content">
             <div class="col-xl-12 col-12 mb-5">
                 <!-- card -->
                 <div class="card h-100 card-lg">
@@ -41,7 +41,9 @@
                             <!-- select option -->
                             <div class="d-md-flex">
                                 <div class="ms-md-3">
-                                    <a href="javascript:void(0)" class="btn btn-sm btn-light-info">@lang('Download Invoice')</a>
+                                    <a href="javascript:void(0)" class="btn btn-sm btn-light-info" id="download"><i
+                                            class="las la-download fs-5"></i> @lang('Download Invoice')</a>
+                                    <button class="btn btn-sm btn-light-danger"><i class="las la-money-bill-wave "></i> @lang('Unpaid')</button>
                                 </div>
                             </div>
                         </div>
@@ -170,3 +172,18 @@
         </div>
     </div>
 @endsection
+@push('script')
+    <script>
+        $('#download').on('click', function () {
+            var content = $('#invoice-content').html();
+            var printWindow = window.open('', '', 'height=600,width=800');
+            printWindow.document.write('<html>');
+            printWindow.document.write('<body>');
+            printWindow.document.write(content);
+            printWindow.document.write('</body></html>');
+            printWindow.document.close();
+            printWindow.print();
+            // window.print();
+        });
+    </script>
+@endpush
