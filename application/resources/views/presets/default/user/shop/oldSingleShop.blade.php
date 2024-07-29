@@ -7,56 +7,66 @@
             <div class="row">
                 <div class="col-md-6">
                     <!-- img slide -->
-                    <div class="product" id="product">
-                        <div class="zoom" onmousemove="zoom(event)" style="background-image: url(../assets/images/products/product-single-img-1.jpg)">
-                            <!-- img -->
-                            <!-- img -->
-                            <img src="../assets/images/products/product-single-img-1.jpg" alt="" />
-                        </div>
-                        <div>
-                            <div class="zoom" onmousemove="zoom(event)" style="background-image: url(../assets/images/products/product-single-img-2.jpg)">
-                                <!-- img -->
-                                <img src="../assets/images/products/product-single-img-2.jpg" alt="" />
-                            </div>
-                        </div>
-                        <div>
-                            <div class="zoom" onmousemove="zoom(event)" style="background-image: url(../assets/images/products/product-single-img-3.jpg)">
-                                <!-- img -->
-                                <img src="../assets/images/products/product-single-img-3.jpg" alt="" />
-                            </div>
-                        </div>
-                        <div>
-                            <div class="zoom" onmousemove="zoom(event)" style="background-image: url(../assets/images/products/product-single-img-4.jpg)">
-                                <!-- img -->
-                                <img src="../assets/images/products/product-single-img-4.jpg" alt="" />
-                            </div>
-                        </div>
-                    </div>
+                    <div class="tns-outer" id="product-ow"><div class="tns-liveregion tns-visually-hidden" aria-live="polite" aria-atomic="true">slide <span class="current">2</span>  of 4</div><div id="product-mw" class="tns-ovh"><div class="tns-inner" id="product-iw"><div class="product  tns-slider tns-carousel tns-subpixel tns-calc tns-horizontal" id="product" style="transition-duration: 0s; transform: translate3d(-16.6667%, 0px, 0px);">
+                                    <div class="tns-item tns-slide-cloned" aria-hidden="true" tabindex="-1">
+                                        <div class="zoom" onmousemove="zoom(event)" style="background-image: url({{getImage(getFilePath('product').'/'.$product->path.'/'.$product->image)}})">
+                                            <!-- img -->
+                                            <img src="{{getImage(getFilePath('product').'/'.$product->path.'/'.$product->image)}}" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="zoom tns-item tns-slide-active" onmousemove="zoom(event)" style="background-image: url(&quot;{{getImage(getFilePath('product').'/'.$product->path.'/'.$product->image)}}&quot;); background-position: 94.2675% 68.5775%;" id="product-item0">
+                                        <!-- img -->
+                                        <!-- img -->
+                                        <img src="{{getImage(getFilePath('product').'/'.$product->path.'/'.$product->image)}}" alt="">
+                                    </div>
+                                    <div class="tns-item" id="product-item1" aria-hidden="true" tabindex="-1">
+                                        <div class="zoom" onmousemove="zoom(event)" style="background-image: url({{getImage(getFilePath('product').'/'.$product->path.'/'.$product->image)}})">
+                                            <!-- img -->
+                                            <img src="{{getImage(getFilePath('product').'/'.$product->path.'/'.$product->image)}}" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="tns-item" id="product-item2" aria-hidden="true" tabindex="-1">
+                                        <div class="zoom" onmousemove="zoom(event)" style="background-image: url(../assets/images/products/product-single-img-3.jpg)">
+                                            <!-- img -->
+                                            <img src="../assets/images/products/product-single-img-3.jpg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="tns-item" id="product-item3" aria-hidden="true" tabindex="-1">
+                                        <div class="zoom" onmousemove="zoom(event)" style="background-image: url(../assets/images/products/product-single-img-4.jpg)">
+                                            <!-- img -->
+                                            <img src="../assets/images/products/product-single-img-4.jpg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="zoom tns-item tns-slide-cloned" onmousemove="zoom(event)" style="background-image: url(../assets/images/products/product-single-img-1.jpg)" aria-hidden="true" tabindex="-1">
+                                        <!-- img -->
+                                        <!-- img -->
+                                        <img src="../assets/images/products/product-single-img-1.jpg" alt="">
+                                    </div></div></div></div></div>
                     <!-- product tools -->
                     <div class="product-tools">
-                        <div class="thumbnails row g-3" id="productThumbnails">
-                            <div class="col-3">
+                        <div class="thumbnails row g-3" id="productThumbnails" aria-label="Carousel Pagination">
+                            <div class="col-3 tns-nav-active" data-nav="0" aria-label="Carousel Page 1 (Current Slide)" aria-controls="product">
                                 <div class="thumbnails-img">
                                     <!-- img -->
-                                    <img src="../assets/images/products/product-single-img-1.jpg" alt="" />
+                                    <img src="{{getImage(getFilePath('product').'/'.$product->path.'/'.$product->image)}}" alt="">
                                 </div>
                             </div>
-                            <div class="col-3">
+                            <div class="col-3" data-nav="1" tabindex="-1" aria-label="Carousel Page 2" aria-controls="product">
                                 <div class="thumbnails-img">
                                     <!-- img -->
-                                    <img src="../assets/images/products/product-single-img-2.jpg" alt="" />
+                                    <img src="{{getImage(getFilePath('product').'/'.$product->path.'/'.$product->image)}}" alt="">
                                 </div>
                             </div>
-                            <div class="col-3">
+                            <div class="col-3" data-nav="2" tabindex="-1" aria-label="Carousel Page 3" aria-controls="product">
                                 <div class="thumbnails-img">
                                     <!-- img -->
-                                    <img src="../assets/images/products/product-single-img-3.jpg" alt="" />
+                                    <img src="{{getImage(getFilePath('product').'/'.$product->path.'/'.$product->image)}}" alt="">
                                 </div>
                             </div>
-                            <div class="col-3">
+                            <div class="col-3" data-nav="3" tabindex="-1" aria-label="Carousel Page 4" aria-controls="product">
                                 <div class="thumbnails-img">
                                     <!-- img -->
-                                    <img src="../assets/images/products/product-single-img-4.jpg" alt="" />
+                                    <img src="../assets/images/products/product-single-img-4.jpg" alt="">
                                 </div>
                             </div>
                         </div>
@@ -65,9 +75,9 @@
                 <div class="col-md-6">
                     <div class="ps-lg-10 mt-6 mt-md-0">
                         <!-- content -->
-                        <a href="javascript:void(0)" class="mb-4 d-block">{{optional($product->category)->cat_name}}</a>
+                        <a href="#!" class="mb-4 d-block">{{__($product->category->cat_name)}}</a>
                         <!-- heading -->
-                        <h1 class="mb-1">{{$product->name}}</h1>
+                        <h1 class="mb-1">{{__($product->name)}}</h1>
                         <div class="mb-4">
                             <!-- rating -->
                             <!-- rating -->
@@ -82,12 +92,14 @@
                         </div>
                         <div class="fs-4">
                             <!-- price -->
-                            <span class="fw-bold text-dark">{{$general->cur_sym}} {{showAmount($product->price)}}</span>
+                            <span class="fw-bold text-dark">{{$general->cur_sym}}
+                                {{showAmount($product->price)}}</span>
                             <span class="text-decoration-line-through text-muted">$35</span>
-                            <span><small class="fs-6 ms-2 text-danger">{{$product->discount}} @lang('Off')</small></span>
+                            <span><small class="fs-6 ms-2 text-danger">{{$product->discount}} @lang('Off')
+                                </small></span>
                         </div>
                         <!-- hr -->
-                        <hr class="my-6" />
+                        <hr class="my-6">
                         <div class="mb-5">
                             <button type="button" class="btn btn-outline-secondary">250g</button>
                             <!-- btn -->
@@ -98,18 +110,18 @@
                         <div>
                             <!-- input -->
                             <div class="input-group input-spinner">
-                                <input type="button" value="-" class="button-minus btn btn-sm" data-field="quantity" />
-                                <input type="number" step="1" max="10" value="1" name="quantity" class="quantity-field form-control-sm form-input" />
-                                <input type="button" value="+" class="button-plus btn btn-sm" data-field="quantity" />
+                                <input type="button" value="-" class="button-minus btn btn-sm" data-field="quantity">
+                                <input type="number" step="1" max="10" value="1" name="quantity"
+                                       class="quantity-field form-control-sm form-input" id="quantity">
+                                <input type="button" value="+" class="button-plus btn btn-sm" data-field="quantity">
                             </div>
                         </div>
                         <div class="mt-3 row justify-content-start g-2 align-items-center">
                             <div class="col-xxl-4 col-lg-4 col-md-5 col-5 d-grid">
-                                <!-- button -->
-                                <!-- btn -->
-                                <button type="button" class="btn btn-primary">
+                                <button type="button" class="btn btn-primary addCart" data-product="{{$product}}"
+                                        data-user_id="{{auth()->user()->id}}">
                                     <i class="feather-icon icon-shopping-bag me-2"></i>
-                                    Add to cart
+                                    @lang('Add to cart')
                                 </button>
                             </div>
                             <div class="col-md-4 col-4">
@@ -119,7 +131,7 @@
                             </div>
                         </div>
                         <!-- hr -->
-                        <hr class="my-6" />
+                        <hr class="my-6">
                         <div>
                             <!-- table -->
                             <table class="table table-borderless mb-0">
@@ -187,7 +199,6 @@
         </div>
     </section>
 
-{{--    tablist--}}
     <section class="mt-lg-14 mt-8">
         <div class="container">
             <div class="row">
@@ -196,64 +207,26 @@
                         <!-- nav item -->
                         <li class="nav-item" role="presentation">
                             <!-- btn -->
-                            <button
-                                class="nav-link active"
-                                id="product-tab"
-                                data-bs-toggle="tab"
-                                data-bs-target="#product-tab-pane"
-                                type="button"
-                                role="tab"
-                                aria-controls="product-tab-pane"
-                                aria-selected="true">
+                            <button class="nav-link active" id="product-tab" data-bs-toggle="tab" data-bs-target="#product-tab-pane" type="button" role="tab" aria-controls="product-tab-pane" aria-selected="true">
                                 Product Details
                             </button>
                         </li>
                         <!-- nav item -->
                         <li class="nav-item" role="presentation">
                             <!-- btn -->
-                            <button
-                                class="nav-link"
-                                id="details-tab"
-                                data-bs-toggle="tab"
-                                data-bs-target="#details-tab-pane"
-                                type="button"
-                                role="tab"
-                                aria-controls="details-tab-pane"
-                                aria-selected="false">
+                            <button class="nav-link" id="details-tab" data-bs-toggle="tab" data-bs-target="#details-tab-pane" type="button" role="tab" aria-controls="details-tab-pane" aria-selected="false" tabindex="-1">
                                 Information
                             </button>
                         </li>
                         <!-- nav item -->
                         <li class="nav-item" role="presentation">
                             <!-- btn -->
-                            <button
-                                class="nav-link"
-                                id="reviews-tab"
-                                data-bs-toggle="tab"
-                                data-bs-target="#reviews-tab-pane"
-                                type="button"
-                                role="tab"
-                                aria-controls="reviews-tab-pane"
-                                aria-selected="false">
+                            <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews-tab-pane" type="button" role="tab" aria-controls="reviews-tab-pane" aria-selected="false" tabindex="-1">
                                 Reviews
                             </button>
                         </li>
                         <!-- nav item -->
-                        <li class="nav-item" role="presentation">
-                            <!-- btn -->
-                            <button
-                                class="nav-link"
-                                id="sellerInfo-tab"
-                                data-bs-toggle="tab"
-                                data-bs-target="#sellerInfo-tab-pane"
-                                type="button"
-                                role="tab"
-                                aria-controls="sellerInfo-tab-pane"
-                                aria-selected="false"
-                                disabled>
-                                Seller Info
-                            </button>
-                        </li>
+
                     </ul>
                     <!-- tab content -->
                     <div class="tab-content" id="myTabContent">
@@ -262,7 +235,7 @@
                             <div class="my-8">
                                 <div class="mb-5">
                                     <!-- text -->
-                                    <h4 class="mb-1">Nutrient Value & Benefits</h4>
+                                    <h4 class="mb-1">Nutrient Value &amp; Benefits</h4>
                                     <p class="mb-0">
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nisi, tellus iaculis urna bibendum in lacus, integer. Id imperdiet vitae varius sed magnis eu nisi nunc
                                         sit. Vel, varius habitant ornare ac rhoncus. Consequat risus facilisis ante ipsum netus risus adipiscing sagittis sed. Lorem ipsum dolor sit amet, consectetur
@@ -476,7 +449,7 @@
                                                 </div>
                                                 <div>
                                                     <select class="form-select">
-                                                        <option selected>Top Reviews</option>
+                                                        <option selected="">Top Reviews</option>
                                                         <option value="Most Recent">Most Recent</option>
                                                     </select>
                                                 </div>
@@ -484,7 +457,7 @@
                                             <div class="d-flex border-bottom pb-6 mb-6">
                                                 <!-- img -->
                                                 <!-- img -->
-                                                <img src="../assets/images/avatar/avatar-10.jpg" alt="" class="rounded-circle avatar-lg" />
+                                                <img src="../assets/images/avatar/avatar-10.jpg" alt="" class="rounded-circle avatar-lg">
                                                 <div class="ms-5">
                                                     <h6 class="mb-1">Shankar Subbaraman</h6>
                                                     <!-- select option -->
@@ -510,15 +483,15 @@
                                                     <div>
                                                         <div class="border icon-shape icon-lg border-2">
                                                             <!-- img -->
-                                                            <img src="../assets/images/products/product-img-1.jpg" alt="" class="img-fluid" />
+                                                            <img src="../assets/images/products/product-img-1.jpg" alt="" class="img-fluid">
                                                         </div>
                                                         <div class="border icon-shape icon-lg border-2 ms-1">
                                                             <!-- img -->
-                                                            <img src="../assets/images/products/product-img-2.jpg" alt="" class="img-fluid" />
+                                                            <img src="../assets/images/products/product-img-2.jpg" alt="" class="img-fluid">
                                                         </div>
                                                         <div class="border icon-shape icon-lg border-2 ms-1">
                                                             <!-- img -->
-                                                            <img src="../assets/images/products/product-img-3.jpg" alt="" class="img-fluid" />
+                                                            <img src="../assets/images/products/product-img-3.jpg" alt="" class="img-fluid">
                                                         </div>
                                                     </div>
                                                     <!-- icon -->
@@ -536,7 +509,7 @@
                                             </div>
                                             <div class="d-flex border-bottom pb-6 mb-6 pt-4">
                                                 <!-- img -->
-                                                <img src="../assets/images/avatar/avatar-12.jpg" alt="" class="rounded-circle avatar-lg" />
+                                                <img src="../assets/images/avatar/avatar-12.jpg" alt="" class="rounded-circle avatar-lg">
                                                 <div class="ms-5">
                                                     <h6 class="mb-1">Robert Thomas</h6>
                                                     <!-- content -->
@@ -574,7 +547,7 @@
                                             </div>
                                             <div class="d-flex border-bottom pb-6 mb-6 pt-4">
                                                 <!-- img -->
-                                                <img src="../assets/images/avatar/avatar-9.jpg" alt="" class="rounded-circle avatar-lg" />
+                                                <img src="../assets/images/avatar/avatar-9.jpg" alt="" class="rounded-circle avatar-lg">
                                                 <div class="ms-5">
                                                     <h6 class="mb-1">Barbara Tay</h6>
                                                     <!-- content -->
@@ -609,7 +582,7 @@
                                             </div>
                                             <div class="d-flex border-bottom pb-6 mb-6 pt-4">
                                                 <!-- img -->
-                                                <img src="../assets/images/avatar/avatar-8.jpg" alt="" class="rounded-circle avatar-lg" />
+                                                <img src="../assets/images/avatar/avatar-8.jpg" alt="" class="rounded-circle avatar-lg">
                                                 <div class="ms-5 flex-grow-1">
                                                     <h6 class="mb-1">Sandra Langevin</h6>
                                                     <!-- content -->
@@ -627,7 +600,7 @@
                                                         <span class="ms-3 text-dark fw-bold">Great product</span>
                                                     </div>
 
-                                                    <p>Great product & package. Delivery can be expedited.</p>
+                                                    <p>Great product &amp; package. Delivery can be expedited.</p>
 
                                                     <!-- icon -->
                                                     <div class="d-flex justify-content-end mt-4">
@@ -651,33 +624,33 @@
                                             <h3 class="mb-5">Create Review</h3>
                                             <div class="border-bottom py-4 mb-4">
                                                 <h4 class="mb-3">Overall rating</h4>
-                                                <div class="rater"></div>
+                                                <div class="rater star-rating" style="width: 100px; height: 20px; background-size: 20px;"><div class="star-value" style="background-size: 20px; width: 0px;"></div></div>
                                             </div>
                                             <div class="border-bottom py-4 mb-4">
                                                 <h4 class="mb-0">Rate Features</h4>
                                                 <div class="my-5">
                                                     <h5>Flavor</h5>
-                                                    <div class="rater"></div>
+                                                    <div class="rater star-rating" style="width: 100px; height: 20px; background-size: 20px;"><div class="star-value" style="background-size: 20px; width: 0px;"></div></div>
                                                 </div>
                                                 <div class="my-5">
                                                     <h5>Value for money</h5>
-                                                    <div class="rater"></div>
+                                                    <div class="rater star-rating" style="width: 100px; height: 20px; background-size: 20px;"><div class="star-value" style="background-size: 20px; width: 0px;"></div></div>
                                                 </div>
                                                 <div class="my-5">
                                                     <h5>Scent</h5>
-                                                    <div class="rater"></div>
+                                                    <div class="rater star-rating" style="width: 100px; height: 20px; background-size: 20px;"><div class="star-value" style="background-size: 20px; width: 0px;"></div></div>
                                                 </div>
                                             </div>
                                             <!-- form control -->
                                             <div class="border-bottom py-4 mb-4">
                                                 <h5>Add a headline</h5>
-                                                <input type="text" class="form-control" placeholder="What’s most important to know" />
+                                                <input type="text" class="form-control" placeholder="What’s most important to know">
                                             </div>
                                             <div class="border-bottom py-4 mb-4">
                                                 <h5>Add a photo or video</h5>
                                                 <p>Shoppers find images and videos more helpful than text alone.</p>
 
-                                                <div id="my-dropzone" class="dropzone mt-4 border-dashed rounded-2 min-h-0"></div>
+                                                <div id="my-dropzone" class="dropzone mt-4 border-dashed rounded-2 min-h-0 dz-clickable"><div class="dz-default dz-message"><button class="dz-button" type="button">Drop files here to upload</button></div></div>
                                             </div>
                                             <div class="py-4 mb-4">
                                                 <!-- heading -->
@@ -700,7 +673,7 @@
             </div>
         </div>
     </section>
-    <!-- section -->
+
     <section class="my-lg-14 my-14">
         <div class="container">
             <!-- row -->
@@ -724,20 +697,20 @@
                                 </div>
                                 <a href="#!">
                                     <!-- img -->
-                                    <img src="../assets/images/products/product-img-1.jpg" alt="Grocery Ecommerce Template" class="mb-3 img-fluid" />
+                                    <img src="../assets/images/products/product-img-1.jpg" alt="Grocery Ecommerce Template" class="mb-3 img-fluid">
                                 </a>
                                 <!-- action btn -->
                                 <div class="card-product-action">
                                     <a href="#!" class="btn-action" data-bs-toggle="modal" data-bs-target="#quickViewModal">
-                                        <i class="bi bi-eye" data-bs-toggle="tooltip" data-bs-html="true" title="Quick View"></i>
+                                        <i class="bi bi-eye" data-bs-toggle="tooltip" data-bs-html="true" aria-label="Quick View" data-bs-original-title="Quick View"></i>
                                     </a>
-                                    <a href="shop-wishlist.html" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true" title="Wishlist"><i class="bi bi-heart"></i></a>
-                                    <a href="#!" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true" title="Compare"><i class="bi bi-arrow-left-right"></i></a>
+                                    <a href="shop-wishlist.html" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true" aria-label="Wishlist" data-bs-original-title="Wishlist"><i class="bi bi-heart"></i></a>
+                                    <a href="#!" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true" aria-label="Compare" data-bs-original-title="Compare"><i class="bi bi-arrow-left-right"></i></a>
                                 </div>
                             </div>
                             <!-- heading -->
                             <div class="text-small mb-1">
-                                <a href="#!" class="text-decoration-none text-muted"><small>Snack & Munchies</small></a>
+                                <a href="#!" class="text-decoration-none text-muted"><small>Snack &amp; Munchies</small></a>
                             </div>
                             <h2 class="fs-6"><a href="#!" class="text-inherit text-decoration-none">Haldiram's Sev Bhujia</a></h2>
                             <div>
@@ -760,17 +733,7 @@
                                 <!-- btn -->
                                 <div>
                                     <a href="#!" class="btn btn-primary btn-sm">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width="16"
-                                            height="16"
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            stroke-width="2"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            class="feather feather-plus">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
                                             <line x1="12" y1="5" x2="12" y2="19"></line>
                                             <line x1="5" y1="12" x2="19" y2="12"></line>
                                         </svg>
@@ -787,19 +750,19 @@
                         <div class="card-body">
                             <!-- badge -->
                             <div class="text-center position-relative">
-                                <a href="#!"><img src="../assets/images/products/product-img-2.jpg" alt="Grocery Ecommerce Template" class="mb-3 img-fluid" /></a>
+                                <a href="#!"><img src="../assets/images/products/product-img-2.jpg" alt="Grocery Ecommerce Template" class="mb-3 img-fluid"></a>
                                 <!-- action btn -->
                                 <div class="card-product-action">
                                     <a href="#!" class="btn-action" data-bs-toggle="modal" data-bs-target="#quickViewModal">
-                                        <i class="bi bi-eye" data-bs-toggle="tooltip" data-bs-html="true" title="Quick View"></i>
+                                        <i class="bi bi-eye" data-bs-toggle="tooltip" data-bs-html="true" aria-label="Quick View" data-bs-original-title="Quick View"></i>
                                     </a>
-                                    <a href="shop-wishlist.html" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true" title="Wishlist"><i class="bi bi-heart"></i></a>
-                                    <a href="#!" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true" title="Compare"><i class="bi bi-arrow-left-right"></i></a>
+                                    <a href="shop-wishlist.html" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true" aria-label="Wishlist" data-bs-original-title="Wishlist"><i class="bi bi-heart"></i></a>
+                                    <a href="#!" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true" aria-label="Compare" data-bs-original-title="Compare"><i class="bi bi-arrow-left-right"></i></a>
                                 </div>
                             </div>
                             <!-- heading -->
                             <div class="text-small mb-1">
-                                <a href="#!" class="text-decoration-none text-muted"><small>Bakery & Biscuits</small></a>
+                                <a href="#!" class="text-decoration-none text-muted"><small>Bakery &amp; Biscuits</small></a>
                             </div>
                             <h2 class="fs-6"><a href="#!" class="text-inherit text-decoration-none">NutriChoice Digestive</a></h2>
                             <div class="text-warning">
@@ -818,17 +781,7 @@
                                 <!-- btn -->
                                 <div>
                                     <a href="#!" class="btn btn-primary btn-sm">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width="16"
-                                            height="16"
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            stroke-width="2"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            class="feather feather-plus">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
                                             <line x1="12" y1="5" x2="12" y2="19"></line>
                                             <line x1="5" y1="12" x2="19" y2="12"></line>
                                         </svg>
@@ -845,19 +798,19 @@
                         <div class="card-body">
                             <!-- badge -->
                             <div class="text-center position-relative">
-                                <a href="#!"><img src="../assets/images/products/product-img-3.jpg" alt="Grocery Ecommerce Template" class="mb-3 img-fluid" /></a>
+                                <a href="#!"><img src="../assets/images/products/product-img-3.jpg" alt="Grocery Ecommerce Template" class="mb-3 img-fluid"></a>
                                 <!-- action btn -->
                                 <div class="card-product-action">
                                     <a href="#!" class="btn-action" data-bs-toggle="modal" data-bs-target="#quickViewModal">
-                                        <i class="bi bi-eye" data-bs-toggle="tooltip" data-bs-html="true" title="Quick View"></i>
+                                        <i class="bi bi-eye" data-bs-toggle="tooltip" data-bs-html="true" aria-label="Quick View" data-bs-original-title="Quick View"></i>
                                     </a>
-                                    <a href="shop-wishlist.html" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true" title="Wishlist"><i class="bi bi-heart"></i></a>
-                                    <a href="#!" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true" title="Compare"><i class="bi bi-arrow-left-right"></i></a>
+                                    <a href="shop-wishlist.html" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true" aria-label="Wishlist" data-bs-original-title="Wishlist"><i class="bi bi-heart"></i></a>
+                                    <a href="#!" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true" aria-label="Compare" data-bs-original-title="Compare"><i class="bi bi-arrow-left-right"></i></a>
                                 </div>
                             </div>
                             <!-- heading -->
                             <div class="text-small mb-1">
-                                <a href="#!" class="text-decoration-none text-muted"><small>Bakery & Biscuits</small></a>
+                                <a href="#!" class="text-decoration-none text-muted"><small>Bakery &amp; Biscuits</small></a>
                             </div>
                             <h2 class="fs-6"><a href="#!" class="text-inherit text-decoration-none">Cadbury 5 Star Chocolate</a></h2>
                             <div class="text-warning">
@@ -879,17 +832,7 @@
                                 <!-- btn -->
                                 <div>
                                     <a href="#!" class="btn btn-primary btn-sm">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width="16"
-                                            height="16"
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            stroke-width="2"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            class="feather feather-plus">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
                                             <line x1="12" y1="5" x2="12" y2="19"></line>
                                             <line x1="5" y1="12" x2="19" y2="12"></line>
                                         </svg>
@@ -906,19 +849,19 @@
                         <div class="card-body">
                             <!-- badge -->
                             <div class="text-center position-relative">
-                                <a href="#!"><img src="../assets/images/products/product-img-4.jpg" alt="Grocery Ecommerce Template" class="mb-3 img-fluid" /></a>
+                                <a href="#!"><img src="../assets/images/products/product-img-4.jpg" alt="Grocery Ecommerce Template" class="mb-3 img-fluid"></a>
                                 <!-- action btn -->
                                 <div class="card-product-action">
                                     <a href="#!" class="btn-action" data-bs-toggle="modal" data-bs-target="#quickViewModal">
-                                        <i class="bi bi-eye" data-bs-toggle="tooltip" data-bs-html="true" title="Quick View"></i>
+                                        <i class="bi bi-eye" data-bs-toggle="tooltip" data-bs-html="true" aria-label="Quick View" data-bs-original-title="Quick View"></i>
                                     </a>
-                                    <a href="shop-wishlist.html" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true" title="Wishlist"><i class="bi bi-heart"></i></a>
-                                    <a href="#!" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true" title="Compare"><i class="bi bi-arrow-left-right"></i></a>
+                                    <a href="shop-wishlist.html" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true" aria-label="Wishlist" data-bs-original-title="Wishlist"><i class="bi bi-heart"></i></a>
+                                    <a href="#!" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true" aria-label="Compare" data-bs-original-title="Compare"><i class="bi bi-arrow-left-right"></i></a>
                                 </div>
                             </div>
                             <!-- heading -->
                             <div class="text-small mb-1">
-                                <a href="#!" class="text-decoration-none text-muted"><small>Snack & Munchies</small></a>
+                                <a href="#!" class="text-decoration-none text-muted"><small>Snack &amp; Munchies</small></a>
                             </div>
                             <h2 class="fs-6"><a href="#!" class="text-inherit text-decoration-none">Onion Flavour Potato</a></h2>
                             <div class="text-warning">
@@ -940,17 +883,7 @@
                                 <!-- btn -->
                                 <div>
                                     <a href="#!" class="btn btn-primary btn-sm">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width="16"
-                                            height="16"
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            stroke-width="2"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            class="feather feather-plus">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
                                             <line x1="12" y1="5" x2="12" y2="19"></line>
                                             <line x1="5" y1="12" x2="19" y2="12"></line>
                                         </svg>
@@ -967,19 +900,19 @@
                         <div class="card-body">
                             <!-- badge -->
                             <div class="text-center position-relative">
-                                <a href="#!"><img src="../assets/images/products/product-img-9.jpg" alt="Grocery Ecommerce Template" class="mb-3 img-fluid" /></a>
+                                <a href="#!"><img src="../assets/images/products/product-img-9.jpg" alt="Grocery Ecommerce Template" class="mb-3 img-fluid"></a>
                                 <!-- action btn -->
                                 <div class="card-product-action">
                                     <a href="#!" class="btn-action" data-bs-toggle="modal" data-bs-target="#quickViewModal">
-                                        <i class="bi bi-eye" data-bs-toggle="tooltip" data-bs-html="true" title="Quick View"></i>
+                                        <i class="bi bi-eye" data-bs-toggle="tooltip" data-bs-html="true" aria-label="Quick View" data-bs-original-title="Quick View"></i>
                                     </a>
-                                    <a href="shop-wishlist.html" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true" title="Wishlist"><i class="bi bi-heart"></i></a>
-                                    <a href="#!" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true" title="Compare"><i class="bi bi-arrow-left-right"></i></a>
+                                    <a href="shop-wishlist.html" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true" aria-label="Wishlist" data-bs-original-title="Wishlist"><i class="bi bi-heart"></i></a>
+                                    <a href="#!" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true" aria-label="Compare" data-bs-original-title="Compare"><i class="bi bi-arrow-left-right"></i></a>
                                 </div>
                             </div>
                             <!-- heading -->
                             <div class="text-small mb-1">
-                                <a href="#!" class="text-decoration-none text-muted"><small>Snack & Munchies</small></a>
+                                <a href="#!" class="text-decoration-none text-muted"><small>Snack &amp; Munchies</small></a>
                             </div>
                             <h2 class="fs-6"><a href="#!" class="text-inherit text-decoration-none">Slurrp Millet Chocolate</a></h2>
                             <div class="text-warning">
@@ -1001,17 +934,7 @@
                                 <!-- btn -->
                                 <div>
                                     <a href="#!" class="btn btn-primary btn-sm">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width="16"
-                                            height="16"
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            stroke-width="2"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            class="feather feather-plus">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
                                             <line x1="12" y1="5" x2="12" y2="19"></line>
                                             <line x1="5" y1="12" x2="19" y2="12"></line>
                                         </svg>
@@ -1028,9 +951,9 @@
 @endsection
 
 @push('script')
-{{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>--}}
-{{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>--}}
-{{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>--}}
+    {{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>--}}
+    {{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>--}}
+    {{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>--}}
 
     <script>
         $('.addCart').on('click',function (){
