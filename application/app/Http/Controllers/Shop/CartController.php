@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Shop;
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use App\Models\ServiceFee;
+use App\Models\Wishlist;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -45,10 +46,12 @@ class CartController extends Controller
         $exists = Cart::where('user_id', auth()->user()->id)
             ->where('product_id', $request->product_id)
             ->exists();
+
         if($exists){
             $notify[] = ['error','Product already exists'];
             return back()->withNotify($notify);
         }
+        $removeWishlist = $this->removeWishlist(auth()->user()->id,$request->product_id);
         try {
             $cart = new Cart();
             $cart->user_id = $request->user_id;
@@ -62,6 +65,14 @@ class CartController extends Controller
             $notify[] = ['error',$e->getMessage()];
             return back()->withNotify($notify);
 
+        }
+    }
+
+    public function removeWishlist($userId,$prodctId)
+    {
+        $isWishlist = Wishlist::where('user_id',$userId)->where('product_id',$prodctId)->first();
+        if(isset($isWishlist)){
+            $isWishlist->delete();
         }
     }
 

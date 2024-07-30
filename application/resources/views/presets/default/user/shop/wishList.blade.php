@@ -62,7 +62,7 @@
                                         </td>
                                         <td class="align-middle">
 {{--                                            <div class="btn btn-primary btn-sm" >@lang('Add to Cart')</div>--}}
-                                            <button type="button" class="btn btn-primary btn-sm"
+                                            <button type="button" class="btn btn-primary btn-sm addCart"
                                                     data-bs-toggle="modal" data-bs-target="#addCartModal"
                                                     data-product = "{{@$wishlist->products}}"
                                                     data-cur_sym="{{$general->cur_sym}}">
