@@ -100,23 +100,32 @@
                                 <div id="flush-collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                                     <div class="mt-5">
                                         <div>
+                                            @foreach($gatewayCurrency as $data)
                                             <div class="card card-bordered shadow-none mb-2">
                                                 <!-- card body -->
                                                 <div class="card-body p-6">
+
+{{--                                                        <option value="{{$data->method_code}}" @selected(old('gateway')==$data->method_code)--}}
+{{--                                                        data-gateway="{{ $data }}">{{$data->name}}</option>--}}
+
                                                     <div class="d-flex">
                                                         <div class="form-check">
                                                             <!-- checkbox -->
-                                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="paypal">
-                                                            <label class="form-check-label ms-2" for="paypal"></label>
+                                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="{{$data->method_code}}">
+
                                                         </div>
                                                         <div>
                                                             <!-- title -->
-                                                            <h5 class="mb-1 h6">Payment with Paypal</h5>
-                                                            <p class="mb-0 small">You will be redirected to PayPal website to complete your purchase securely.</p>
+                                                            <label class="form-check-label ms-2" for="{{$data->method_code}}"><h5 class="mb-1 h6" >@lang('Payment with')
+                                                                    {{$data->name}}</h5></label>
+
+
                                                         </div>
                                                     </div>
+
                                                 </div>
                                             </div>
+                                            @endforeach
                                             <!-- card -->
                                             <div class="card card-bordered shadow-none mb-2">
                                                 <!-- card body -->
@@ -167,24 +176,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!-- card -->
-                                            <div class="card card-bordered shadow-none mb-2">
-                                                <!-- card body -->
-                                                <div class="card-body p-6">
-                                                    <!-- check input -->
-                                                    <div class="d-flex">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="payoneer">
-                                                            <label class="form-check-label ms-2" for="payoneer"></label>
-                                                        </div>
-                                                        <div>
-                                                            <!-- title -->
-                                                            <h5 class="mb-1 h6">Pay with Payoneer</h5>
-                                                            <p class="mb-0 small">You will be redirected to Payoneer website to complete your purchase securely.</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+
                                             <!-- card -->
                                             <div class="card card-bordered shadow-none">
                                                 <div class="card-body p-6">
@@ -192,12 +184,15 @@
                                                     <div class="d-flex">
                                                         <div class="form-check">
                                                             <input class="form-check-input" type="radio" name="flexRadioDefault" id="cashonDelivery">
-                                                            <label class="form-check-label ms-2" for="cashonDelivery"></label>
+
                                                         </div>
                                                         <div>
                                                             <!-- title -->
-                                                            <h5 class="mb-1 h6">Cash on Delivery</h5>
-                                                            <p class="mb-0 small">Pay with cash when your order is delivered.</p>
+                                                            <label class="form-check-label ms-2" for="cashonDelivery">
+                                                                <h5 class="mb-1 h6">@lang('Cash on Delivery')</h5>
+                                                            </label>
+
+                                                            <p class="mb-0 small">@lang('Pay with cash when your order is delivered.')</p>
                                                         </div>
                                                     </div>
                                                 </div>

@@ -20,7 +20,8 @@ class PaymentController extends Controller
             $gate->where('status', 1);
         })->with('method')->orderby('method_code')->get();
         $pageTitle = 'Payment Methods';
-        return view($this->activeTemplate . 'user.payment.deposit', compact('gatewayCurrency', 'pageTitle'));
+        return view($this->activeTemplate . 'user.shop.checkout', compact('gatewayCurrency'));
+//        return view($this->activeTemplate . 'user.payment.deposit', compact('gatewayCurrency', 'pageTitle'));
     }
 
     public function depositInsert(Request $request)

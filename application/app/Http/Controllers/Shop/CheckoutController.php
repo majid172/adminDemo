@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Shop;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
+use App\Models\GatewayCurrency;
 use App\Models\ServiceFee;
 use Illuminate\Http\Request;
 
@@ -20,6 +21,11 @@ class CheckoutController extends Controller
             return $cart->quantity * $cart->products->price;
         })->sum();
         $fee = ServiceFee::first();
-        return view($this->activeTemplate.'user.shop.checkout',compact('pageTitle','carts','subTotal','fee'));
+
+        $gatewayCurrency = GatewayCurrency::whereHas('method', function ($gate) {
+            $gate->where('status', 1);
+        })->with('method')->orderby('method_code')->get();
+
+        return view($this->activeTemplate.'user.shop.checkout',compact('pageTitle','carts','subTotal','fee','gatewayCurrency'));
     }
 }
