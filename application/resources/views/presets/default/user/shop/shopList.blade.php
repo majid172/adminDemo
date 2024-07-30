@@ -295,13 +295,12 @@
                                                         data-bs-toggle="modal" data-product="{{$product}}"
                                                        data-bs-target="#wishlistModal"
                                                        data-bs-html="true" title="Wishlist"><i class="bi bi-heart"></i></a>
-                                                    <a href="#!" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true" title="Compare"><i class="bi bi-arrow-left-right"></i></a>
+
                                                 </div>
                                             </div>
                                             <!-- heading -->
                                             <div class="text-small mb-1">
-                                                <a href="#!" class="text-decoration-none
-                                                text-muted"><small>{{@$product->category->cat_name}}</small></a>
+                                                <a href="#!" class="text-decoration-none                                                 text-muted"><small>{{@$product->category->cat_name}}</small></a>
                                             </div>
                                             <h2 class="fs-6"><a href="{{route('user.shop.single',$product->id)}}"
                                                                 class="text-inherit

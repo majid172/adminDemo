@@ -61,7 +61,13 @@
 
                                         </td>
                                         <td class="align-middle">
-                                            <div class="btn btn-primary btn-sm">@lang('Add to Cart')</div>
+{{--                                            <div class="btn btn-primary btn-sm" >@lang('Add to Cart')</div>--}}
+                                            <button type="button" class="btn btn-primary btn-sm"
+                                                    data-bs-toggle="modal" data-bs-target="#addCartModal"
+                                                    data-product = "{{@$wishlist->products}}"
+                                                    data-cur_sym="{{$general->cur_sym}}">
+                                                @lang('Add to Cart')
+                                            </button>
                                         </td>
                                         <td class="align-middle">
                                             <a href="javascript:void(0)" class="text-muted remove"
@@ -87,6 +93,46 @@
         </div>
     </section>
 
+{{--    add to cart--}}
+    <div class="modal fade" id="addCartModal" tabindex="-1" aria-labelledby="addCartModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title title" id="addCartModalLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="{{route('user.shop.add-cart')}}" method="POST">
+                    @csrf
+                    <input type="hidden" value="{{auth()->user()->id}}" name="user_id">
+                    <input type="hidden" value="" name="product_id">
+                    <div class="modal-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold">@lang('Price')</div>
+                                </div>
+                                <span class="badge bg-primary rounded-pill price"></span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-5">
+                                    <div class="fw-bold">@lang('Quantity')</div>
+                                </div>
+                                <span class="input-group input-spinner ms-auto text-end">
+                                    <input type="button" value="-" class="button-minus btn btn-sm" data-field="quantity">
+                                    <input type="number" step="1" max="10" value="1" name="quantity" class="quantity-field form-control-sm form-input" id="quantity">
+                                    <input type="button" value="+" class="button-plus btn btn-sm" data-field="quantity">
+                                </span>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">@lang('Add Cart')</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 {{--    remove modal --}}
     <div class="modal fade" id="removeModal" tabindex="-1" aria-labelledby="removeModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -111,6 +157,16 @@
 @endsection
 @push('script')
     <script>
+        $('.addCart').on('click',function (){
+            let product = $(this).data('product');
+            console.log(product)
+            let cur_sym = $(this).data('cur_sym');
+            $('.title').text(product.name);
+            $('.price').text(cur_sym + parseFloat(product.price).toFixed(2));
+            $('#addCartModal').find("input[name='product_id']").val(product.id);
+
+        });
+
         $('.remove').on('click',function (){
            let wishlist = $(this).data('wishlist');
            $('.title').text(wishlist.products.name);

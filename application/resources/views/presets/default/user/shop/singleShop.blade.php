@@ -7,41 +7,49 @@
             <div class="row">
                 <div class="col-md-6">
                     <!-- img slide -->
-                    <div class="tns-outer" id="product-ow"><div class="tns-liveregion tns-visually-hidden" aria-live="polite" aria-atomic="true">slide <span class="current">2</span>  of 4</div><div id="product-mw" class="tns-ovh"><div class="tns-inner" id="product-iw"><div class="product  tns-slider tns-carousel tns-subpixel tns-calc tns-horizontal" id="product" style="transition-duration: 0s; transform: translate3d(-16.6667%, 0px, 0px);">
+                    <div class="tns-outer" id="product-ow"><div class="tns-liveregion tns-visually-hidden" aria-live="polite" aria-atomic="true">slide <span class="current">2</span>  of 4</div>
+                        <div id="product-mw" class="tns-ovh">
+                            <div class="tns-inner" id="product-iw">
+                                <div class="product  tns-slider tns-carousel tns-subpixel tns-calc tns-horizontal" id="product" style="transition-duration: 0s; transform: translate3d(-16.6667%, 0px, 0px);">
                                     <div class="tns-item tns-slide-cloned" aria-hidden="true" tabindex="-1">
-                                        <div class="zoom" onmousemove="zoom(event)" style="background-image: url({{getImage(getFilePath('product').'/'.$product->path.'/'.$product->image)}})">
+                                        <div class="zoom" onmousemove="zoom(event)" style="background-image: url({{getImage(getFilePath('product').'/'.$product->path.'/'.$product->image)}}); background-repeat: no-repeat;">
                                             <!-- img -->
                                             <img src="{{getImage(getFilePath('product').'/'.$product->path.'/'.$product->image)}}" alt="">
                                         </div>
                                     </div>
-                                    <div class="zoom tns-item tns-slide-active" onmousemove="zoom(event)" style="background-image: url(&quot;{{getImage(getFilePath('product').'/'.$product->path.'/'.$product->image)}}&quot;); background-position: 94.2675% 68.5775%;" id="product-item0">
+                                    <div class="zoom tns-item tns-slide-active" onmousemove="zoom(event)"
+                                         style="background-image: url({{getImage(getFilePath('product').'/'.$product->path.'/'.$product->image)}}); background-repeat: no-repeat;" id="product-item0">
                                         <!-- img -->
                                         <!-- img -->
                                         <img src="{{getImage(getFilePath('product').'/'.$product->path.'/'.$product->image)}}" alt="">
                                     </div>
                                     <div class="tns-item" id="product-item1" aria-hidden="true" tabindex="-1">
-                                        <div class="zoom" onmousemove="zoom(event)" style="background-image: url({{getImage(getFilePath('product').'/'.$product->path.'/'.$product->image)}})">
+                                        <div class="zoom" onmousemove="zoom(event)"  style="background-image: url({{getImage(getFilePath('product').'/'.$product->path.'/'.$product->image)}}); background-repeat: no-repeat;">
                                             <!-- img -->
                                             <img src="{{getImage(getFilePath('product').'/'.$product->path.'/'.$product->image)}}" alt="">
                                         </div>
                                     </div>
                                     <div class="tns-item" id="product-item2" aria-hidden="true" tabindex="-1">
-                                        <div class="zoom" onmousemove="zoom(event)" style="background-image: url(../assets/images/products/product-single-img-3.jpg)">
+                                        <div class="zoom" onmousemove="zoom(event)"  style="background-image: url({{getImage(getFilePath('product').'/'.$product->path.'/'.$product->image)}}); background-repeat: no-repeat;">
                                             <!-- img -->
-                                            <img src="../assets/images/products/product-single-img-3.jpg" alt="">
+                                            <img src="{{getImage(getFilePath('product').'/'.$product->path.'/'.$product->image)}}" alt="">
                                         </div>
                                     </div>
                                     <div class="tns-item" id="product-item3" aria-hidden="true" tabindex="-1">
-                                        <div class="zoom" onmousemove="zoom(event)" style="background-image: url(../assets/images/products/product-single-img-4.jpg)">
+                                        <div class="zoom" onmousemove="zoom(event)" style="background-image: url({{getImage(getFilePath('product').'/'.$product->path.'/'.$product->image)}})">
                                             <!-- img -->
-                                            <img src="../assets/images/products/product-single-img-4.jpg" alt="">
+                                            <img src="{{getImage(getFilePath('product').'/'.$product->path.'/'.$product->image)}}" alt="">
                                         </div>
                                     </div>
-                                    <div class="zoom tns-item tns-slide-cloned" onmousemove="zoom(event)" style="background-image: url(../assets/images/products/product-single-img-1.jpg)" aria-hidden="true" tabindex="-1">
+                                    <div class="zoom tns-item tns-slide-cloned" onmousemove="zoom(event)" style="background-image: url({{getImage(getFilePath('product').'/'.$product->path.'/'.$product->image)}})" aria-hidden="true" tabindex="-1">
                                         <!-- img -->
                                         <!-- img -->
-                                        <img src="../assets/images/products/product-single-img-1.jpg" alt="">
-                                    </div></div></div></div></div>
+                                        <img src="{{getImage(getFilePath('product').'/'.$product->path.'/'.$product->image)}}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <!-- product tools -->
                     <div class="product-tools">
                         <div class="thumbnails row g-3" id="productThumbnails" aria-label="Carousel Pagination">
@@ -66,7 +74,7 @@
                             <div class="col-3" data-nav="3" tabindex="-1" aria-label="Carousel Page 4" aria-controls="product">
                                 <div class="thumbnails-img">
                                     <!-- img -->
-                                    <img src="../assets/images/products/product-single-img-4.jpg" alt="">
+                                    <img src="{{getImage(getFilePath('product').'/'.$product->path.'/'.$product->image)}}" alt="">
                                 </div>
                             </div>
                         </div>
@@ -705,6 +713,11 @@
                                         <i class="bi bi-eye" data-bs-toggle="tooltip" data-bs-html="true" aria-label="Quick View" data-bs-original-title="Quick View"></i>
                                     </a>
                                     <a href="shop-wishlist.html" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true" aria-label="Wishlist" data-bs-original-title="Wishlist"><i class="bi bi-heart"></i></a>
+
+                                    <a href="javascript:void(0)" class="btn-action wishlist"
+                                       data-bs-toggle="modal" data-product="{{$product}}"
+                                       data-bs-target="#wishlistModal"
+                                       data-bs-html="true" title="Wishlist"><i class="bi bi-heart"></i></a>
                                     <a href="#!" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true" aria-label="Compare" data-bs-original-title="Compare"><i class="bi bi-arrow-left-right"></i></a>
                                 </div>
                             </div>
@@ -949,15 +962,13 @@
         </div>
     </section>
 @endsection
+
+
 @push('style')
     <link rel="stylesheet" href="{{asset($activeTemplateTrue.'basic/css/tiny-slider.css')}}" />
 @endpush
 @push('script')
     <script src="{{ asset($activeTemplateTrue.'basic/js/tns-slider.js') }}"></script>
-    {{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>--}}
-    {{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>--}}
-    {{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>--}}
-
     <script>
         $('.addCart').on('click',function (){
             let product = $(this).data('product');
@@ -976,6 +987,7 @@
                 },
                 success(response){
                     console.log(response)
+                    window.location.reload();
                 },
                 error: function(xhr, status, error) {
                     console.log(error);

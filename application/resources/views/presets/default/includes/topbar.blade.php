@@ -257,13 +257,15 @@
                         <!-- row -->
                         <div class="row align-items-center">
                             <div class="col-6 col-md-6 col-lg-7">
-                                <div class="d-flex">
-                                    <img src="../assets/images/products/product-img-2.jpg" alt="Ecommerce" class="icon-shape icon-xxl" />
-                                    <div class="ms-3">
-                                        <a href="shop-single.html" class="text-inherit">
-                                            <h6 class="mb-0">@lang('Empty Cart')</h6>
-                                        </a>
+                                <div class="row align-items-center">
+                                    <div class="col-3 col-md-3">
+                                        <img src="{{asset('assets/images/empty-cart.png')}}"
+                                             alt="Ecommerce" class="img-fluid">
                                     </div>
+                                    <div class="col-5 col-md-5">
+                                        <h6 class="mb-0">@lang('Empty Cart')</h6>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
