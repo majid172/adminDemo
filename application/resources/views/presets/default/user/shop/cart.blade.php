@@ -63,7 +63,7 @@
                                                        id="minus_{{$cart->id}}"
                                                        data-field="quantity" data-id="{{$cart->id}}">
                                                 <input type="number" step="1" max="10" value="{{$cart->quantity}}"
-                                                       id="quantity"
+                                                       id="quantity_{{$cart->id}}"
                                                        name="quantity" data-id="{{$cart->id}}" class="quantity-field form-control-sm
                                                        form-input">
                                                 <input type="button" value="+" id="plus_{{$cart->id}}"
@@ -195,6 +195,27 @@
 @push('script')
 
     <script>
+        $('.minus,.plus').on('click',function(){
+            let cart_id = $(this).data('id');
+            let qn = '#quantity_'+$(this).data('id');
+            let quantity = parseInt($(qn).val())+1;
+            $.ajax({
+                url: "{{route('user.shop.update.quantity')}}",
+                type: "GET",
+                data:{
+                    cart_id: cart_id,
+                    quantity:quantity
+                },
+                success: function (data) {
+                    if (data == 'success') {
+                        notify('success', 'Import Data Successfully');
+                        window.location.href = "{{url()->current()}}"
+                    }
+                }
+
+            });
+        });
+
         $('.remove').on('click',function (){
             let product_name = $(this).data('product_name');
             $('.product').text(product_name);
