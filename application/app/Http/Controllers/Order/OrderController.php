@@ -40,6 +40,7 @@ class OrderController extends Controller
             'country' => $user->address->country
         ]);
         $order->status = 1;
+        $order->payment_code = $request->payment_code??$request->code;
         $order->delivery_ins = $request->delivery_ins;
         $order->save();
 

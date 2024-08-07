@@ -111,71 +111,70 @@
                                                     <div class="d-flex">
                                                         <div class="form-check">
                                                             <!-- checkbox -->
-                                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="{{$data->method_code}}">
+                                                            <input class="form-check-input payment_method"
+                                                                   type="radio" value="{{$data->method_code}}"
+                                                                   name="flexRadioDefault" id="{{$data->method_code}}">
 
                                                         </div>
                                                         <div>
-                                                            <!-- title -->
-                                                            <label class="form-check-label ms-2" for="{{$data->method_code}}"><h5 class="mb-1 h6" >@lang('Payment with')
+                                                            <label class="form-check-label ms-2 payment_method"
+                                                                   for="{{$data->method_code}}"><h5 class="mb-1 h6 " >@lang('Payment with')
                                                                     {{$data->name}}</h5></label>
-
-
                                                         </div>
                                                     </div>
-
                                                 </div>
                                             </div>
                                             @endforeach
                                             <!-- card -->
-                                            <div class="card card-bordered shadow-none mb-2">
-                                                <!-- card body -->
-                                                <div class="card-body p-6">
-                                                    <div class="d-flex mb-4">
-                                                        <div class="form-check">
-                                                            <!-- input -->
-                                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="creditdebitcard">
-                                                            <label class="form-check-label ms-2" for="creditdebitcard"></label>
-                                                        </div>
-                                                        <div>
-                                                            <h5 class="mb-1 h6">Credit / Debit Card</h5>
-                                                            <p class="mb-0 small">Safe money transfer using your bank accou k account. We support Mastercard tercard, Visa, Discover and Stripe.</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row g-2">
-                                                        <div class="col-12">
-                                                            <!-- input -->
-                                                            <div class="mb-3">
-                                                                <label class="form-label">Card Number</label>
-                                                                <input type="text" class="form-control" placeholder="1234 4567 6789 4321">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6 col-12">
-                                                            <!-- input -->
-                                                            <div class="mb-3 mb-lg-0">
-                                                                <label class="form-label">Name on card</label>
-                                                                <input type="text" class="form-control" placeholder="Enter your first name">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-3 col-12">
-                                                            <!-- input -->
-                                                            <div class="mb-3 mb-lg-0 position-relative">
-                                                                <label class="form-label">Expiry date</label>
-                                                                <input class="form-control flatpickr flatpickr-input" type="text" placeholder="Select Date" readonly="readonly">
-                                                                <div class="position-absolute bottom-0 end-0 p-3 lh-1">
-                                                                    <i class="bi bi-calendar text-muted"></i>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-3 col-12">
-                                                            <!-- input -->
-                                                            <div class="mb-3 mb-lg-0">
-                                                                <label class="form-label">CVV code</label>
-                                                                <input type="password" class="form-control" placeholder="***">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+{{--                                            <div class="card card-bordered shadow-none mb-2">--}}
+{{--                                                <!-- card body -->--}}
+{{--                                                <div class="card-body p-6">--}}
+{{--                                                    <div class="d-flex mb-4">--}}
+{{--                                                        <div class="form-check">--}}
+{{--                                                            <!-- input -->--}}
+{{--                                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="creditdebitcard">--}}
+{{--                                                            <label class="form-check-label ms-2" for="creditdebitcard"></label>--}}
+{{--                                                        </div>--}}
+{{--                                                        <div>--}}
+{{--                                                            <h5 class="mb-1 h6">Credit / Debit Card</h5>--}}
+{{--                                                            <p class="mb-0 small">Safe money transfer using your bank accou k account. We support Mastercard tercard, Visa, Discover and Stripe.</p>--}}
+{{--                                                        </div>--}}
+{{--                                                    </div>--}}
+{{--                                                    <div class="row g-2">--}}
+{{--                                                        <div class="col-12">--}}
+{{--                                                            <!-- input -->--}}
+{{--                                                            <div class="mb-3">--}}
+{{--                                                                <label class="form-label">Card Number</label>--}}
+{{--                                                                <input type="text" class="form-control" placeholder="1234 4567 6789 4321">--}}
+{{--                                                            </div>--}}
+{{--                                                        </div>--}}
+{{--                                                        <div class="col-md-6 col-12">--}}
+{{--                                                            <!-- input -->--}}
+{{--                                                            <div class="mb-3 mb-lg-0">--}}
+{{--                                                                <label class="form-label">Name on card</label>--}}
+{{--                                                                <input type="text" class="form-control" placeholder="Enter your first name">--}}
+{{--                                                            </div>--}}
+{{--                                                        </div>--}}
+{{--                                                        <div class="col-md-3 col-12">--}}
+{{--                                                            <!-- input -->--}}
+{{--                                                            <div class="mb-3 mb-lg-0 position-relative">--}}
+{{--                                                                <label class="form-label">Expiry date</label>--}}
+{{--                                                                <input class="form-control flatpickr flatpickr-input" type="text" placeholder="Select Date" readonly="readonly">--}}
+{{--                                                                <div class="position-absolute bottom-0 end-0 p-3 lh-1">--}}
+{{--                                                                    <i class="bi bi-calendar text-muted"></i>--}}
+{{--                                                                </div>--}}
+{{--                                                            </div>--}}
+{{--                                                        </div>--}}
+{{--                                                        <div class="col-md-3 col-12">--}}
+{{--                                                            <!-- input -->--}}
+{{--                                                            <div class="mb-3 mb-lg-0">--}}
+{{--                                                                <label class="form-label">CVV code</label>--}}
+{{--                                                                <input type="password" class="form-control" placeholder="***">--}}
+{{--                                                            </div>--}}
+{{--                                                        </div>--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
 
                                             <!-- card -->
                                             <div class="card card-bordered shadow-none">
@@ -183,12 +182,13 @@
                                                     <!-- check input -->
                                                     <div class="d-flex">
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="cashonDelivery">
+                                                            <input class="form-check-input payment_method" value="1" type="radio"
+                                                                   name="flexRadioDefault" id="cashonDelivery">
 
                                                         </div>
                                                         <div>
                                                             <!-- title -->
-                                                            <label class="form-check-label ms-2" for="cashonDelivery">
+                                                            <label class="form-check-label ms-2 payment_method" for="cashonDelivery">
                                                                 <h5 class="mb-1 h6">@lang('Cash on Delivery')</h5>
                                                             </label>
 
@@ -204,7 +204,8 @@
                                                 </a>
                                                 <a href="javascript:void(0)" class="btn btn-primary ms-2 order"
                                                    data-carts = "{{$carts}}" data-subTotal="{{$subTotal}}"
-                                                   data-charge="{{$fee->is_fixed?$fee->fixed:($fee->percent/100)}}"
+                                                   data-charge="{{$fee->is_fixed?$fee->fixed:($fee->percent/100)
+                                                   }}"
                                                    data-bs-toggle="modal" data-bs-target="#orderModal">@lang('Place Order')</a>
                                             </div>
                                         </div>
@@ -297,6 +298,8 @@
                     @csrf
                     <div class="modal-body">
                         <div id="productInputs"></div>
+                        <input type="hidden" name="payment_code" >
+                        <input type="hidden" name="code" >
                         <input type="hidden" name="amount">
                         <textarea name="delivery_ins" cols="30" rows="10" hidden ></textarea>
                         @lang('Confirm your order')
@@ -313,7 +316,16 @@
 
 @push('script')
     <script>
+        $('.payment_method').on('click',function(){
+           let payment_method = $(this).val();
+           let code = $(this).attr('for')
+            $('.order').attr('data-method', payment_method);
+            $('.order').attr('data-code', code);
+        });
+
         $('.order').on('click',function (){
+            let payment_code  = $(this).data('method')
+            let code  = $(this).data('code')
             let carts = $(this).data('carts');
             let subtotal = $(this).data('subtotal');
             let charge = $(this).data('charge');
@@ -329,6 +341,8 @@
                     </div>`;
                 $('#productInputs').append(productInput);
             });
+            $('#orderModal').find("input[name='payment_code']").val(payment_code);
+            $('#orderModal').find("input[name='code']").val(code);
             $('#orderModal').find("textarea[name='delivery_ins']").val(delivery_ins)
 
         });
