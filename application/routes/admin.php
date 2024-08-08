@@ -66,7 +66,8 @@ Route::middleware('admin')->group(function () {
 
     Route::controller('OrderController')->prefix('orders')->group(function(){
        Route::get('/list','list')->name('order.list');
-       Route::get('/order-details/{orderItem_id}','details')->name('order.details');
+       Route::get('/order-details/{order_id}','details')->name('order.details');
+       Route::get('/order/update','statusUpdate')->name('order.update.status');
     });
 
     Route::controller('EpisodeController')->prefix('episode')->group(function(){

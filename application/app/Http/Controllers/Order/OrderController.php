@@ -17,6 +17,7 @@ class OrderController extends Controller
         $orders = Order::where('user_id', auth()->user()->id)
                     ->with('orderItems.products')
                     ->get();
+
         return view($this->activeTemplate.'user.order.orderList',compact('pageTitle','orders'));
     }
     public function orderStore(Request $request)
@@ -80,10 +81,11 @@ class OrderController extends Controller
     {
         $pageTitle = 'Single Order';
         $user = auth()->user();
-        $order = Order::where('id',$orderId)->with('orderItems.products','user')->whereHas('user',function ($query) use($user){
+        $order = Order::where('id',$orderId)->with('orderItems.products','user','paymentMethod')->whereHas('user',function ($query)
+        use($user){
             $query->where('id',$user->id);
         })->first();
-//        dd($order->toArray());
+
 //        $user = auth()->user();
 
         return view($this->activeTemplate.'user.order.singleOrder',compact('pageTitle','order'));

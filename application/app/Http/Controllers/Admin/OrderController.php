@@ -15,11 +15,19 @@ class OrderController extends Controller
         $orders = Order::with(['orderItems.products','user'])->paginate(getPaginate(15));
         return view('admin.orders.list',compact('pageTitle','orders'));
     }
-    public function details($orderItemId)
+    public function details($orderId)
     {
         $pageTitle = "Oder Details";
-        $detail = OrderItem::where('id',$orderItemId)->with('order')->first();
-
+        $detail = Order::where('id',$orderId)->with('orderItems.products','paymentMethod')->first();
+//dd($detail->toArray());
         return view('admin.orders.details',compact('pageTitle','detail'));
+    }
+
+    public function statusUpdate(Request $request)
+    {
+        $order = Order::where('id',$request->orderId)->first();
+        $order->status = $request->status;
+        $order->save();
+        return response()->json('Success',200);
     }
 }

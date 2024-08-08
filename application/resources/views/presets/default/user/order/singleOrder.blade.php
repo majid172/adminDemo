@@ -158,13 +158,19 @@
                         <div class="row">
                             <div class="col-md-6 mb-4 mb-lg-0">
                                 <h6>Payment Info</h6>
-                                <span>Cash on Delivery</span>
+                                <span>
+                                    @if($order->payment_code == 1)
+                                        @lang('Cash on Delivery')
+                                    @else
+                                        {{optional($order->paymentMethod)->name}}
+                                    @endif
+                                </span>
                             </div>
-                            <div class="col-md-6">
-                                <h5>Notes</h5>
-                                <textarea class="form-control mb-3" rows="3" placeholder="Write note for order"></textarea>
-                                <a href="#" class="btn btn-primary">Save Notes</a>
-                            </div>
+{{--                            <div class="col-md-6">--}}
+{{--                                <h5>Notes</h5>--}}
+{{--                                <textarea class="form-control mb-3" rows="3" placeholder="Write note for order"></textarea>--}}
+{{--                                <a href="#" class="btn btn-primary">Save Notes</a>--}}
+{{--                            </div>--}}
                         </div>
                     </div>
                 </div>

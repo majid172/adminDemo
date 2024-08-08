@@ -16,26 +16,24 @@
                             <thead class="thead-light">
                             <tr>
                                 <th>@lang('Sl.')</th>
-                                <th>@lang('Product')</th>
+{{--                                <th>@lang('Product')</th>--}}
                                 <th>@lang('Order No')</th>
                                 <th>@lang('Customer')</th>
                                 <th>@lang('Date & Time')</th>
-                                <th>@lang('Status')</th>
-                                <th>@lang('Quantity')</th>
                                 <th>@lang('Amount')</th>
+                                <th>@lang('Status')</th>
+
                                 <th>@lang('Action')</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @forelse($orders as $order)
-                                @foreach(@$order->orderItems as $product)
+                            @forelse($orders as $key=>$order)
                                 <tr>
-                                    <td>{{++$loop->index}}</td>
-{{--                                    <img src="{{getImage(getFilePath('product').'/'.$product->products->path.'/'.$product->products->image)}}" alt="product_img">--}}
-                                    <td>{{ucwords(@$product->products->name)}}</td>
+                                    <td>{{++$key}}</td>
                                     <td> {{$order->order_no}}</td>
                                     <td> {{optional($order->user)->username}}</td>
-                                    <td> {{showDateTime($product->created_at)}}</td>
+                                    <td> {{showDateTime($order->created_at)}}</td>
+                                    <td>{{getAmount($order->total_amount,2)}} {{$general->cur_text}}</td>
                                     <td>
                                         @if($order->status == 1)
                                             <span class="badge bg--warning">@lang('Processing')</span>
@@ -46,20 +44,17 @@
                                         @endif
 
                                     </td>
-                                    <td><span class="badge bg--danger">{{__($product->quantity)}}</span></td>
-                                    <td>
-                                        <span class="text--success">{{$general->cur_sym}}{{showAmount($product->price)}}</span>
-                                    </td>
+
                                     <td>
                                         <div class="dropdown">
                                             <a href="#" class="text-reset" data-bs-toggle="dropdown" aria-expanded="false">
                                                 <i class="feather-icon las la-ellipsis-v fs-5"></i>
-{{--                                                <i class="feather-icon icon-more-vertical fs-5"></i>--}}
+                                                {{--                                                <i class="feather-icon icon-more-vertical fs-5"></i>--}}
                                             </a>
                                             <ul class="dropdown-menu" style="">
                                                 <li>
                                                     <a class="dropdown-item" href="{{route('admin.order.details',
-                                                    $product->id)}}">
+                                                    $order->id)}}">
                                                         <i class="las la-eye me-1"></i>
                                                         @lang('Details')
                                                     </a>
@@ -74,19 +69,8 @@
                                             </ul>
                                         </div>
                                     </td>
-{{--                                    <td>--}}
-{{--                                        <div class="dropdown">--}}
-{{--                                            <button class="btn btn-outline--primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">--}}
-{{--                                                <i class="las la-ellipsis-v"></i> @lang('View')--}}
-{{--                                            </button>--}}
-{{--                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">--}}
-{{--                                                <li><a class="dropdown-item text--green edit" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#edit" data-product="{{$list}}"><i class="las la-edit"></i> @lang('Edit')</a></li>--}}
-{{--                                                <li><a class="dropdown-item text--green" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#edit"><i class="las la-edit"></i> @lang('Remove')</a></li>--}}
-{{--                                            </ul>--}}
-{{--                                        </div>--}}
-{{--                                    </td>--}}
                                 </tr>
-                                @endforeach
+
                             @empty
                                 <tr>
                                     <td class="text-muted text-center" colspan="100%">{{ __($emptyMessage) }}</td>
