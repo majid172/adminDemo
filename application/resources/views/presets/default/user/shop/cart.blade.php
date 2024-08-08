@@ -86,9 +86,9 @@
                                 </li>
                             @endforelse
                         </ul>
-                        <div class="d-flex justify-content-between mt-4">
+                        <div class="d-flex justify-content-end mt-4">
                             <a href="{{route('user.shop.list')}}" class="btn btn-primary">@lang('Continue Shopping')</a>
-                            <a href="#!" class="btn btn-dark">@lang('Update Cart')</a>
+
                         </div>
                     </div>
                 </div>

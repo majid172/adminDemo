@@ -38,9 +38,9 @@
                                         @if($order->status == 1)
                                             <span class="badge bg--warning">@lang('Processing')</span>
                                         @elseif($order->status == 2)
-                                            <span class="text--info">@lang('Approved')</span>
+                                            <span class="badge bg--success">@lang('Approved')</span>
                                         @else
-                                            <span class="text--success">@lang('Shipped')</span>
+                                            <span class="badge bg--info">@lang('Shipped')</span>
                                         @endif
 
                                     </td>

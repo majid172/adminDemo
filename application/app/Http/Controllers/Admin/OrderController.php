@@ -12,7 +12,7 @@ class OrderController extends Controller
     public function list()
     {
         $pageTitle = "Order List";
-        $orders = Order::with(['orderItems.products','user'])->paginate(getPaginate(15));
+        $orders = Order::with(['orderItems.products','user'])->orderBy('created_at','desc')->paginate(getPaginate(15));
         return view('admin.orders.list',compact('pageTitle','orders'));
     }
     public function details($orderId)

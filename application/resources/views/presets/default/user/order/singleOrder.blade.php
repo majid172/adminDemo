@@ -64,15 +64,18 @@
                                     </div>
                                 </div>
                                 <!-- address -->
+                                @php
+                                $shipping = json_decode($order->shipping_address);
+                                @endphp
                                 <div class="col-lg-4 col-md-4 col-12">
                                     <div class="mb-6">
                                         <h6>@lang('Shipping Address')</h6>
                                         <p class="mb-1 lh-lg">
-                                            {{__(@$order->shipping_address->address)}}
+                                            {{__($shipping->address)}}
                                             <br>
-                                            {{__(@$order->shipping_address->zip)}}, {{__(@$order->shipping_address->city)}}.
+                                            {{__($shipping->zip)}}, {{__($shipping->city)}}.
                                             <br>
-                                            {{__(@$order->shipping_address->country)}}
+                                            {{__($shipping->country)}}
                                             <br>
                                             @lang('Contact No'). +{{__(@$order->user->mobile)}}
                                         </p>
@@ -87,10 +90,11 @@
                                             <span class="text-dark">{{__($order->order_no)}}</span>
                                             <br>
                                             @lang('Order Date'):
-{{--                                            <span class="text-dark">{{__($order->created_at)}}</span>--}}
+                                            <span class="text-dark">{{__($order->created_at)}}</span>
                                             <br>
                                             @lang('Order Total'):
-{{--                                            <span class="text-dark">{{$general->cur_sym}} {{}}</span>--}}
+                                            <span class="text-dark">{{$general->cur_sym}}
+                                                {{showAmount($order->total_amount)}}</span>
                                         </p>
                                     </div>
                                 </div>
@@ -113,7 +117,7 @@
                                     </thead>
                                     <!-- tbody -->
                                     <tbody>
-                                    @php $totalAmount = 0; @endphp
+
                                     @forelse(@$order->orderItems as $orderItem)
                                         <tr>
                                             <td>
@@ -132,21 +136,50 @@
                                             <td>{{__($orderItem->quantity)}}</td>
                                             <td>{{$general->cur_sym}} {{showAmount($orderItem->price * $orderItem->quantity)}}</td>
 
-                                            @php $totalAmount += $orderItem->price * $orderItem->quantity; @endphp
                                         </tr>
                                     @empty
+
                                     @endforelse
 
+                                    @php
+                                        $charge = \App\Models\ServiceFee::first();
+                                        $shipping = $charge->is_percent==1?$charge->percent:$charge->fixed;
+                                        if($charge->is_percent == 1)
+                                        {
+                                            $grandTotal = $order->total_amount + $order->total_amount*($charge->percent/100);
+                                        }
+                                    @endphp
+                                    <tr>
+                                        <td class="border-bottom-0 pb-0"></td>
+                                        <td class="border-bottom-0 pb-0"></td>
+                                        <td colspan="1" class="fw-medium text-dark">
+                                            <!-- text -->
+                                            @lang('Sub Total') :
+                                        </td>
+                                        <td class="fw-medium text-dark">
+                                            {{$general->cur_sym}}{{showAmount($order->total_amount)}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border-bottom-0 pb-0"></td>
+                                        <td class="border-bottom-0 pb-0"></td>
+                                        <td colspan="1" class="fw-medium text-dark">
+                                            <!-- text -->
+                                            @lang('Shipping Cost')
+                                        </td>
+                                        <td class="fw-medium text-dark">
+                                            <!-- text -->
+                                            {{$shipping}} {{$charge->is_percent?'%':$general->cur_text}}
+                                        </td>
+                                    </tr>
                                     <tr>
                                         <td></td>
                                         <td></td>
                                         <td colspan="1" class="fw-semibold text-dark">
-                                            <!-- text -->
                                             @lang('Grand Total')
                                         </td>
                                         <td class="fw-semibold text-dark">
-                                            <!-- text -->
-                                            {{$general->cur_sym}}{{showAmount($totalAmount)}}
+                                            {{$general->cur_sym}}{{showAmount($grandTotal)}}
                                         </td>
                                     </tr>
                                     </tbody>
