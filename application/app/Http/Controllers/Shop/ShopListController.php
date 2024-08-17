@@ -19,15 +19,14 @@ class ShopListController extends Controller
         return view($this->activeTemplate.'user.shop.shopList',compact('pageTitle','products','categories'));
     }
 
-    public function filterList($productId)
+    public function filterList($categorytId)
     {
-        $pageTitle = "Shop C List";
+        $pageTitle = "Shop List";
         $query = Category::with('products');
         $categories = $query->get();
-        $title = $query->whereHas('products',function($q) use($productId){
-            $q->where('id',$productId);
-        })->first();
-        $products = Product::with('category')->where('id',$productId)->paginate(getPaginate(12));
+        $title = Category::where('id',$categorytId)->first();
+
+        $products = Product::with('category')->where('cat_id',$categorytId)->paginate(getPaginate(12));
         return view($this->activeTemplate.'user.shop.shopList',compact('pageTitle','products','categories','title'));
     }
     public function singleShop($id)

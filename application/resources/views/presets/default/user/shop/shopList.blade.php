@@ -24,26 +24,26 @@
                                     <ul class="nav nav-category" id="categoryCollapseMenu">
                                         @foreach($categories as $key=>$category)
                                             <li class="nav-item border-bottom w-100">
-                                                <a href="#" class="nav-link collapsed" data-bs-toggle="collapse" data-bs-target="#categoryFlush{{$category->id}}" aria-expanded="false" aria-controls="categoryFlush{{$category->id}}">
+                                                <a href="{{route('user.shop.filter-list',$category->id)}}" class="nav-link">
                                                     {{$category->cat_name}}
-                                                    <i class="feather-icon icon-chevron-right"></i>
+{{--                                                    <i class="feather-icon icon-chevron-right"></i>--}}
                                                 </a>
                                                 <!-- accordion collapse -->
-                                                <div id="categoryFlush{{$category->id}}" class="accordion-collapse collapse" data-bs-parent="#categoryCollapseMenu">
-                                                    <div>
-                                                        <!-- nav -->
+{{--                                                <div id="categoryFlush{{$category->id}}" class="accordion-collapse collapse" data-bs-parent="#categoryCollapseMenu">--}}
+{{--                                                    <div>--}}
+{{--                                                        <!-- nav -->--}}
 
-                                                        <ul class="nav flex-column ms-3">
-                                                            @forelse(@$category->products as $product)
-                                                                <li class="nav-item"><a href="{{route('user.shop.filter-list',$product->id)}}"
-                                                                                        class="nav-link">{{$product->name}}</a></li>
-                                                            @empty
-                                                                <li class="nav-item"><a href="#!" class="nav-link">@lang('Empty Product')</a></li>
-                                                            @endforelse
+{{--                                                        <ul class="nav flex-column ms-3">--}}
+{{--                                                            @forelse(@$category->products as $product)--}}
+{{--                                                                <li class="nav-item"><a href="{{route('user.shop.filter-list',$product->id)}}"--}}
+{{--                                                                                        class="nav-link">{{$product->name}}</a></li>--}}
+{{--                                                            @empty--}}
+{{--                                                                <li class="nav-item"><a href="#!" class="nav-link">@lang('Empty Product')</a></li>--}}
+{{--                                                            @endforelse--}}
 
-                                                        </ul>
-                                                    </div>
-                                                </div>
+{{--                                                        </ul>--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
                                             </li>
                                         @endforeach
 
