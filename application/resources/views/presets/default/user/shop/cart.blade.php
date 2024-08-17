@@ -193,12 +193,12 @@
     </div>
 @endsection
 @push('script')
-
     <script>
         $('.minus,.plus').on('click',function(){
             let cart_id = $(this).data('id');
             let qn = '#quantity_'+$(this).data('id');
-            let quantity = parseInt($(qn).val())+1;
+            let quantity = parseInt($(qn).val());
+
             $.ajax({
                 url: "{{route('user.shop.update.quantity')}}",
                 type: "GET",
@@ -245,6 +245,11 @@
                 $('.subtotal').text(subtotal.toFixed(2));
             });
         });
+    </script>
+    <script>
+        setInterval(function() {
+            $('.container').load();
+        }, 3000);
     </script>
 @endpush
 

@@ -211,7 +211,7 @@
                                         <div class="mt-2 small lh-1 remove" data-bs-toggle="modal"
                                              data-bs-target="#exampleModal" data-product_name =
                                                  "{{@$cart->products->name}}" data-id="{{$cart->id}}">
-                                            <a href="#!" class="text-decoration-none text-inherit">
+                                            <a href="javascript:void(0)" class="text-decoration-none text-inherit">
                                        <span class="me-1 align-text-bottom" >
                                           <svg
                                               xmlns="http://www.w3.org/2000/svg"
@@ -239,16 +239,21 @@
                             <!-- input group -->
                             <div class="col-4 col-md-3 col-lg-3">
                                 <div class="input-group input-spinner">
-                                    <input type="button" value="-" class="button-minus btn btn-sm" data-field="quantity" />
-                                    <input type="number" step="1" max="10" value="{{$cart->quantity}}" name="quantity"
-                                           class="quantity-field form-control-sm form-input" />
-                                    <input type="button" value="+" class="button-plus btn btn-sm" data-field="quantity" />
+                                    <input type="button" value="-" class="button-minus btn btn-sm minus"
+                                           id="minus_{{$cart->id}}"
+                                           data-field="quantity" data-id="{{$cart->id}}">
+                                    <input type="number" step="1" max="10" value="{{$cart->quantity}}"
+                                           id="quantity_{{$cart->id}}"
+                                           name="quantity" data-id="{{$cart->id}}" class="quantity-field form-control-sm
+                                                       form-input">
+                                    <input type="button" value="+" id="plus_{{$cart->id}}"
+                                           class="button-plus btn
+                                                btn-sm plus" data-field="quantity" data-id="{{$cart->id}}">
                                 </div>
                             </div>
                             <!-- price -->
                             <div class="col-2 text-lg-end text-start text-md-end col-md-2">
-                                <span class="fw-bold">{{$general->cur_sym}}{{showAmount(optional($cart->products)
-                                ->price)}}</span>
+                                <span class="fw-bold">{{$general->cur_sym}}{{showAmount(optional($cart->products)->price)}}</span>
                             </div>
                         </div>
                     </li>
@@ -314,5 +319,30 @@
             $('.product').text(product_name);
             $('.id').val($(this).data('id'));
         })
+    </script>
+
+    <script>
+        $(document).ready(function(){
+            $('.minus,.plus').on('click',function(){
+                let cart_id = $(this).data('id');
+                let qn = '#quantity_'+$(this).data('id');
+                let quantity = parseInt($(qn).val())+1;
+                $.ajax({
+                    url: "{{route('user.shop.update.quantity')}}",
+                    type: "GET",
+                    data:{
+                        cart_id: cart_id,
+                        quantity:quantity
+                    },
+                    success: function (data) {
+                        if (data == 'success') {
+                            notify('success', 'Import Data Successfully');
+                            window.location.href = "{{url()->current()}}"
+                        }
+                    }
+
+                });
+            });
+        });
     </script>
 @endpush

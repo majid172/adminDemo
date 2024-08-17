@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use function PHPUnit\Framework\isEmpty;
 
 class OrderController extends Controller
 {
@@ -29,6 +30,11 @@ class OrderController extends Controller
         ]);
 
         $user = auth()->user();
+        if (isEmpty($request->product_ids)){
+            $notify[] = ['error', 'Product has empty'];
+            return back()->withNotify($notify);
+        }
+
         $order = new Order();
         $order->order_no = '#'.now()->format('y').now()->format('m').now()->format('d').auth()->user()->id.rand(11,99);
         $order->user_id = $user->id;
