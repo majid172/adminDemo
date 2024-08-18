@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Lib\CurlRequest;
 use App\Models\AdminNotification;
 use App\Models\Deposit;
+use App\Models\Order;
 use App\Models\Transaction;
 use App\Models\User;
 use App\Models\UserLogin;
@@ -28,6 +29,9 @@ class AdminController extends Controller
         $widget['verified_users']          = User::where('status', 1)->where('ev',1)->where('sv',1)->count();
         $widget['email_unverified_users']  = User::emailUnverified()->count();
         $widget['mobile_unverified_users'] = User::mobileUnverified()->count();
+
+        $widget['total_sales'] = Order::where('status',3)->sum('total_amount');
+        $widget['total_orders'] = Order::count();
 
 
         $deposit['total_deposit_amount']        = Deposit::successful()->sum('amount');
@@ -55,6 +59,17 @@ class AdminController extends Controller
         $withdrawalsChart['values'] = $withdrawalsReport->values();
         // Monthly Deposit & Withdraw Report Graph
 
+//        monthly sales report
+        $salesReport = Order::selectRaw("SUM(total_amount) as amount, DAY(created_at) as day")
+                        ->whereStatus(3)
+                        ->whereMonth('created_at', date('m'))
+                        ->whereYear('created_at', date('Y'))
+                        ->groupByRaw('DAY(created_at)')
+                        ->pluck('amount','day')->toArray();
+        $salesReportValues = array_values($salesReport);
+        $salesReportLabels = array_keys($salesReport);
+//        dd($salesReport);
+
         // UserLogin Report Graph
         $userLoginsReport = UserLogin::selectRaw("COUNT(*) as created_at_count, DATE(created_at) as date_name")->orderBy('created_at', 'desc')
                     ->groupByRaw("DATE(created_at)")->limit(10)
@@ -72,7 +87,7 @@ class AdminController extends Controller
 
         // UserLogin Report Graph
         $newTickets = SupportTicket::with('user')->orderBy('created_at', 'desc')->whereStatus(0)->limit(5)->get();
-        return view('admin.dashboard', compact('pageTitle', 'widget', 'withdrawalsChart', 'depositsChart', 'deposit', 'withdrawals', 'userLogins','userBrowser','newTickets'));
+        return view('admin.dashboard', compact('pageTitle', 'widget', 'withdrawalsChart', 'depositsChart', 'deposit', 'withdrawals', 'userLogins','userBrowser','newTickets','salesReportValues','salesReportLabels'));
     }
 
 

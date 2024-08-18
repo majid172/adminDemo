@@ -26,8 +26,8 @@
                             <i class="fas fa-coins" style="font-size: 2rem;"></i>
                         </div>
                         <div class="col-lg-9 justify-content-center p-3">
-                            <h6 class="m-b-5">@lang('Funded Amount')</h6>
-                            <h3 class="m-b-0">{{ $general->cur_sym}}{{showAmount($deposit['total_deposit_amount'])}}</h3>
+                            <h6 class="m-b-5">@lang('Total Sales')</h6>
+                            <h3 class="m-b-0">{{ $general->cur_sym}}{{showAmount($widget['total_sales'])}}</h3>
 
                         </div>
                     </div>
@@ -39,11 +39,11 @@
                     <a href="{{route('admin.deposit.list')}}">
                     <div class="row">
                         <div class="col-lg-3 mx-auto bg--primary d-flex align-items-center justify-content-center">
-                            <i class="las la-percent" style="font-size: 2rem;"></i>
+                            <i class="las la-shopping-cart" style="font-size: 2rem;"></i>
                         </div>
                         <div class="col-lg-9 justify-content-center p-3">
-                            <h6 class="m-b-5">@lang('Funded Charge')</h6>
-                            <h3 class="m-b-0 ">{{ $general->cur_sym}}{{showAmount($deposit['total_deposit_charge'])}}</h3>
+                            <h6 class="m-b-5">@lang('Total Orders')</h6>
+                            <h3 class="m-b-0 ">{{__($widget['total_orders'])}}</h3>
 
                         </div>
                     </div>
@@ -58,9 +58,9 @@
                             <i class="lar la-credit-card" style="font-size: 2rem;"></i>
                         </div>
                         <div class="col-lg-9 justify-content-center p-3">
-                            <h6 class="m-b-5 ">@lang('Total Payout')</h6>
-                            <h3 class="m-b-0">{{ $general->cur_sym
-                                }}{{showAmount($withdrawals['total_withdraw_amount'])}}</h3>
+                            <h6 class="m-b-5 ">@lang('Total Customers')</h6>
+
+                            <h3 class="m-b-0">{{__($widget['total_users'])}}</h3>
 
                         </div>
                     </div>
@@ -75,7 +75,7 @@
                             <i class="las la-percent" style="font-size: 2rem;"></i>
                         </div>
                         <div class="col-lg-9 justify-content-center p-3">
-                            <h6 class="m-b-5">@lang('Payout Charge')</h6>
+                            <h6 class="m-b-5">@lang('Total Revenue')</h6>
                             <h3 class="m-b-0">{{ $general->cur_sym}}{{showAmount($withdrawals['total_withdraw_charge'])}}</h3>
 
                         </div>
@@ -213,8 +213,8 @@
 
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">@lang('Report on Monthly Funds and Payouts')</h5>
-                <div id="account-chart"></div>
+                <h5 class="card-title">@lang('Monthly Sales Report')</h5>
+                <div id="sales-chart"></div>
             </div>
         </div>
     </div>
@@ -244,7 +244,7 @@
 <script src="{{asset('assets/admin/js/apexcharts.min.js')}}"></script>
 <script>
     "use strict";
-    // [ account-chart ] start
+    console.log(@json($salesReportValues));
     (function () {
         var options = {
             chart: {
@@ -261,20 +261,16 @@
                     columnWidth: '50%'
                 }
             },
-            colors: ['#7752fe', '#F0AAB4'],
+            colors: ['#46863f', '#F0AAB4'],
             series: [{
-                name: '@lang("Withdrawals")',
-                type: 'column',
-                data: @json($withdrawalsChart['values'])
-    }, {
-        name: '@lang("Deposits")',
+        name: '@lang("Sales")',
         type: 'area',
-        data: @json($depositsChart['values'])
+        data: @json($salesReportValues)
     }],
     fill: {
         opacity: [0.85, 1],
                 },
-    labels: @json($depositsChart['labels']),
+    labels: @json($salesReportLabels),
     markers: {
         size: 0
     },
@@ -314,7 +310,7 @@
     }
             }
     var chart = new ApexCharts(
-        document.querySelector("#account-chart"),
+        document.querySelector("#sales-chart"),
         options
     );
     chart.render();
