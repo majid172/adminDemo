@@ -15,21 +15,11 @@ use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
     public function register(): void
     {
 
     }
 
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
     public function boot(): void
     {
         $general = gs();
@@ -40,7 +30,6 @@ class AppServiceProvider extends ServiceProvider
         $viewShare['language'] = Language::all();
         $viewShare['emptyMessage'] = 'No data found';
         view()->share($viewShare);
-
 
         view()->composer('admin.components.tabs.user', function ($view) {
             $view->with([

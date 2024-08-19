@@ -25,7 +25,6 @@ class ShopListController extends Controller
         $query = Category::with('products');
         $categories = $query->get();
         $title = Category::where('id',$categorytId)->first();
-
         $products = Product::with('category')->where('cat_id',$categorytId)->paginate(getPaginate(12));
         return view($this->activeTemplate.'user.shop.shopList',compact('pageTitle','products','categories','title'));
     }

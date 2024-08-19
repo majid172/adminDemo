@@ -85,85 +85,86 @@
             </div>
         </div>
     </div>
+
     <div class="col-xl-12">
         <div class="row gy-4">
-            <div class="col-sm-12">
+            <div class="col-sm-6">
                 <div class="card p-3 rounded-3">
                     <div class="row g-0">
-                        <div class="col-sm-4 col-6 col-xl-6 col-xxl-4">
+                        <div class="col-sm-6 col-6 col-xl-6 col-xxl-6">
                             <div class="dashboard-widget">
                                 <div class="dashboard-widget__icon">
                                     <i class="dashboard-card-icon las la-users"></i>
                                 </div>
                                 <div class="dashboard-widget__content">
                                     <a title="@lang('View all')" class="dashboard-widget-link"
-                                        href="{{route('admin.users.all')}}"></a>
+                                       href="{{route('admin.users.all')}}"></a>
                                     <h5>{{$widget['total_users']}}</h5>
                                     <span>@lang('Total Users')</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-4 col-6 col-xl-6 col-xxl-4 ">
+                        <div class="col-sm-6 col-6 col-xl-6 col-xxl-6 ">
                             <div class="dashboard-widget">
                                 <div class="dashboard-widget__icon">
                                     <i class="dashboard-card-icon las la-user-check"></i>
                                 </div>
                                 <div class="dashboard-widget__content">
                                     <a title="@lang('View all')" class="dashboard-widget-link"
-                                        href="{{route('admin.users.active')}}"></a>
+                                       href="{{route('admin.users.active')}}"></a>
                                     <h5>{{$widget['verified_users']}}</h5>
                                     <span>@lang('Active Users')</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-4 col-6 col-xl-6 col-xxl-4">
+                        <div class="col-sm-6 col-6 col-xl-6 col-xxl-6">
                             <div class="dashboard-widget">
                                 <div class="dashboard-widget__icon">
                                     <i class="dashboard-card-icon las la-envelope"></i>
                                 </div>
                                 <div class="dashboard-widget__content">
                                     <a title="@lang('View all')" class="dashboard-widget-link"
-                                        href="{{route('admin.users.email.unverified')}}"></a>
+                                       href="{{route('admin.users.email.unverified')}}"></a>
                                     <h5>{{$widget['email_unverified_users']}}</h5>
                                     <span>@lang('Email Unverified')</span>
                                 </div>
 
                             </div>
                         </div>
-                        <div class="col-sm-4 col-6 col-xl-6 col-xxl-4">
+                        <div class="col-sm-6 col-6 col-xl-6 col-xxl-6">
                             <div class="dashboard-widget">
                                 <div class="dashboard-widget__icon">
                                     <i class="dashboard-card-icon las la-credit-card"></i>
                                 </div>
                                 <div class="dashboard-widget__content">
                                     <a title="@lang('View all')" class="dashboard-widget-link"
-                                        href="{{route('admin.withdraw.pending')}}"></a>
+                                       href="{{route('admin.withdraw.pending')}}"></a>
                                     <h5>{{$withdrawals['total_withdraw_pending']}}</h5>
                                     <span>@lang('Pending Payouts')</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-4 col-6 col-xl-6 col-xxl-4">
+                        <div class="col-sm-6 col-6 col-xl-6 col-xxl-6">
                             <div class="dashboard-widget">
                                 <div class="dashboard-widget__icon">
                                     <i class="dashboard-card-icon las la-spinner"></i>
                                 </div>
                                 <div class="dashboard-widget__content">
                                     <a title="@lang('View all')" class="dashboard-widget-link"
-                                        href="{{route('admin.deposit.pending')}}"></a>
+                                       href="{{route('admin.deposit.pending')}}"></a>
                                     <h5>{{$deposit['total_deposit_pending']}}</h5>
                                     <span>@lang('Pending Funds')</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-4 col-6 col-xl-6 col-xxl-4">
+                        <div class="col-sm-6 col-6 col-xl-6 col-xxl-6">
                             <div class="dashboard-widget">
                                 <div class="dashboard-widget__icon">
                                     <i class="dashboard-card-icon las la-ban"></i>
                                 </div>
                                 <div class="dashboard-widget__content">
                                     <a title="@lang('View all')" class="dashboard-widget-link"
-                                        href="{{route('admin.deposit.rejected')}}">
+                                       href="{{route('admin.deposit.rejected')}}">
                                     </a>
                                     <h5>{{$deposit['total_deposit_rejected']}}</h5>
                                     <span>@lang('Rejected Funds')</span>
@@ -173,7 +174,17 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">@lang('Category Wise Product\'s Count')</h5>
+                        <div id="category-chart"></div>
+                    </div>
+                </div>
+            </div>
         </div>
+
     </div>
     <div class="col-xl-6">
         <div class="card">
@@ -249,7 +260,7 @@
         var options = {
             chart: {
                 type: 'area',
-                stacked: false,
+                stacked: true,
                 height: '310px'
             },
             stroke: {
@@ -261,7 +272,7 @@
                     columnWidth: '50%'
                 }
             },
-            colors: ['#46863f', '#F0AAB4'],
+            colors: ['#6b74f5', '#F0AAB4'],
             series: [{
         name: '@lang("Sales")',
         type: 'area',
@@ -379,8 +390,88 @@
         chart.render();
     }) ();
 
+//     category chart
+    var options = {
+        series: [{
+            name: 'Inflation',
+            data: [2.3, 3.1, 4.0, 10.1, 4.0, 3.6, 3.2, 2.3, 1.4, 0.8, 0.5, 0.2]
+        }],
+        chart: {
+            height: 350,
+            type: 'bar',
+        },
+        plotOptions: {
+            bar: {
+                borderRadius: 10,
+                dataLabels: {
+                    position: 'top', // top, center, bottom
+                },
+            }
+        },
+        dataLabels: {
+            enabled: true,
+            formatter: function (val) {
+                return val + "%";
+            },
+            offsetY: -20,
+            style: {
+                fontSize: '12px',
+                colors: ["#304758"]
+            }
+        },
 
+        xaxis: {
+            categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            position: 'top',
+            axisBorder: {
+                show: false
+            },
+            axisTicks: {
+                show: false
+            },
+            crosshairs: {
+                fill: {
+                    type: 'gradient',
+                    gradient: {
+                        colorFrom: '#D8E3F0',
+                        colorTo: '#BED1E6',
+                        stops: [0, 100],
+                        opacityFrom: 0.4,
+                        opacityTo: 0.5,
+                    }
+                }
+            },
+            tooltip: {
+                enabled: true,
+            }
+        },
+        yaxis: {
+            axisBorder: {
+                show: false
+            },
+            axisTicks: {
+                show: false,
+            },
+            labels: {
+                show: false,
+                formatter: function (val) {
+                    return val + "%";
+                }
+            }
 
+        },
+        title: {
+            floating: true,
+            offsetY: 330,
+            align: 'center',
+            style: {
+                color: '#444'
+            }
+        }
+    };
+
+    var chart = new ApexCharts(document.querySelector("#category-chart"), options);
+    chart.render();
 
 </script>
 @endpush

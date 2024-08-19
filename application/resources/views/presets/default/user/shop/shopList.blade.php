@@ -259,11 +259,11 @@
                                     <div>
                                         <!-- select option -->
                                         <select class="form-select">
-                                            <option selected>Sort by: Featured</option>
-                                            <option value="Low to High">Price: Low to High</option>
-                                            <option value="High to Low">Price: High to Low</option>
-                                            <option value="Release Date">Release Date</option>
-                                            <option value="Avg. Rating">Avg. Rating</option>
+                                            <option selected>@lang('Sort by: Featured')</option>
+                                            <option value="asc">@lang('Price: Low to High')</option>
+                                            <option value="dsce">@lang('Price: High to Low')</option>
+                                            <option value="date">@lang('Release Date')</option>
+                                            <option value="rating">@lang('Avg. Rating')</option>
                                         </select>
                                     </div>
                                 </div>
@@ -271,7 +271,6 @@
                         </div>
                         <!-- row -->
                         <div class="row g-4 row-cols-xl-4 row-cols-lg-3 row-cols-2 row-cols-md-2 mt-2">
-
                             @forelse($products as $product)
                                 <div class="col">
                                     <div class="card card-product">
@@ -300,7 +299,7 @@
                                             </div>
                                             <!-- heading -->
                                             <div class="text-small mb-1">
-                                                <a href="#!" class="text-decoration-none                                                 text-muted"><small>{{@$product->category->cat_name}}</small></a>
+                                                <a href="#!" class="text-decoration-none                    text-muted"><small>{{@$product->category->cat_name}}</small></a>
                                             </div>
                                             <h2 class="fs-6"><a href="{{route('user.shop.single',$product->id)}}"
                                                                 class="text-inherit

@@ -95,6 +95,15 @@
                                             @lang('Order Total'):
                                             <span class="text-dark">{{$general->cur_sym}}
                                                 {{showAmount($order->total_amount)}}</span>
+                                            <br>
+{{--                                            @lang('Payment Info')--}}
+{{--                                            <span>--}}
+{{--                                                @if($order->payment_code == 1)--}}
+{{--                                                    @lang('Cash on Delivery')--}}
+{{--                                                @else--}}
+{{--                                                    {{optional($order->paymentMethod)->name}}--}}
+{{--                                                @endif--}}
+{{--                                            </span>--}}
                                         </p>
                                     </div>
                                 </div>

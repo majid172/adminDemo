@@ -14,9 +14,9 @@ class OrderController extends Controller
 {
     public function orderList()
     {
-        $pageTitle = "My Orders";
+        $pageTitle = "Orders History";
         $orders = Order::where('user_id', auth()->user()->id)
-                    ->with('orderItems.products')
+                    ->with('orderItems.products')->orderBy('created_at','desc')
                     ->get();
 
         return view($this->activeTemplate.'user.order.orderList',compact('pageTitle','orders'));

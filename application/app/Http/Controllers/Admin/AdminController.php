@@ -19,10 +19,8 @@ use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
-
     public function dashboard()
     {
-
         $pageTitle = 'Dashboard';
         // User Info
         $widget['total_users']             = User::count();
@@ -69,6 +67,9 @@ class AdminController extends Controller
         $salesReportValues = array_values($salesReport);
         $salesReportLabels = array_keys($salesReport);
 //        dd($salesReport);
+
+//        category wise product count
+        $productCount = 0;
 
         // UserLogin Report Graph
         $userLoginsReport = UserLogin::selectRaw("COUNT(*) as created_at_count, DATE(created_at) as date_name")->orderBy('created_at', 'desc')
